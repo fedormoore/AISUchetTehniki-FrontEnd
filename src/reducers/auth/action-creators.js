@@ -14,25 +14,21 @@ export const AuthActionCreators = {
         Request({
             url: "/auth/signIn",
             method: "POST",
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
+            headers: {
+                "Content-Type": "application/json"
+            }
         })
             .then((response) => {
-                console.log(response)
-                if (response.status!==200){
-                    dispatch(AuthActionCreators.setError(response.message));
-                }
                 localStorage.setItem("auth", true);
                 localStorage.setItem("token", response.token);
-
                 dispatch(AuthActionCreators.setUser("mockUser"));
                 dispatch(AuthActionCreators.setIsAuth(true))
-
             })
             .catch((error) => {
-                console.log("error")
+                dispatch(AuthActionCreators.setError(error.message));
             })
             .finally(() => {
-                console.log("finally")
                 dispatch(AuthActionCreators.setIsLoading(false));
             });
     },
@@ -40,24 +36,26 @@ export const AuthActionCreators = {
         dispatch(AuthActionCreators.setError(''));
         dispatch(AuthActionCreators.setIsLoading(true));
 
-        Request({
+        return Request({
             url: "/auth/signUp",
             method: "POST",
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
+            headers: {
+                "Content-Type": "application/json"
+            }
         })
             .then((response) => {
-                if (response.status!==200){
-                    dispatch(AuthActionCreators.setError(response.message));
-                    return;
-                }
-                dispatch(AuthActionCreators.setInfo(response.message));
-
+                return {
+                    isOk: true
+                };
             })
             .catch((error) => {
                 dispatch(AuthActionCreators.setError(error.message));
+                return {
+                    isOk: false
+                };
             })
             .finally(() => {
-                console.log("finally")
                 dispatch(AuthActionCreators.setIsLoading(false));
             });
     },

@@ -6,17 +6,15 @@ export default async function Request(options) {
     const response = await fetch(SERVER + VER + options.url, {
         body: options.body,
         method: options.method,
-        headers: {
-            "Content-Type": "application/json",
-        }
+        headers: options.headers
     });
 
-    return await response.json();
-        // .then((response) => {
-        //     console.log(response)
-        //     return response;
-        // })
-        // .catch((error) => {
-        //     return error;
-        // })
+    const json = await response.json()
+
+    if (!response.ok) {
+        return Promise.reject(json);
+    }
+
+    return json;
+
 }

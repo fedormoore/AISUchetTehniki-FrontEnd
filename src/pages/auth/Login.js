@@ -1,7 +1,7 @@
 import React from 'react';
-import {Layout, Row, Form, Input, Button, Card} from "antd";
+import {Layout, Row, Form, Input, Button, Card, Alert} from "antd";
 import {useSelector} from "react-redux";
-import {useActions} from "../hooks/useActions";
+import {useActions} from "../../hooks/useActions";
 
 function Login() {
 
@@ -20,9 +20,9 @@ function Login() {
                         onFinish={submit}
                         layout={'vertical'}
                     >
-                        {error && <div style={{color: 'red'}}>
-                            {error}
-                        </div>}
+                        {error &&
+                        <Alert message={error} type="error"/>
+                        }
                         <Form.Item
                             label="E-mail"
                             name="email"
