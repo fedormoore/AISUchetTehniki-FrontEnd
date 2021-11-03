@@ -3,6 +3,9 @@ import Registration from "../pages/auth/Registration";
 import Home from "../pages/Home";
 import Main from "../pages/Main";
 import User from "../pages/spr/User";
+import DeviceType from "../pages/spr/DeviceType";
+import Location from "../pages/spr/Location";
+import Device from "../pages/spr/Device";
 
 export const routeNames = {
     HOME : '/home',
@@ -30,17 +33,17 @@ export const privateRoutes = [
     {
         path: routeNames.LOCATION,
         exact: true,
-        component: Main
+        component: Location
     },
     {
         path: routeNames.DEVICE_TYPE,
         exact: true,
-        component: Main
+        component: DeviceType
     },
     {
         path: routeNames.DEVICE,
         exact: true,
-        component: Main
+        component: Device
     },
     {
         path: routeNames.PROVIDER,

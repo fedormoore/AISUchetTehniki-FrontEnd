@@ -16,7 +16,7 @@ function App() {
                 <LeftMenu/>
                 <Layout style={{padding: '0 24px 24px'}}>
                     <Content
-                        className="site-layout-background"
+                        className="h100"
                         style={{
                             padding: 24,
                             margin: 0,

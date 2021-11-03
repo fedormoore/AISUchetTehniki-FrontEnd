@@ -3,47 +3,27 @@ import {Layout, Table, Button, Space, Tooltip, Modal, Empty, Spin} from 'antd';
 import {PlusOutlined, EditOutlined, DeleteOutlined, SyncOutlined} from '@ant-design/icons';
 import {useActions} from "../../hooks/useActions";
 import {useSelector} from "react-redux";
-import UserModal from "./modal/UserModal";
+import DeviceTypeModal from "./modal/DeviceTypeModal";
 
 const columns = [
     {
-        title: 'E-mail',
-        dataIndex: 'email',
-        key: 'email',
-    },
-    {
-        title: 'Фамилия',
-        dataIndex: 'firstName',
-        key: 'firstName',
-    },
-    {
-        title: 'Имя',
-        dataIndex: 'lastName',
-        key: 'lastName',
-    },
-    {
-        title: 'Отчество',
-        dataIndex: 'middleNames',
-        key: 'middleNames',
-    },
-    {
-        title: 'Телефон',
-        dataIndex: 'telephone',
-        key: 'telephone',
+        title: 'Наименование',
+        dataIndex: 'name',
+        key: 'name',
     },
 ];
 
 let selectRowData = {};
 
-const User = () => {
+const DeviceType = () => {
 
-    const {userList, isLoading} = useSelector(state => state.user)
-    const {loadUser} = useActions()
+    const {deviceTypeList, isLoading} = useSelector(state => state.deviceType)
+    const {loadDeviceType} = useActions()
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedRowKeys, setSelectedRowKey] = useState([]);
 
     useEffect(() => {
-        loadUser();
+        loadDeviceType();
         // eslint-disable-next-line
     }, []);
 
@@ -58,7 +38,7 @@ const User = () => {
     }
 
     const refresh = () => {
-        loadUser();
+        loadDeviceType();
         selectRowData = {};
         setSelectedRowKey([]);
     }
@@ -74,7 +54,14 @@ const User = () => {
     }
 
     const rowSelection = {
-        selectedRowKeys
+        selectedRowKeys,
+        columnTitle: selectedRowKeys.length > 0 ? <div>XXX</div> : <></>,
+        checkbox:false
+        // getCheckboxProps: record => ({
+        //
+        //     disabled: record.disabled,
+        //     visible: record.visible,
+        // }),
     };
 
     return (
@@ -97,7 +84,7 @@ const User = () => {
                         />
                     </Tooltip>
                 </Space>
-                <Table columns={columns} dataSource={userList} rowKey="id" bordered
+                <Table columns={columns} dataSource={deviceTypeList} rowKey="id" pagination={false} scroll={{y:500}}
                        locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
                        rowSelection={rowSelection}
                        onRow={(record) => ({
@@ -113,11 +100,11 @@ const User = () => {
                     closable={false}
                     destroyOnClose={true}
                 >
-                    <UserModal closeModal={closeModal} values={selectRowData}/>
+                    <DeviceTypeModal closeModal={closeModal} values={selectRowData}/>
                 </Modal>
             </Spin>
         </Layout>
     );
 };
 
-export default User;
+export default DeviceType;

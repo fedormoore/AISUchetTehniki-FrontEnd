@@ -1,55 +1,65 @@
 import React, {useEffect, useState} from 'react';
 import {Layout, Table, Button, Space, Tooltip, Modal, Empty, Spin} from 'antd';
-import {PlusOutlined, EditOutlined, DeleteOutlined, SyncOutlined} from '@ant-design/icons';
+import {PlusOutlined, SisternodeOutlined, EditOutlined, DeleteOutlined, SyncOutlined} from '@ant-design/icons';
 import {useActions} from "../../hooks/useActions";
 import {useSelector} from "react-redux";
-import UserModal from "./modal/UserModal";
+import LocationModal from "./modal/LocationModal";
 
 const columns = [
     {
-        title: 'E-mail',
-        dataIndex: 'email',
-        key: 'email',
+        title: 'Тип',
+        dataIndex: 'type',
+        key: 'id',
     },
     {
-        title: 'Фамилия',
-        dataIndex: 'firstName',
-        key: 'firstName',
-    },
-    {
-        title: 'Имя',
-        dataIndex: 'lastName',
-        key: 'lastName',
-    },
-    {
-        title: 'Отчество',
-        dataIndex: 'middleNames',
-        key: 'middleNames',
-    },
-    {
-        title: 'Телефон',
-        dataIndex: 'telephone',
-        key: 'telephone',
+        title: 'Наименование',
+        dataIndex: 'name',
+        key: 'id',
     },
 ];
 
 let selectRowData = {};
+let selectParent = null;
+let titleModal = 'Добавить страну';
 
-const User = () => {
+const Location = () => {
 
-    const {userList, isLoading} = useSelector(state => state.user)
-    const {loadUser} = useActions()
+    const {locationList, isLoading} = useSelector(state => state.location)
+    const {loadLocation} = useActions()
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedRowKeys, setSelectedRowKey] = useState([]);
 
     useEffect(() => {
-        loadUser();
+        loadLocation();
         // eslint-disable-next-line
     }, []);
 
     const addRecord = () => {
+        selectParent = null
         selectRowData = {};
         setSelectedRowKey([]);
+        setModalVisible(true);
+    }
+
+    const addTreeRecord = () => {
+
+        if (selectParent.type === 'country') {
+            titleModal = 'Добавить субъект'
+        }
+        if (selectParent.type === 'subject') {
+            titleModal = 'Добавить город'
+        }
+        if (selectParent.type === 'city') {
+            titleModal = 'Добавить адрес'
+        }
+        if (selectParent.type === 'address') {
+            titleModal = 'Добавить этаж'
+        }
+        if (selectParent.type === 'floor') {
+            titleModal = 'Добавить кабинет'
+        }
+
+        selectRowData = {};
         setModalVisible(true);
     }
 
@@ -57,17 +67,19 @@ const User = () => {
         setModalVisible(true);
     }
 
-    const refresh = () => {
-        loadUser();
-        selectRowData = {};
-        setSelectedRowKey([]);
-    }
-
     const closeModal = () => {
         setModalVisible(false);
     }
 
+    const refresh = () => {
+        loadLocation();
+        selectParent = null
+        selectRowData = {};
+        setSelectedRowKey([]);
+    }
+
     const selectRow = (record) => {
+        selectParent = record;
         selectRowData = record;
         const selectedRowKey = [record.id];
         setSelectedRowKey(selectedRowKey);
@@ -84,6 +96,10 @@ const User = () => {
                     <Tooltip title="Добавить">
                         <Button type="primary" icon={<PlusOutlined/>} onClick={() => addRecord()}/>
                     </Tooltip>
+                    <Tooltip title="Добавить в состав">
+                        <Button type="primary" icon={<SisternodeOutlined/>} disabled={!selectedRowKeys.length}
+                                onClick={() => addTreeRecord()}/>
+                    </Tooltip>
                     <Tooltip title="Редактировать">
                         <Button type="primary" icon={<EditOutlined/>} disabled={!selectedRowKeys.length}
                                 onClick={() => editRecord()}/>
@@ -97,8 +113,9 @@ const User = () => {
                         />
                     </Tooltip>
                 </Space>
-                <Table columns={columns} dataSource={userList} rowKey="id" bordered
+                <Table columns={columns} dataSource={locationList} rowKey="id" bordered
                        locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
+                       childrenColumnName={"locations"}
                        rowSelection={rowSelection}
                        onRow={(record) => ({
                            onClick: () => {
@@ -107,17 +124,17 @@ const User = () => {
                        })}
                 />
                 <Modal
-                    title="Добавить запись"
+                    title={titleModal}
                     visible={modalVisible}
                     footer={null}
                     closable={false}
                     destroyOnClose={true}
                 >
-                    <UserModal closeModal={closeModal} values={selectRowData}/>
+                    <LocationModal closeModal={closeModal} parent={selectParent} values={selectRowData}/>
                 </Modal>
             </Spin>
         </Layout>
     );
 };
 
-export default User;
+export default Location;

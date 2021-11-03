@@ -1,8 +1,12 @@
 @import "~antd/dist/antd.css";
 
 .h100 {
-    height: calc(100vh - 64px);
+    height: calc(100vh - 94px);
 }
+
+/*.ant-table-selection-col, .ant-table-selection-column {*/
+/*    display: none;*/
+/*}*/
 
 #components-layout-demo-custom-trigger .trigger {
     padding: 0 24px;

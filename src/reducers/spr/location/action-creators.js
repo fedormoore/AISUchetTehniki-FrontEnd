@@ -1,32 +1,32 @@
-import {TypeUser} from "./types";
+import {TypeLocation} from "./types";
 import type {AppDispatch} from "../rootReducer";
 import Request from "../../../utils/network";
 
-export const UserActionCreators = {
-    setLoadUser: (payload) => ({type: TypeUser.LOAD_USER, payload}),
-    setSaveUser: (payload) => ({type: TypeUser.SAVE_USER, payload}),
-    loadUser: () => (dispatch: AppDispatch) => {
-        dispatch(UserActionCreators.setIsLoading(true));
+export const LocationActionCreators = {
+    setLoadLocation: (payload) => ({type: TypeLocation.LOAD_LOCATION, payload}),
+    setSaveLocation: (payload) => ({type: TypeLocation.SAVE_LOCATION, payload}),
+    loadLocation: () => (dispatch: AppDispatch) => {
+        dispatch(LocationActionCreators.setIsLoading(true));
         // const auth = localStorage.getItem("token");
         Request({
-            url: "/app/spr/user",
+            url: "/app/spr/location",
             method: "GET"
         })
             .then((response) => {
-                dispatch(UserActionCreators.setLoadUser(response));
+                dispatch(LocationActionCreators.setLoadLocation(response));
             })
             .catch((error) => {
                 console.log("error")
             })
             .finally(() => {
-                dispatch(UserActionCreators.setIsLoading(false));
+                dispatch(LocationActionCreators.setIsLoading(false));
             });
     },
-    saveUser: (body) => (dispatch: AppDispatch) => {
-        dispatch(UserActionCreators.setIsSaving(true));
+    saveLocation: (body) => (dispatch: AppDispatch) => {
+        dispatch(LocationActionCreators.setIsSaving(true));
         const auth = localStorage.getItem("token");
         return Request({
-            url: "/app/spr/user",
+            url: "/app/spr/location",
             method: "POST",
             body: JSON.stringify(body),
             headers:{
@@ -35,7 +35,7 @@ export const UserActionCreators = {
             }
         })
             .then((response) => {
-                dispatch(UserActionCreators.setSaveUser(response));
+                dispatch(LocationActionCreators.setSaveLocation(response));
                 return {
                     isOk: true
                 };
@@ -47,9 +47,9 @@ export const UserActionCreators = {
                 };
             })
             .finally(() => {
-                dispatch(UserActionCreators.setIsSaving(false));
+                dispatch(LocationActionCreators.setIsSaving(false));
             });
     },
-    setIsLoading: (payload) => ({type: TypeUser.SET_IS_LOADING, payload}),
-    setIsSaving: (payload) => ({type: TypeUser.SET_IS_SAVING, payload})
+    setIsLoading: (payload) => ({type: TypeLocation.SET_IS_LOADING, payload}),
+    setIsSaving: (payload) => ({type: TypeLocation.SET_IS_SAVING, payload})
 }

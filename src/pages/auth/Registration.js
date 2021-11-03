@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Alert, Button, Card, Form, Input, Layout, Row, Modal} from "antd";
 import {useSelector} from "react-redux";
 import {useActions} from "../../hooks/useActions";
+import {useHistory} from "react-router-dom";
+import {routeNames} from "../../routes";
 
 const Registration = () => {
 
     const {isLoading, error} = useSelector(state => state.auth)
     const [values, setValues] = useState({});
     const {registration} = useActions()
+    const router = useHistory();
 
     const submit = () => {
         (async function () {
@@ -26,8 +29,7 @@ const Registration = () => {
                     <p>Перейти по ссылке, высланной в письме для ативации учетной записи.</p>
                 </div>
             ),
-            onOk() {
-            },
+            onOk() {router.push(routeNames.MAIN)},
         });
     }
 
