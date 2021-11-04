@@ -12,6 +12,7 @@ const LocationModal = (props) => {
     const [error, setError] = useState();
 
     const submitForm = () => {
+
         let temp =values;
 
         if (parent === null) {
@@ -57,6 +58,7 @@ const LocationModal = (props) => {
                 <Form.Item
                     label="Наименование"
                     name="name"
+                    valuePropName={"values.name"}
                     rules={[
                         {
                             required: true,

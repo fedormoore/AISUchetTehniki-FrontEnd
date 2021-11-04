@@ -6,6 +6,7 @@ import User from "../pages/spr/User";
 import DeviceType from "../pages/spr/DeviceType";
 import Location from "../pages/spr/Location";
 import Device from "../pages/spr/Device";
+import Counterparty from "../pages/spr/Counterparty";
 
 export const routeNames = {
     HOME : '/home',
@@ -16,7 +17,7 @@ export const routeNames = {
     LOCATION: '/location',
     DEVICE_TYPE: '/device_type',
     DEVICE: '/device',
-    PROVIDER: '/provider'
+    COUNTERPARTY: '/counterparty'
 }
 
 export const privateRoutes = [
@@ -46,9 +47,9 @@ export const privateRoutes = [
         component: Device
     },
     {
-        path: routeNames.PROVIDER,
+        path: routeNames.COUNTERPARTY,
         exact: true,
-        component: Main
+        component: Counterparty
     }
 ];
 

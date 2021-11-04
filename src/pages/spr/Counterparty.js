@@ -3,31 +3,19 @@ import {Layout, Table, Button, Space, Tooltip, Modal, Empty, Spin} from 'antd';
 import {PlusOutlined, EditOutlined, DeleteOutlined, SyncOutlined} from '@ant-design/icons';
 import {useActions} from "../../hooks/useActions";
 import {useSelector} from "react-redux";
-import UserModal from "./modal/UserModal";
+import CounterpartyModal from "./modal/CounterpartyModal";
 
 const columns = [
     {
-        title: 'E-mail',
-        dataIndex: 'email',
-        key: 'email',
+        title: 'Наименование',
+        dataIndex: 'name',
+        key: 'name',
         width: '170px',
     },
     {
-        title: 'Фамилия',
-        dataIndex: 'firstName',
-        key: 'firstName',
-        width: '150px',
-    },
-    {
-        title: 'Имя',
-        dataIndex: 'lastName',
-        key: 'lastName',
-        width: '150px',
-    },
-    {
-        title: 'Отчество',
-        dataIndex: 'middleNames',
-        key: 'middleNames',
+        title: 'ИНН',
+        dataIndex: 'inn',
+        key: 'inn',
         width: '150px',
     },
     {
@@ -37,24 +25,30 @@ const columns = [
         width: '150px',
     },
     {
-        title: 'Кабинет',
-        dataIndex: ['location', 'name'],
-        key: 'name',
+        title: 'E-mail',
+        dataIndex: 'email',
+        key: 'email',
+        width: '150px',
+    },
+    {
+        title: 'Контактное лицо',
+        dataIndex: 'contact',
+        key: 'contact',
         width: '100px',
     },
 ];
 
 let selectRowData = {};
 
-const User = () => {
+const Counterparty = () => {
 
-    const {userList, isLoading} = useSelector(state => state.user)
-    const {loadUser} = useActions()
+    const {counterpartyList, isLoading} = useSelector(state => state.counterparty)
+    const {loadCounterparty} = useActions()
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedRowKeys, setSelectedRowKey] = useState([]);
 
     useEffect(() => {
-        loadUser();
+        loadCounterparty();
         // eslint-disable-next-line
     }, []);
 
@@ -69,7 +63,7 @@ const User = () => {
     }
 
     const refresh = () => {
-        loadUser();
+        loadCounterparty();
         selectRowData = {};
         setSelectedRowKey([]);
     }
@@ -111,7 +105,7 @@ const User = () => {
                         />
                     </Tooltip>
                 </Space>
-                <Table size="small" columns={columns} dataSource={userList} rowKey="id" bordered
+                <Table size="small" columns={columns} dataSource={counterpartyList} rowKey="id" bordered
                        locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
                        rowSelection={rowSelection}
                        onRow={(record) => ({
@@ -130,11 +124,11 @@ const User = () => {
                     closable={false}
                     destroyOnClose={true}
                 >
-                    <UserModal closeModal={closeModal} values={selectRowData}/>
+                    <CounterpartyModal closeModal={closeModal} values={selectRowData}/>
                 </Modal>
             </Spin>
         </Layout>
     );
 };
 
-export default User;
+export default Counterparty;

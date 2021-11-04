@@ -7,13 +7,21 @@ export const LocationActionCreators = {
     setSaveLocation: (payload) => ({type: TypeLocation.SAVE_LOCATION, payload}),
     loadLocation: () => (dispatch: AppDispatch) => {
         dispatch(LocationActionCreators.setIsLoading(true));
-        // const auth = localStorage.getItem("token");
-        Request({
+        const auth = localStorage.getItem("token");
+        return Request({
             url: "/app/spr/location",
-            method: "GET"
+            method: "GET",
+            headers:{
+                'Authorization': 'Bearer ' + auth,
+                "Content-Type": "application/json"
+            }
         })
             .then((response) => {
                 dispatch(LocationActionCreators.setLoadLocation(response));
+                return {
+                    isOk: true,
+                    data:response
+                };
             })
             .catch((error) => {
                 console.log("error")

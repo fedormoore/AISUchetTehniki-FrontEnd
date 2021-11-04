@@ -16,45 +16,35 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:v2" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </select>
+    <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c8be3f2-723a-4b6a-ae57-d7bbe4a6823f" name="Default Changelist" comment="29.10.2021">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/spr/Device.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/spr/DeviceType.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/spr/Location.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/spr/modal/DeviceTypeModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/spr/modal/FirmModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/spr/modal/LocationModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/spr/modal/ModelModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/device/action-creators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/device/deviceReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/device/types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/deviceType/action-creators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/deviceType/deviceTypeReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/deviceType/types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/location/action-creators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/location/locationReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/location/types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/spr/Counterparty.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/spr/modal/CounterpartyModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/spr/counterparty/action-creators.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/spr/counterparty/counterpartyReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/spr/counterparty/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/auth/Registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/auth/Registration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LeftMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LeftMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/Device.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/Device.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/DeviceType.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/DeviceType.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/Location.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/Location.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/spr/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/DeviceTypeModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/DeviceTypeModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/LocationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/LocationModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/ModelModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/ModelModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/UserModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/UserModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/action-creators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/app/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/app/action-creators.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/rootReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/device/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/device/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/deviceType/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/deviceType/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/location/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/location/action-creators.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/spr/user/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/user/action-creators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/spr/user/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/user/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/spr/user/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/user/userReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/network.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/network.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,15 +109,16 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/spr/modal" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\pages\spr\modal" />
+      <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\pages\spr" />
+      <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\reducers\spr\counterparty" />
       <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\pages\spr\modal" />
       <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\reducers\spr\device" />
-      <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\pages\spr" />
-      <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\reducers\spr\location" />
-      <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\reducers\spr\deviceType" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -141,6 +132,7 @@
       <workItem from="1635500562825" duration="9826000" />
       <workItem from="1635737811431" duration="25582000" />
       <workItem from="1635842983473" duration="31900000" />
+      <workItem from="1635997333866" duration="28785000" />
     </task>
     <task id="LOCAL-00001" summary="add gitignore">
       <created>1635500831567</created>
@@ -225,9 +217,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635511466440" />
-    <state x="1920" y="290" width="1441" height="837" maximized="true" key="dock-window-1" timestamp="1635746856726">
-      <screen x="1920" y="30" width="1680" height="1010" />
+    <state x="1680" y="0" width="1402" height="849" maximized="true" key="dock-window-1" timestamp="1636014342980">
+      <screen x="1680" y="0" width="1600" height="860" />
     </state>
+    <state x="1680" y="0" width="1402" height="849" maximized="true" key="dock-window-1/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636014342980" />
     <state x="1920" y="290" width="1441" height="837" maximized="true" key="dock-window-1/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635746856726" />
     <state x="1920" y="159" width="1441" height="837" maximized="true" key="dock-window-2" timestamp="1635755509368">
       <screen x="1920" y="30" width="1680" height="1010" />

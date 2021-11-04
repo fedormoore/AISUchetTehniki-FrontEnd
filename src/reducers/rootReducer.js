@@ -7,6 +7,7 @@ import {userReducer} from "./spr/user/userReducer";
 import {deviceTypeReducer} from "./spr/deviceType/deviceTypeReducer";
 import {locationReducer} from "./spr/location/locationReducer";
 import {deviceReducer} from "./spr/device/deviceReducer";
+import {counterpartyReducer} from "./spr/counterparty/counterpartyReducer";
 
 export const rootReducer = combineReducers({
     app: appReducer,
@@ -14,7 +15,8 @@ export const rootReducer = combineReducers({
     user: userReducer,
     deviceType: deviceTypeReducer,
     location: locationReducer,
-    device: deviceReducer
+    device: deviceReducer,
+    counterparty: counterpartyReducer
 })
 
 export type AppDispatch = typeof store.dispatch;

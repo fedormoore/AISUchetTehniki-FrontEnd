@@ -1,15 +1,15 @@
-import {TypeUser} from "./types";
+import {TypeCounterparty} from "./types";
 import type {AppDispatch} from "../rootReducer";
 import Request from "../../../utils/network";
 
-export const UserActionCreators = {
-    setLoadUser: (payload) => ({type: TypeUser.LOAD_USER, payload}),
-    setSaveUser: (payload) => ({type: TypeUser.SAVE_USER, payload}),
-    loadUser: () => (dispatch: AppDispatch) => {
-        dispatch(UserActionCreators.setIsLoading(true));
+export const CounterpartyActionCreators = {
+    setLoadCounterparty: (payload) => ({type: TypeCounterparty.LOAD_COUNTERPARTY, payload}),
+    setSaveCounterparty: (payload) => ({type: TypeCounterparty.SAVE_COUNTERPARTY, payload}),
+    loadCounterparty: () => (dispatch: AppDispatch) => {
+        dispatch(CounterpartyActionCreators.setIsLoading(true));
         const auth = localStorage.getItem("token");
         Request({
-            url: "/app/spr/user",
+            url: "/app/spr/counterparty",
             method: "GET",
             headers:{
                 'Authorization': 'Bearer ' + auth,
@@ -17,20 +17,20 @@ export const UserActionCreators = {
             }
         })
             .then((response) => {
-                dispatch(UserActionCreators.setLoadUser(response));
+                dispatch(CounterpartyActionCreators.setLoadCounterparty(response));
             })
             .catch((error) => {
                 console.log("error")
             })
             .finally(() => {
-                dispatch(UserActionCreators.setIsLoading(false));
+                dispatch(CounterpartyActionCreators.setIsLoading(false));
             });
     },
-    saveUser: (body) => (dispatch: AppDispatch) => {
-        dispatch(UserActionCreators.setIsSaving(true));
+    saveCounterparty: (body) => (dispatch: AppDispatch) => {
+        dispatch(CounterpartyActionCreators.setIsSaving(true));
         const auth = localStorage.getItem("token");
         return Request({
-            url: "/app/spr/user",
+            url: "/app/spr/counterparty",
             method: "POST",
             body: JSON.stringify(body),
             headers:{
@@ -39,7 +39,7 @@ export const UserActionCreators = {
             }
         })
             .then((response) => {
-                dispatch(UserActionCreators.setSaveUser(response));
+                dispatch(CounterpartyActionCreators.setSaveCounterparty(response));
                 return {
                     isOk: true
                 };
@@ -51,9 +51,9 @@ export const UserActionCreators = {
                 };
             })
             .finally(() => {
-                dispatch(UserActionCreators.setIsSaving(false));
+                dispatch(CounterpartyActionCreators.setIsSaving(false));
             });
     },
-    setIsLoading: (payload) => ({type: TypeUser.SET_IS_LOADING, payload}),
-    setIsSaving: (payload) => ({type: TypeUser.SET_IS_SAVING, payload})
+    setIsLoading: (payload) => ({type: TypeCounterparty.SET_IS_LOADING, payload}),
+    setIsSaving: (payload) => ({type: TypeCounterparty.SET_IS_SAVING, payload})
 }

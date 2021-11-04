@@ -12,6 +12,11 @@ const columnsFirm = [
         dataIndex: 'name',
         key: 'name',
     },
+    {
+        title: 'Уровень',
+        dataIndex: 'level',
+        key: 'level',
+    },
 ];
 
 const columnsModel = [
@@ -38,6 +43,7 @@ const Device = () => {
     const [modalModelVisible, setModalModelVisible] = useState(false);
     const [selectedFirmRowKeys, setSelectedFirmRowKey] = useState([]);
     const [selectedModelRowKeys, setSelectedModelRowKey] = useState([]);
+    const [disableButtonEditDelete, setDisableButtonEditDelete] = useState(false);
 
     useEffect(() => {
         loadFirm();
@@ -68,11 +74,19 @@ const Device = () => {
         selectFirmRowData = record;
         const selectedRowKey = [record.id];
         setSelectedFirmRowKey(selectedRowKey);
+        if (record.level === 'Global') {
+            setDisableButtonEditDelete(true);
+        } else {
+            setDisableButtonEditDelete(false);
+        }
         loadModel(record.id);
     }
 
     const rowFirmSelection = {
-        selectedRowKeys: selectedFirmRowKeys
+        selectedRowKeys: selectedFirmRowKeys,
+        columnWidth: 0,
+        renderCell: () => "",
+        hideSelectAll: true
     };
 
     const addModelRecord = () => {
@@ -96,22 +110,26 @@ const Device = () => {
     }
 
     const rowModelSelection = {
-        selectedRowKeys:selectedModelRowKeys
+        selectedRowKeys:selectedModelRowKeys,
+        columnWidth: 0,
+        renderCell: () => "",
+        hideSelectAll: true
     };
 
     return (
         <Layout>
+            <Layout className="main">
             <Spin tip="Получение данных..." spinning={isLoadingFirm}>
                 <Space>
                     <Tooltip title="Добавить">
                         <Button type="primary" icon={<PlusOutlined/>} onClick={() => addFirmRecord()}/>
                     </Tooltip>
                     <Tooltip title="Редактировать">
-                        <Button type="primary" icon={<EditOutlined/>} disabled={!selectedFirmRowKeys.length}
+                        <Button type="primary" icon={<EditOutlined/>} disabled={!selectedFirmRowKeys.length || disableButtonEditDelete}
                                 onClick={() => editFirmRecord()}/>
                     </Tooltip>
                     <Tooltip title="Удалить">
-                        <Button type="primary" icon={<DeleteOutlined/>} disabled={!selectedFirmRowKeys.length}/>
+                        <Button type="primary" icon={<DeleteOutlined/>} disabled={!selectedFirmRowKeys.length || disableButtonEditDelete}/>
                     </Tooltip>
                     <Tooltip title="Обновить">
                         <Button type="primary" icon={<SyncOutlined/>}
@@ -119,7 +137,8 @@ const Device = () => {
                         />
                     </Tooltip>
                 </Space>
-                <Table columns={columnsFirm} dataSource={firmList} rowKey="id" scroll={{ y: 240}}
+                <Table size="small"
+                       columns={columnsFirm} dataSource={firmList} rowKey="id"
                        locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
                        rowSelection={rowFirmSelection}
                        onRow={(record) => ({
@@ -127,6 +146,9 @@ const Device = () => {
                                selectFirmRow(record);
                            },
                        })}
+                       scroll={{x:'100vh', y: '100vh'}}
+                       pagination={false}
+                       style={{height:'93%', width:'100%'}}
                 />
                 <Modal
                     title="Добавить запись"
@@ -138,7 +160,9 @@ const Device = () => {
                     <FirmModal closeModal={closeFirmModal} values={selectFirmRowData}/>
                 </Modal>
             </Spin>
+            </Layout>
 
+            <Layout className="main">
             <Spin tip="Получение данных..." spinning={isLoadingModel}>
                 <Space>
                     <Tooltip title="Добавить">
@@ -157,7 +181,8 @@ const Device = () => {
                         <Button type="primary" icon={<SyncOutlined/>} disabled={!selectedFirmRowKeys.length}/>
                     </Tooltip>
                 </Space>
-                <Table columns={columnsModel} dataSource={modelList} rowKey="id"
+                <Table size="small"
+                       columns={columnsModel} dataSource={modelList} rowKey="id"
                        locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
                        rowSelection={rowModelSelection}
                        onRow={(record) => ({
@@ -165,6 +190,9 @@ const Device = () => {
                                selectModelRow(record);
                            },
                        })}
+                       scroll={{x:'100vh', y: '100vh'}}
+                       pagination={false}
+                       style={{height:'93%', width:'100%'}}
                 />
                 <Modal
                     title="Добавить запись"
@@ -176,6 +204,7 @@ const Device = () => {
                     <ModelModal closeModal={closeModelModal} parentRec={selectFirmRowData} values={selectModelRowData}/>
                 </Modal>
             </Spin>
+            </Layout>
         </Layout>
     );
 };

@@ -7,10 +7,14 @@ export const DeviceActionCreators = {
     setSaveFirm: (payload) => ({type: TypeDevice.SAVE_FIRM, payload}),
     loadFirm: () => (dispatch: AppDispatch) => {
         dispatch(DeviceActionCreators.setIsLoadingFirm(true));
-        // const auth = localStorage.getItem("token");
+        const auth = localStorage.getItem("token");
         Request({
             url: "/app/spr/firm",
-            method: "GET"
+            method: "GET",
+            headers:{
+                'Authorization': 'Bearer ' + auth,
+                "Content-Type": "application/json"
+            }
         })
             .then((response) => {
                 dispatch(DeviceActionCreators.setLoadFirm(response));
@@ -58,10 +62,14 @@ export const DeviceActionCreators = {
     setSaveModel: (payload) => ({type: TypeDevice.SAVE_MODEL, payload}),
     loadModel: (id) => (dispatch: AppDispatch) => {
         dispatch(DeviceActionCreators.setIsLoadingModel(true));
-        // const auth = localStorage.getItem("token");
+        const auth = localStorage.getItem("token");
         Request({
             url: "/app/spr/model/"+id,
-            method: "GET"
+            method: "GET",
+            headers:{
+                'Authorization': 'Bearer ' + auth,
+                "Content-Type": "application/json"
+            }
         })
             .then((response) => {
                 dispatch(DeviceActionCreators.setLoadModel(response));

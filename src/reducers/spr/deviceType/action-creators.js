@@ -7,10 +7,14 @@ export const DeviceTypeActionCreators = {
     setSaveDeviceType: (payload) => ({type: TypeDeviceType.SAVE_DEVICE_TYPE, payload}),
     loadDeviceType: () => (dispatch: AppDispatch) => {
         dispatch(DeviceTypeActionCreators.setIsLoading(true));
-        // const auth = localStorage.getItem("token");
+        const auth = localStorage.getItem("token");
         Request({
             url: "/app/spr/device_type",
-            method: "GET"
+            method: "GET",
+            headers:{
+                'Authorization': 'Bearer ' + auth,
+                "Content-Type": "application/json"
+            }
         })
             .then((response) => {
                 dispatch(DeviceTypeActionCreators.setLoadDeviceType(response));

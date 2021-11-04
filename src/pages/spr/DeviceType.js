@@ -11,6 +11,11 @@ const columns = [
         dataIndex: 'name',
         key: 'name',
     },
+    {
+        title: 'Уровень',
+        dataIndex: 'level',
+        key: 'level',
+    },
 ];
 
 let selectRowData = {};
@@ -21,6 +26,7 @@ const DeviceType = () => {
     const {loadDeviceType} = useActions()
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedRowKeys, setSelectedRowKey] = useState([]);
+    const [disableButtonEditDelete, setDisableButtonEditDelete] = useState(false);
 
     useEffect(() => {
         loadDeviceType();
@@ -51,32 +57,34 @@ const DeviceType = () => {
         selectRowData = record;
         const selectedRowKey = [record.id];
         setSelectedRowKey(selectedRowKey);
+        if (record.level === 'Global') {
+            setDisableButtonEditDelete(true);
+        } else {
+            setDisableButtonEditDelete(false);
+        }
     }
 
     const rowSelection = {
         selectedRowKeys,
-        columnTitle: selectedRowKeys.length > 0 ? <div>XXX</div> : <></>,
-        checkbox:false
-        // getCheckboxProps: record => ({
-        //
-        //     disabled: record.disabled,
-        //     visible: record.visible,
-        // }),
+        columnWidth: 0,
+        renderCell: () => "",
+        hideSelectAll:true
     };
 
     return (
-        <Layout>
+        <Layout id="main">
             <Spin tip="Получение данных..." spinning={isLoading}>
                 <Space>
                     <Tooltip title="Добавить">
-                        <Button type="primary" icon={<PlusOutlined/>} onClick={() => addRecord()}/>
+                        <Button type="primary" icon={<PlusOutlined/>}
+                                onClick={() => addRecord()}/>
                     </Tooltip>
                     <Tooltip title="Редактировать">
-                        <Button type="primary" icon={<EditOutlined/>} disabled={!selectedRowKeys.length}
+                        <Button type="primary" icon={<EditOutlined/>} disabled={!selectedRowKeys.length || disableButtonEditDelete}
                                 onClick={() => editRecord()}/>
                     </Tooltip>
                     <Tooltip title="Удалить">
-                        <Button type="primary" icon={<DeleteOutlined/>} disabled={!selectedRowKeys.length}/>
+                        <Button type="primary" icon={<DeleteOutlined/>} disabled={!selectedRowKeys.length || disableButtonEditDelete}/>
                     </Tooltip>
                     <Tooltip title="Обновить">
                         <Button type="primary" icon={<SyncOutlined/>}
@@ -84,7 +92,8 @@ const DeviceType = () => {
                         />
                     </Tooltip>
                 </Space>
-                <Table columns={columns} dataSource={deviceTypeList} rowKey="id" pagination={false} scroll={{y:500}}
+                <Table size="small"
+                       columns={columns} dataSource={deviceTypeList} rowKey="id"
                        locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
                        rowSelection={rowSelection}
                        onRow={(record) => ({
@@ -92,6 +101,9 @@ const DeviceType = () => {
                                selectRow(record);
                            },
                        })}
+                       scroll={{x:'100vh', y: '100vh'}}
+                       pagination={false}
+                       style={{height:'95%', width:'100%'}}
                 />
                 <Modal
                     title="Добавить запись"

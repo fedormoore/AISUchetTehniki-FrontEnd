@@ -45,7 +45,16 @@ const ModelModal = (props) => {
                 }
 
                 <Form.Item
-                    label="Тип оборудования">
+                    label="Тип оборудования"
+                    name="deviceType"
+                    initialValue={!values.deviceType ? null : values.deviceType.name}
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Пожалуйста укажите тип оборудования'
+                        }
+                    ]}
+                >
                     <Select
                         showSearch
                         value={!values.deviceType ? null : values.deviceType.name}
@@ -64,7 +73,7 @@ const ModelModal = (props) => {
                 <Form.Item
                     label="Наименование"
                     name="name"
-                    valuePropName={"values.name"}
+                    initialValue={values.name}
                     rules={[
                         {
                             required: true,
