@@ -2,4 +2,58 @@
 
 .h100 {
     height: calc(100vh - 64px);
+    width: 100%;
+    padding: 10px;
+    margin: 0px;
+    display: flex;
+    flex-flow: column;
+}
+
+.main {
+    height: calc(100vh);
+    display: flex;
+    flex-flow: column nowrap;
+    flex-wrap: wrap;
+}
+
+.ant-table-wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.ant-spin-nested-loading {
+    height: 100%;
+    width: 100%;
+}
+
+.ant-spin-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.ant-table {
+    flex: auto;
+    overflow: hidden;
+}
+
+.ant-table-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.ant-table-header {
+    flex: none;
+}
+
+.ant-table-body {
+    flex: auto;
+    overflow: scroll;
+}
+
+.ant-table-pagination {
+    flex: none;
 }

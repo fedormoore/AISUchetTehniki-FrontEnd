@@ -1,22 +1,20 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useHistory} from 'react-router-dom';
-import {Layout, Menu, Button, Drawer} from "antd";
+import {Layout, Menu, Button} from "antd";
 
 import {MenuOutlined, SettingOutlined} from '@ant-design/icons';
 import {routeNames} from "../routes";
 import {useSelector} from "react-redux";
 import {useActions} from "../hooks/useActions";
 
-const Navbar = () => {
+const TopMenu = () => {
 
     const {isAuth} = useSelector(state => state.auth)
-    const {logout} = useActions()
+    const {isVisibleLeftMenu} = useSelector(state => state.app)
+    const {logout, setIsVisibleLeftMenu} = useActions()
     const router = useHistory();
 
-    const [visible, setVisible] = useState(false);
-
     return (
-
         <Layout.Header>
             {isAuth
                 ?
@@ -28,7 +26,7 @@ const Navbar = () => {
                     <Button
                         type="primary"
                         icon={<MenuOutlined/>}
-                        onClick={() => setVisible(true)}
+                        onClick={() => setIsVisibleLeftMenu(!isVisibleLeftMenu)}
                     />
                     <Menu theme={"dark"} mode="horizontal" selectable={false}>
                         <Menu.SubMenu key="SubMenu" icon={<SettingOutlined/>} title="Профиль"
@@ -36,15 +34,6 @@ const Navbar = () => {
                             <Menu.Item key="setting:1" onClick={() => logout()}>Выход</Menu.Item>
                         </Menu.SubMenu>
                     </Menu>
-                    <Drawer
-                        title="Topics"
-                        placement="left"
-                        onClick={() => setVisible(false)}
-                        onClose={() => setVisible(false)}
-                        visible={visible}
-                    >
-
-                    </Drawer>
                 </div>
                 :
                 <Menu theme={"dark"} mode="horizontal" selectable={false} style={{justifyContent: "end"}}>
@@ -57,4 +46,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default TopMenu;

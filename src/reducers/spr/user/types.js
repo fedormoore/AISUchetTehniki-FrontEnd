@@ -1,0 +1,6 @@
+export const TypeUser = {
+    LOAD_USER: 'LOAD_USER',
+    SAVE_USER: 'SAVE_USER',
+    SET_IS_SAVING: 'SET_IS_SAVING',
+    SET_IS_LOADING: 'SET_IS_LOADING'
+}
