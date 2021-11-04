@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9c8be3f2-723a-4b6a-ae57-d7bbe4a6823f" name="Default Changelist" comment="29.10.2021">
+      <change afterPath="$PROJECT_DIR$/src/pages/spr/Counterparty.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/spr/modal/CounterpartyModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/spr/counterparty/action-creators.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/spr/counterparty/counterpartyReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/spr/counterparty/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LeftMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LeftMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/Device.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/Device.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/DeviceType.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/DeviceType.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/Location.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/Location.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/DeviceTypeModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/DeviceTypeModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/LocationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/LocationModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/ModelModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/ModelModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/UserModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/UserModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/rootReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/device/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/device/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/deviceType/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/deviceType/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/location/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/location/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/user/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/user/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/network.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/network.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Pull.Settings">
+    <option name="BRANCH" value="v2" />
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="release" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="20AwAdtCw2kix0az4eYKAw9P3ul" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/spr/modal" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\pages\spr\modal" />
+      <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\pages\spr" />
+      <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\reducers\spr\counterparty" />
+      <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\pages\spr\modal" />
+      <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\reducers\spr\device" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9c8be3f2-723a-4b6a-ae57-d7bbe4a6823f" name="Default Changelist" comment="" />
+      <created>1635500559662</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635500559662</updated>
+      <workItem from="1635500562825" duration="9826000" />
+      <workItem from="1635737811431" duration="25582000" />
+      <workItem from="1635842983473" duration="31900000" />
+      <workItem from="1635997333866" duration="28785000" />
+    </task>
+    <task id="LOCAL-00001" summary="add gitignore">
+      <created>1635500831567</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1635500831567</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add SignUp, SignIn">
+      <created>1635501195276</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1635501195276</updated>
+    </task>
+    <task id="LOCAL-00003" summary="29.10.2021">
+      <created>1635511453455</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1635511453455</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="v2" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="add gitignore" />
+    <MESSAGE value="add SignUp, SignIn" />
+    <MESSAGE value="29.10.2021" />
+    <option name="LAST_COMMIT_MESSAGE" value="29.10.2021" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1635510176098">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635510176098" />
+    <state width="1899" height="220" key="GridCell.Tab.0.bottom" timestamp="1635737348954">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="220" key="GridCell.Tab.0.bottom/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635737348954" />
+    <state width="1899" height="220" key="GridCell.Tab.0.center" timestamp="1635737348953">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="220" key="GridCell.Tab.0.center/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635737348953" />
+    <state width="1899" height="220" key="GridCell.Tab.0.left" timestamp="1635737348953">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="220" key="GridCell.Tab.0.left/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635737348953" />
+    <state width="1899" height="220" key="GridCell.Tab.0.right" timestamp="1635737348953">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="220" key="GridCell.Tab.0.right/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635737348953" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1635511466440">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635511466440" />
+    <state x="1680" y="0" width="1402" height="849" maximized="true" key="dock-window-1" timestamp="1636014342980">
+      <screen x="1680" y="0" width="1600" height="860" />
+    </state>
+    <state x="1680" y="0" width="1402" height="849" maximized="true" key="dock-window-1/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636014342980" />
+    <state x="1920" y="290" width="1441" height="837" maximized="true" key="dock-window-1/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635746856726" />
+    <state x="1920" y="159" width="1441" height="837" maximized="true" key="dock-window-2" timestamp="1635755509368">
+      <screen x="1920" y="30" width="1680" height="1010" />
+    </state>
+    <state x="1920" y="159" width="1441" height="837" maximized="true" key="dock-window-2/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635755509368" />
+    <state x="1920" y="50" width="1441" height="837" maximized="true" key="dock-window-3" timestamp="1635765469508">
+      <screen x="1920" y="30" width="1680" height="1010" />
+    </state>
+    <state x="1920" y="50" width="1441" height="837" maximized="true" key="dock-window-3/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635765469508" />
+    <state x="1920" y="30" width="1441" height="837" key="dock-window-4" timestamp="1635768038606">
+      <screen x="1920" y="30" width="1680" height="1010" />
+    </state>
+    <state x="1920" y="30" width="1441" height="837" key="dock-window-4/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635768038606" />
+    <state x="1920" y="77" width="1441" height="837" maximized="true" key="dock-window-5" timestamp="1635768038606">
+      <screen x="1920" y="30" width="1680" height="1010" />
+    </state>
+    <state x="1920" y="77" width="1441" height="837" maximized="true" key="dock-window-5/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635768038606" />
+  </component>
+</project>

@@ -1,13 +1,23 @@
-import Login from "../pages/Login";
-import Registration from "../pages/Registration";
+import Login from "../pages/auth/Login";
+import Registration from "../pages/auth/Registration";
 import Home from "../pages/Home";
 import Main from "../pages/Main";
+import User from "../pages/spr/User";
+import DeviceType from "../pages/spr/DeviceType";
+import Location from "../pages/spr/Location";
+import Device from "../pages/spr/Device";
+import Counterparty from "../pages/spr/Counterparty";
 
 export const routeNames = {
     HOME : '/home',
     LOGIN : '/login',
     REGISTRATION : '/registration',
-    MAIN : '/main'
+    MAIN : '/main',
+    USER: '/user',
+    LOCATION: '/location',
+    DEVICE_TYPE: '/device_type',
+    DEVICE: '/device',
+    COUNTERPARTY: '/counterparty'
 }
 
 export const privateRoutes = [
@@ -15,6 +25,31 @@ export const privateRoutes = [
         path: routeNames.MAIN,
         exact: true,
         component: Main
+    },
+    {
+        path: routeNames.USER,
+        exact: true,
+        component: User
+    },
+    {
+        path: routeNames.LOCATION,
+        exact: true,
+        component: Location
+    },
+    {
+        path: routeNames.DEVICE_TYPE,
+        exact: true,
+        component: DeviceType
+    },
+    {
+        path: routeNames.DEVICE,
+        exact: true,
+        component: Device
+    },
+    {
+        path: routeNames.COUNTERPARTY,
+        exact: true,
+        component: Counterparty
     }
 ];
 

@@ -1,16 +1,24 @@
 import React from 'react';
 import './App.css';
+
+import {Layout} from 'antd';
+import TopMenu from "./components/TopMenu";
 import AppRouter from "./components/AppRouter";
-import Navbar from "./components/Navbar";
-import {Layout} from "antd";
+import LeftMenu from "./components/LeftMenu";
+
+const {Content} = Layout;
 
 function App() {
+
     return (
         <Layout>
-            <Navbar/>
-            <Layout.Content>
-                <AppRouter/>
-            </Layout.Content>
+            <TopMenu/>
+            <Layout>
+                <LeftMenu/>
+                <Content className="h100">
+                    <AppRouter/>
+                </Content>
+            </Layout>
         </Layout>
     );
 }
