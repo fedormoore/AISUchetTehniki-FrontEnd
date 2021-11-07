@@ -7,6 +7,7 @@ import DeviceType from "../pages/spr/DeviceType";
 import Location from "../pages/spr/Location";
 import Device from "../pages/spr/Device";
 import Counterparty from "../pages/spr/Counterparty";
+import UserReport from "../pages/report/UserReport";
 
 export const routeNames = {
     HOME : '/home',
@@ -17,7 +18,8 @@ export const routeNames = {
     LOCATION: '/location',
     DEVICE_TYPE: '/device_type',
     DEVICE: '/device',
-    COUNTERPARTY: '/counterparty'
+    COUNTERPARTY: '/counterparty',
+    REPORT_USER: '/report_user'
 }
 
 export const privateRoutes = [
@@ -50,6 +52,11 @@ export const privateRoutes = [
         path: routeNames.COUNTERPARTY,
         exact: true,
         component: Counterparty
+    },
+    {
+        path: routeNames.REPORT_USER,
+        exact: true,
+        component: UserReport
     }
 ];
 

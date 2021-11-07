@@ -16,35 +16,25 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/release" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c8be3f2-723a-4b6a-ae57-d7bbe4a6823f" name="Default Changelist" comment="29.10.2021">
-      <change afterPath="$PROJECT_DIR$/src/pages/spr/Counterparty.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/spr/modal/CounterpartyModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/counterparty/action-creators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/counterparty/counterpartyReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/counterparty/types.js" afterDir="false" />
+    <list default="true" id="f86114d2-27b4-4f74-bfe7-07c7a3004de7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pages/report/UserReport.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/LeftMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LeftMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/spr/Device.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/Device.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/spr/DeviceType.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/DeviceType.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/spr/Location.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/Location.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/spr/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/DeviceTypeModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/DeviceTypeModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/LocationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/LocationModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/ModelModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/ModelModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/UserModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/UserModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/action-creators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/rootReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/spr/device/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/device/action-creators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/spr/deviceType/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/deviceType/action-creators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/spr/location/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/location/action-creators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/spr/user/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/user/action-creators.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/network.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/network.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,8 +97,13 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js.last.introduce.type" value="LET" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/spr/modal" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.selected.package.stylelint" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="liveEdit" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -121,10 +116,27 @@
       <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\reducers\spr\device" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9c8be3f2-723a-4b6a-ae57-d7bbe4a6823f" name="Default Changelist" comment="" />
+      <changelist id="f86114d2-27b4-4f74-bfe7-07c7a3004de7" name="Default Changelist" comment="" />
       <created>1635500559662</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -133,6 +145,15 @@
       <workItem from="1635737811431" duration="25582000" />
       <workItem from="1635842983473" duration="31900000" />
       <workItem from="1635997333866" duration="28785000" />
+      <workItem from="1636085386738" duration="2324000" />
+      <workItem from="1636088105353" duration="106000" />
+      <workItem from="1636088257449" duration="4122000" />
+      <workItem from="1636092884318" duration="7579000" />
+      <workItem from="1636107973677" duration="4786000" />
+      <workItem from="1636174975094" duration="11487000" />
+      <workItem from="1636199011166" duration="6454000" />
+      <workItem from="1636258299080" duration="5011000" />
+      <workItem from="1636290580325" duration="2059000" />
     </task>
     <task id="LOCAL-00001" summary="add gitignore">
       <created>1635500831567</created>
@@ -172,7 +193,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="v2" />
+                        <option value="origin/release" />
                       </list>
                     </value>
                   </entry>
@@ -197,26 +218,42 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635510176098" />
-    <state width="1899" height="220" key="GridCell.Tab.0.bottom" timestamp="1635737348954">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="570" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1636108657455">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
+    <state x="570" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636108657455" />
+    <state width="1659" height="232" key="GridCell.Tab.0.bottom" timestamp="1636263346755">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1659" height="232" key="GridCell.Tab.0.bottom/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636263346755" />
     <state width="1899" height="220" key="GridCell.Tab.0.bottom/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635737348954" />
-    <state width="1899" height="220" key="GridCell.Tab.0.center" timestamp="1635737348953">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1659" height="232" key="GridCell.Tab.0.center" timestamp="1636263346755">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
+    <state width="1659" height="232" key="GridCell.Tab.0.center/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636263346755" />
     <state width="1899" height="220" key="GridCell.Tab.0.center/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635737348953" />
-    <state width="1899" height="220" key="GridCell.Tab.0.left" timestamp="1635737348953">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1659" height="232" key="GridCell.Tab.0.left" timestamp="1636263346755">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
+    <state width="1659" height="232" key="GridCell.Tab.0.left/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636263346755" />
     <state width="1899" height="220" key="GridCell.Tab.0.left/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635737348953" />
-    <state width="1899" height="220" key="GridCell.Tab.0.right" timestamp="1635737348953">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1659" height="232" key="GridCell.Tab.0.right" timestamp="1636263346755">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
+    <state width="1659" height="232" key="GridCell.Tab.0.right/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636263346755" />
     <state width="1899" height="220" key="GridCell.Tab.0.right/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635737348953" />
+    <state x="341" y="150" key="SettingsEditor" timestamp="1636089287428">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="341" y="150" key="SettingsEditor/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636089287428" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1635511466440">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635511466440" />
+    <state x="1509" y="157" width="1496" height="826" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1636201273840">
+      <screen x="1680" y="0" width="1600" height="860" />
+    </state>
+    <state x="1509" y="157" width="1496" height="826" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636201273840" />
     <state x="1680" y="0" width="1402" height="849" maximized="true" key="dock-window-1" timestamp="1636014342980">
       <screen x="1680" y="0" width="1600" height="860" />
     </state>

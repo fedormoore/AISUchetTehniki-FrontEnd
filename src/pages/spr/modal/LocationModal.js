@@ -19,19 +19,19 @@ const LocationModal = (props) => {
             temp = {...temp, type: 'country'}
         }else {
             if (parent.type === 'country') {
-                temp = {...temp, type: 'subject', location: parent}
+                temp = {...temp, type: 'subject', parent: parent}
             }
             if (parent.type === 'subject') {
-                temp = {...temp, type: 'city', location: parent}
+                temp = {...temp, type: 'city', parent: parent}
             }
             if (parent.type === 'city') {
-                temp = {...temp, type: 'address', location: parent}
+                temp = {...temp, type: 'address', parent: parent}
             }
             if (parent.type === 'address') {
-                temp = {...temp, type: 'floor', location: parent}
+                temp = {...temp, type: 'floor', parent: parent}
             }
             if (parent.type === 'floor') {
-                temp = {...temp, type: 'cabinet', location: parent}
+                temp = {...temp, type: 'cabinet', parent: parent}
             }
         }
 
