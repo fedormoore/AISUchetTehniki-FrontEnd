@@ -1,5 +1,7 @@
 @import "~antd/dist/antd.css";
 
+/*:hover срабатывает, когда пользователь наводит на элемент мышью, но не обязательно активирует его*/
+
 .h100 {
     height: calc(100vh - 64px);
     width: 100%;
@@ -56,4 +58,35 @@
 
 .ant-table-pagination {
     flex: none;
+}
+
+.table-row-dark{
+    background: #dedcdc;
+}
+
+.table-row-light{
+    background: #ffffff;
+}
+
+.ant-list-item:hover {
+    box-shadow: 0 0 4px #2885f6;
+}
+
+.ant-list-item-select{
+    background: #a2c7f5;
+    border-radius: 10px;
+    border: solid #dedcdc;
+    margin-bottom: 10px;
+}
+
+.ant-list-split .ant-list-item {
+    border-radius: 10px;
+    border: solid #dedcdc;
+    margin-bottom: 10px;
+}
+
+.ant-list-split .ant-list-item:last-child{
+    border-radius: 10px;
+    border: solid #dedcdc;
+    margin-bottom: 10px;
 }

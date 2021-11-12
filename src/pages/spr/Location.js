@@ -18,8 +18,7 @@ const columns = [
     },
 ];
 
-let selectRowData = {};
-let selectParent = null;
+let selectRowData = [];
 let titleModal = 'Добавить страну';
 
 const Location = () => {
@@ -36,35 +35,38 @@ const Location = () => {
     }, []);
 
     const addRecord = () => {
-        selectParent = null
-        selectRowData = {};
+        selectRowData = {type: 'country'};
         setSelectedRowKey([]);
         setModalVisible(true);
     }
 
     const addTreeRecord = () => {
-
-        if (selectParent.type === 'country') {
-            titleModal = 'Добавить субъект'
-        }
-        if (selectParent.type === 'subject') {
-            titleModal = 'Добавить город'
-        }
-        if (selectParent.type === 'city') {
-            titleModal = 'Добавить адрес'
-        }
-        if (selectParent.type === 'address') {
-            titleModal = 'Добавить этаж'
-        }
-        if (selectParent.type === 'floor') {
+        if (selectRowData.type === 'floor') {
             titleModal = 'Добавить кабинет'
+            selectRowData = {type: 'cabinet', parent: selectRowData};
+        }
+        if (selectRowData.type === 'address') {
+            titleModal = 'Добавить этаж'
+            selectRowData = {type: 'floor', parent: selectRowData};
+        }
+        if (selectRowData.type === 'city') {
+            titleModal = 'Добавить адрес'
+            selectRowData = {type: 'address', parent: selectRowData};
+        }
+        if (selectRowData.type === 'subject') {
+            titleModal = 'Добавить город'
+            selectRowData = {type: 'city', parent: selectRowData};
+        }
+        if (selectRowData.type === 'country') {
+            titleModal = 'Добавить субъект'
+            selectRowData = {type: 'subject', parent: selectRowData};
         }
 
-        selectRowData = {};
         setModalVisible(true);
     }
 
     const editRecord = () => {
+        selectRowData = {...selectRowData, parent: selectRowData.parent};
         setModalVisible(true);
     }
 
@@ -74,17 +76,16 @@ const Location = () => {
 
     const refresh = () => {
         loadLocation();
-        selectParent = null
-        selectRowData = {};
+        selectRowData = [];
         setSelectedRowKey([]);
     }
 
     const selectRow = (record) => {
-        selectParent = record;
         selectRowData = record;
         const selectedRowKey = [record.id];
         setSelectedRowKey(selectedRowKey);
-        if (selectParent.type === 'cabinet') {
+
+        if (selectRowData.type === 'cabinet') {
             setDisableAddTree(true);
         } else {
             setDisableAddTree(false);
@@ -101,64 +102,65 @@ const Location = () => {
     return (
         <Layout id="main">
             <Spin tip="Получение данных..." spinning={isLoading}>
-                    <Space>
-                        <Tooltip title="Добавить">
-                            <Button type="primary" icon={<PlusOutlined/>}
-                                    onClick={() => addRecord()}/>
-                        </Tooltip>
-                        <Tooltip title="Добавить в состав">
-                            <Button type="primary" icon={<SisternodeOutlined/>} disabled={!selectedRowKeys.length || disableAddTree}
-                                    onClick={() => addTreeRecord()}/>
-                        </Tooltip>
-                        <Tooltip title="Редактировать">
-                            <Button type="primary" icon={<EditOutlined/>} disabled={!selectedRowKeys.length}
-                                    onClick={() => editRecord()}/>
-                        </Tooltip>
-                        <Tooltip title="Удалить">
-                            <Button type="primary" icon={<DeleteOutlined/>} disabled={!selectedRowKeys.length}/>
-                        </Tooltip>
-                        <Tooltip title="Обновить">
-                            <Button type="primary" icon={<SyncOutlined/>}
-                                    onClick={() => refresh()}
-                            />
-                        </Tooltip>
-                    </Space>
-                    {isLoading ?
-                        <Table key="loading-not-done"
-                               size="small"
-                               locale={{
-                                   emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>
-                               }}
+                <Space>
+                    <Tooltip title="Добавить">
+                        <Button type="primary" icon={<PlusOutlined/>}
+                                onClick={() => addRecord()}/>
+                    </Tooltip>
+                    <Tooltip title="Добавить в состав">
+                        <Button type="primary" icon={<SisternodeOutlined/>}
+                                disabled={!selectedRowKeys.length || disableAddTree}
+                                onClick={() => addTreeRecord()}/>
+                    </Tooltip>
+                    <Tooltip title="Редактировать">
+                        <Button type="primary" icon={<EditOutlined/>} disabled={!selectedRowKeys.length}
+                                onClick={() => editRecord()}/>
+                    </Tooltip>
+                    <Tooltip title="Удалить">
+                        <Button type="primary" icon={<DeleteOutlined/>} disabled={!selectedRowKeys.length}/>
+                    </Tooltip>
+                    <Tooltip title="Обновить">
+                        <Button type="primary" icon={<SyncOutlined/>}
+                                onClick={() => refresh()}
                         />
-                        :
-                        <Table key="loading-done"
-                               size="small"
-                               locale={{
-                                   emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>
-                               }}
-                               columns={columns} dataSource={locationList} rowKey="id" bordered
-                               childrenColumnName={"child"}
-                               rowSelection={rowSelection}
-                               onRow={(record) => ({
-                                   onClick: () => {
-                                       selectRow(record);
-                                   },
-                               })}
-                               defaultExpandAllRows={true}
-                               scroll={{y: '100vh'}}
-                               pagination={false}
-                               style={{height:'95%'}}
-                        />
-                    }
-                    <Modal
-                        title={titleModal}
-                        visible={modalVisible}
-                        footer={null}
-                        closable={false}
-                        destroyOnClose={true}
-                    >
-                        <LocationModal closeModal={closeModal} parent={selectParent} values={selectRowData}/>
-                    </Modal>
+                    </Tooltip>
+                </Space>
+                {isLoading ?
+                    <Table key="loading-not-done"
+                           size="small"
+                           locale={{
+                               emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>
+                           }}
+                    />
+                    :
+                    <Table key="loading-done"
+                           size="small"
+                           locale={{
+                               emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>
+                           }}
+                           columns={columns} dataSource={locationList} rowKey="id" bordered
+                           childrenColumnName={"children"}
+                           rowSelection={rowSelection}
+                           onRow={(record) => ({
+                               onClick: () => {
+                                   selectRow(record);
+                               },
+                           })}
+                           defaultExpandAllRows={true}
+                           scroll={{y: '100vh'}}
+                           pagination={false}
+                           style={{height: '95%'}}
+                    />
+                }
+                <Modal
+                    title={titleModal}
+                    visible={modalVisible}
+                    footer={null}
+                    closable={false}
+                    destroyOnClose={true}
+                >
+                    <LocationModal closeModal={closeModal} values={selectRowData}/>
+                </Modal>
 
             </Spin>
         </Layout>

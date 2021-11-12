@@ -5,7 +5,7 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 
 function UserReport() {
 
-    const SERVER = "http://192.168.5.227:8080";
+    const SERVER = "http://localhost:8080";
     const VER = "/api/v1"
 
     const [list, setList] = useState([]);
@@ -99,7 +99,7 @@ function UserReport() {
 
     return (
         <>
-            <iframe id="pdfV" style={{height: '100%', width: '100%'}}>555</iframe>
+            {/*<iframe id="pdfV" style={{height: '100%', width: '100%'}}>555</iframe>*/}
             <Button onClick={() => f()}>555</Button>
         </>
     );

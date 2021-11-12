@@ -1,4 +1,4 @@
-const SERVER = "http://192.168.5.227:8080";
+const SERVER = "http://localhost:8080";
 const VER = "/api/v1"
 
 export default async function Request(options) {

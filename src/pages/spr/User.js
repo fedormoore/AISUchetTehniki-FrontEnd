@@ -14,14 +14,14 @@ const columns = [
     },
     {
         title: 'Фамилия',
-        dataIndex: 'firstName',
-        key: 'firstName',
+        dataIndex: 'lastName',
+        key: 'lastName',
         width: '150px',
     },
     {
         title: 'Имя',
-        dataIndex: 'lastName',
-        key: 'lastName',
+        dataIndex: 'firstName',
+        key: 'firstName',
         width: '150px',
     },
     {
@@ -117,11 +117,12 @@ const User = () => {
                        onRow={(record) => ({
                            onClick: () => {
                                selectRow(record);
-                           },
+                           }
                        })}
                        scroll={{x:'100vh', y: '100vh'}}
                        pagination={false}
                        style={{height:'95%', width:'100%'}}
+                       rowClassName={(record, index) => index % 2 === 0 ? 'table-row-light' :  'table-row-dark'}
                 />
                 <Modal
                     title="Добавить запись"

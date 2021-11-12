@@ -3,7 +3,11 @@ import {Alert, Button, Form, Input, Row, Space, Spin, Select} from "antd";
 import {useSelector} from "react-redux";
 import {useActions} from "../../../hooks/useActions";
 
+let typeDeviceSelect = null;
+
 const ModelModal = (props) => {
+
+    const [form] = Form.useForm();
 
     const [values, setValues] = useState(props.values);
     const {parentRec} = props;
@@ -14,19 +18,30 @@ const ModelModal = (props) => {
 
     useEffect(()=>{
         loadDeviceType();
+        typeDeviceSelect.focus();
         // eslint-disable-next-line
     }, [])
 
-    const submitForm = () => {
-        (async function () {
-            const temp = {...values, firm:parentRec}
-            const result = await saveModel(temp);
-            if (result.isOk) {
-                props.closeModal();
-            } else {
-                setError(result.message);
-            }
-        })();
+    const save = (saveAdd) => {
+        form.validateFields()
+            .then(() => {
+                (async function () {
+                    const temp = {...values, firm: parentRec}
+                    const result = await saveModel(temp);
+                    if (result.isOk) {
+                        if (saveAdd) {
+                            setError('');
+                            setValues({...values, name:'', deviceType:{}});
+                            form.resetFields();
+                            typeDeviceSelect.focus();
+                        } else {
+                            props.closeModal();
+                        }
+                    } else {
+                        setError(result.message);
+                    }
+                })();
+            })
     }
 
     const closeModal = () => {
@@ -39,7 +54,7 @@ const ModelModal = (props) => {
 
     return (
         <Spin tip="Сохранение данных..." spinning={isSavingModel}>
-            <Form onFinish={submitForm} >
+            <Form form={form} autoComplete="off">
                 {error &&
                 <Alert message={error} type="error"/>
                 }
@@ -59,6 +74,9 @@ const ModelModal = (props) => {
                         showSearch
                         value={!values.deviceType ? null : values.deviceType.name}
                         onChange={handleChange}
+                        ref={select => {
+                            typeDeviceSelect = select;
+                        }}
                     >
                         {deviceTypeList.map((line) => {
                             return (
@@ -89,13 +107,22 @@ const ModelModal = (props) => {
                 <Row justify="end">
                     <Space>
                         <Form.Item>
-                            <Button type="default" onClick={() => closeModal()}>
-                                Отмена
+                            <Button type="primary"
+                                    onClick={() => save(false)}>
+                                Сохранить
                             </Button>
                         </Form.Item>
                         <Form.Item>
-                            <Button type="primary" htmlType="submit">
-                                Сохранить
+                            <Button type="primary"
+                                    onClick={() => save(true)}
+                            >
+                                Сохранить/Добавить
+                            </Button>
+                        </Form.Item>
+                        <Form.Item>
+                            <Button type="default"
+                                    onClick={() => closeModal()}>
+                                Отмена
                             </Button>
                         </Form.Item>
                     </Space>

@@ -1,48 +1,42 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Alert, Button, Form, Input, Row, Space, Spin} from "antd";
 import {useSelector} from "react-redux";
 import {useActions} from "../../../hooks/useActions";
 
+let nameInput = null;
+
 const LocationModal = (props) => {
 
-    const parent = props.parent;
+    const [form] = Form.useForm();
+
     const [values, setValues] = useState(props.values);
     const {isSaving} = useSelector(state => state.location)
     const {saveLocation} = useActions();
     const [error, setError] = useState();
 
-    const submitForm = () => {
+    useEffect(() => {
+        nameInput.focus();
+    }, [])
 
-        let temp =values;
-
-        if (parent === null) {
-            temp = {...temp, type: 'country'}
-        }else {
-            if (parent.type === 'country') {
-                temp = {...temp, type: 'subject', parent: parent}
-            }
-            if (parent.type === 'subject') {
-                temp = {...temp, type: 'city', parent: parent}
-            }
-            if (parent.type === 'city') {
-                temp = {...temp, type: 'address', parent: parent}
-            }
-            if (parent.type === 'address') {
-                temp = {...temp, type: 'floor', parent: parent}
-            }
-            if (parent.type === 'floor') {
-                temp = {...temp, type: 'cabinet', parent: parent}
-            }
-        }
-
-        (async function () {
-            const result = await saveLocation(temp);
-            if (result.isOk) {
-                props.closeModal();
-            } else {
-                setError(result.message);
-            }
-        })();
+    const save = (saveAdd) => {
+        form.validateFields()
+            .then(() => {
+                (async function () {
+                    const result = await saveLocation(values);
+                    if (result.isOk) {
+                        if (saveAdd) {
+                            setError('');
+                            setValues({...values, name: undefined})
+                            form.resetFields();
+                            nameInput.focus();
+                        } else {
+                            props.closeModal();
+                        }
+                    } else {
+                        setError(result.message);
+                    }
+                })();
+            })
     }
 
     const closeModal = () => {
@@ -51,14 +45,14 @@ const LocationModal = (props) => {
 
     return (
         <Spin tip="Сохранение данных..." spinning={isSaving}>
-            <Form onFinish={submitForm} onLoadStart={() => console.log("111")}>
+            <Form form={form} autoComplete="off">
                 {error &&
                 <Alert message={error} type="error"/>
                 }
                 <Form.Item
                     label="Наименование"
                     name="name"
-                    valuePropName={"values.name"}
+                    initialValue={values.name}
                     rules={[
                         {
                             required: true,
@@ -67,20 +61,34 @@ const LocationModal = (props) => {
                     ]}
                 >
                     <Input
+                        ref={input => {
+                            nameInput = input;
+                        }}
+
                         onChange={e => setValues({...values, name: e.target.value})}
                         value={values.name}
+
                     />
                 </Form.Item>
                 <Row justify="end">
                     <Space>
                         <Form.Item>
-                            <Button type="default" onClick={() => closeModal()}>
-                                Отмена
+                            <Button type="primary"
+                                    onClick={() => save(false)}>
+                                Сохранить
                             </Button>
                         </Form.Item>
                         <Form.Item>
-                            <Button type="primary" htmlType="submit">
-                                Сохранить
+                            <Button type="primary"
+                                    onClick={() => save(true)}
+                            >
+                                Сохранить/Добавить
+                            </Button>
+                        </Form.Item>
+                        <Form.Item>
+                            <Button type="default"
+                                    onClick={() => closeModal()}>
+                                Отмена
                             </Button>
                         </Form.Item>
                     </Space>

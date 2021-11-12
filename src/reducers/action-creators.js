@@ -5,6 +5,7 @@ import {DeviceTypeActionCreators} from "./spr/deviceType/action-creators";
 import {LocationActionCreators} from "./spr/location/action-creators";
 import {DeviceActionCreators} from "./spr/device/action-creators";
 import {CounterpartyActionCreators} from "./spr/counterparty/action-creators";
+import {IncomeActionCreators} from "./doc/income/action-creators";
 
 export const allActionCreators = {
     ...AuthActionCreators,
@@ -13,5 +14,6 @@ export const allActionCreators = {
     ...DeviceTypeActionCreators,
     ...LocationActionCreators,
     ...DeviceActionCreators,
-    ...CounterpartyActionCreators
+    ...CounterpartyActionCreators,
+    ...IncomeActionCreators
 }

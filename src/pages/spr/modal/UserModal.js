@@ -3,7 +3,11 @@ import {Alert, Button, Form, Input, Row, Space, Spin, TreeSelect} from "antd";
 import {useSelector} from "react-redux";
 import {useActions} from "../../../hooks/useActions";
 
+let locationInput = null;
+
 const UserModal = (props) => {
+
+    const [form] = Form.useForm();
 
     const [values, setValues] = useState(props.values);
     const {isSaving} = useSelector(state => state.user)
@@ -13,6 +17,7 @@ const UserModal = (props) => {
     const [locationListTree, setLocationListTree] = useState();
 
     useEffect(() => {
+        locationInput.focus();
         (async function () {
             const result = await loadLocation();
             if (result.isOk) {
@@ -24,15 +29,25 @@ const UserModal = (props) => {
         // eslint-disable-next-line
     }, [])
 
-    const submitForm = () => {
-        (async function () {
-            const result = await saveUser(values);
-            if (result.isOk) {
-                props.closeModal();
-            } else {
-                setError(result.message);
-            }
-        })();
+    const save = (saveAdd) => {
+        form.validateFields()
+            .then(() => {
+                (async function () {
+                    const result = await saveUser(values);
+                    if (result.isOk) {
+                        if (saveAdd) {
+                            locationInput.focus();
+                            setError('');
+                            setValues({});
+                            form.resetFields();
+                        } else {
+                            props.closeModal();
+                        }
+                    } else {
+                        setError(result.message);
+                    }
+                })();
+            })
     }
 
     const closeModal = () => {
@@ -49,8 +64,8 @@ const UserModal = (props) => {
 
     const renderChild = (parent) => {
         let child = [];
-        if (parent.child) {
-            parent.child.forEach((item, index) => {
+        if (parent.children) {
+            parent.children.forEach((item, index) => {
                 child.push({title:item.name, value:item.name,  obj:item, children:renderChild(item)});
             })
         }
@@ -63,25 +78,38 @@ const UserModal = (props) => {
 
     return (
         <Spin tip="Сохранение данных..." spinning={isSaving}>
-            <Form onFinish={submitForm}>
+            <Form form={form} autoComplete="off">
                 {error &&
                 <Alert message={error} type="error"/>
                 }
                 <Form.Item label="Кабинет">
                     <TreeSelect
                         showSearch
-                        // value={values.location.name}
                         value={!values.location ? null : values.location.name}
                         dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
                         treeDefaultExpandAll
                         onSelect={onSelect}
                         treeData={locationListTree}
+                        ref={treeSelect => {
+                            locationInput = treeSelect;
+                        }}
                     >
                     </TreeSelect>
                 </Form.Item>
                 <Form.Item
                     label="E-mail"
-                    // name="email"
+                    name="email"
+                    initialValue={values.email}
+                    rules={[
+                        {
+                            type: 'email',
+                            message: 'Неверный E-mail',
+                        },
+                        {
+                            required: true,
+                            message: 'Пожалуйста укажите E-mail'
+                        }
+                    ]}
                 >
                     <Input
                         onChange={e => setValues({...values, email: e.target.value})}
@@ -90,7 +118,14 @@ const UserModal = (props) => {
                 </Form.Item>
                 <Form.Item
                     label="Фамилия"
-                    // name="lastName"
+                    name="lastName"
+                    initialValue={values.lastName}
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Пожалуйста укажите фамилию'
+                        }
+                    ]}
                 >
                     <Input
                         onChange={e => setValues({...values, lastName: e.target.value})}
@@ -99,7 +134,14 @@ const UserModal = (props) => {
                 </Form.Item>
                 <Form.Item
                     label="Имя"
-                    // name="firstName"
+                    name="firstName"
+                    initialValue={values.firstName}
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Пожалуйста укажите имя'
+                        }
+                    ]}
                 >
                     <Input
                         onChange={e => setValues({...values, firstName: e.target.value})}
@@ -127,13 +169,22 @@ const UserModal = (props) => {
                 <Row justify="end">
                     <Space>
                         <Form.Item>
-                            <Button type="default" onClick={() => closeModal()}>
-                                Отмена
+                            <Button type="primary"
+                                    onClick={() => save(false)}>
+                                Сохранить
                             </Button>
                         </Form.Item>
                         <Form.Item>
-                            <Button type="primary" htmlType="submit">
-                                Сохранить
+                            <Button type="primary"
+                                    onClick={() => save(true)}
+                            >
+                                Сохранить/Добавить
+                            </Button>
+                        </Form.Item>
+                        <Form.Item>
+                            <Button type="default"
+                                    onClick={() => closeModal()}>
+                                Отмена
                             </Button>
                         </Form.Item>
                     </Space>

@@ -75,21 +75,6 @@ const Registration = () => {
                             />
                         </Form.Item>
                         <Form.Item
-                            label="Наименование организации"
-                            name="organization"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Пожалуйста укажите наименование организации'
-                                }
-                            ]}
-                        >
-                            <Input
-                                value={'organization: '}
-                                onChange={e => setValues({...values, organization: {name: e.target.value}})}
-                            />
-                        </Form.Item>
-                        <Form.Item
                             label="E-mail"
                             name="email"
                             rules={[

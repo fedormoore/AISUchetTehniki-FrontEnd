@@ -29,7 +29,7 @@ const LeftMenu = () => {
                             <Menu.Item key="5" onClick={() => router.push(routeNames.COUNTERPARTY)}>Контрагенты</Menu.Item>
                         </Menu.SubMenu>
                         <Menu.SubMenu key="sub2" icon={<LaptopOutlined/>} title="Документы">
-                            <Menu.Item key="6">Поступления</Menu.Item>
+                            <Menu.Item key="6" onClick={() => router.push(routeNames.INCOME)}>Поступления</Menu.Item>
                             <Menu.Item key="7">Списать</Menu.Item>
                             <Menu.Item key="8">Утилизировать</Menu.Item>
                         </Menu.SubMenu>
