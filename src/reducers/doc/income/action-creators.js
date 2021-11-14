@@ -26,7 +26,7 @@ export const IncomeActionCreators = {
                 dispatch(IncomeActionCreators.setIsLoading(false));
             });
     },
-    saveUser: (body) => (dispatch: AppDispatch) => {
+    saveIncome: (body) => (dispatch: AppDispatch) => {
         dispatch(IncomeActionCreators.setIsSaving(true));
         const auth = localStorage.getItem("token");
         return Request({

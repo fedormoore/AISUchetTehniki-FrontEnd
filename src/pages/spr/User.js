@@ -111,7 +111,8 @@ const User = () => {
                         />
                     </Tooltip>
                 </Space>
-                <Table size="small" columns={columns} dataSource={userList} rowKey="id" bordered
+                <Table size="small"
+                       columns={columns} dataSource={userList} rowKey="id" bordered
                        locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
                        rowSelection={rowSelection}
                        onRow={(record) => ({
@@ -119,10 +120,10 @@ const User = () => {
                                selectRow(record);
                            }
                        })}
-                       scroll={{x:'100vh', y: '100vh'}}
+                       scroll={{x: '100vh', y: '100vh'}}
                        pagination={false}
-                       style={{height:'95%', width:'100%'}}
-                       rowClassName={(record, index) => index % 2 === 0 ? 'table-row-light' :  'table-row-dark'}
+                       style={{height: '95%', width: '100%'}}
+                       rowClassName={(record, index) => index % 2 === 0 ? 'table-row-light' : 'table-row-dark'}
                 />
                 <Modal
                     title="Добавить запись"

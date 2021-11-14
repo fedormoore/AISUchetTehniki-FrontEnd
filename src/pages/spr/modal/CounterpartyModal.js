@@ -14,7 +14,7 @@ const CounterpartyModal = (props) => {
     const {saveCounterparty} = useActions();
     const [error, setError] = useState();
 
-    useEffect(()=>{
+    useEffect(() => {
         nameInput.focus();
         // eslint-disable-next-line
     }, [])

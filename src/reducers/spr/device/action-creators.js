@@ -60,6 +60,27 @@ export const DeviceActionCreators = {
 
     setLoadModel: (payload) => ({type: TypeDevice.LOAD_MODEL, payload}),
     setSaveModel: (payload) => ({type: TypeDevice.SAVE_MODEL, payload}),
+    loadAllModel: (id) => (dispatch: AppDispatch) => {
+        dispatch(DeviceActionCreators.setIsLoadingModel(true));
+        const auth = localStorage.getItem("token");
+        Request({
+            url: "/app/spr/model",
+            method: "GET",
+            headers:{
+                'Authorization': 'Bearer ' + auth,
+                "Content-Type": "application/json"
+            }
+        })
+            .then((response) => {
+                dispatch(DeviceActionCreators.setLoadModel(response));
+            })
+            .catch((error) => {
+                console.log("error")
+            })
+            .finally(() => {
+                dispatch(DeviceActionCreators.setIsLoadingModel(false));
+            });
+    },
     loadModel: (id) => (dispatch: AppDispatch) => {
         dispatch(DeviceActionCreators.setIsLoadingModel(true));
         const auth = localStorage.getItem("token");

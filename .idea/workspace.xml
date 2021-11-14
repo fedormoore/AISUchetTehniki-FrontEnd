@@ -21,34 +21,23 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/v3" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/release" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f86114d2-27b4-4f74-bfe7-07c7a3004de7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/doc/Income.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/doc/income/action-creators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/doc/income/incomeReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/doc/income/types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/doc/drawer/EDITIncomeDrawer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/doc/drawer/IncomeDrawer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LeftMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LeftMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/auth/Registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/auth/Registration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/report/UserReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/report/UserReport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/spr/Location.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/Location.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/doc/Income.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/doc/Income.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/spr/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/User.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/CounterpartyModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/CounterpartyModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/DeviceTypeModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/DeviceTypeModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/FirmModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/FirmModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/LocationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/LocationModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/ModelModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/ModelModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/UserModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/UserModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/action-creators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/rootReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/network.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/network.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/doc/income/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/doc/income/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/device/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/device/action-creators.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +52,7 @@
     </option>
   </component>
   <component name="Git.Pull.Settings">
-    <option name="BRANCH" value="v2" />
+    <option name="BRANCH" value="v3" />
   </component>
   <component name="Git.Settings">
     <excluded-from-favorite>
@@ -112,7 +101,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.last.introduce.type" value="LET" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/reducers/doc/income" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/doc/drawer" />
     <property name="node.js.detected.package.stylelint" value="true" />
     <property name="node.js.path.for.package.stylelint" value="project" />
     <property name="node.js.selected.package.stylelint" value="" />
@@ -123,11 +112,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\pages\doc\drawer" />
       <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\reducers\doc\income" />
       <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\pages\spr\modal" />
       <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\pages\spr" />
       <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\reducers\spr\counterparty" />
-      <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\pages\spr\modal" />
     </key>
   </component>
   <component name="RunManager">
@@ -168,6 +157,10 @@
       <workItem from="1636199011166" duration="6454000" />
       <workItem from="1636258299080" duration="5011000" />
       <workItem from="1636290580325" duration="2059000" />
+      <workItem from="1636793373973" duration="1096000" />
+      <workItem from="1636794496126" duration="8983000" />
+      <workItem from="1636810608801" duration="11483000" />
+      <workItem from="1636866571302" duration="15230000" />
     </task>
     <task id="LOCAL-00001" summary="add gitignore">
       <created>1635500831567</created>
@@ -236,25 +229,25 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="570" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636108657455" />
-    <state width="1899" height="125" key="GridCell.Tab.0.bottom" timestamp="1636709815435">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1659" height="183" key="GridCell.Tab.0.bottom" timestamp="1636822587018">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1659" height="232" key="GridCell.Tab.0.bottom/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636263346755" />
+    <state width="1659" height="183" key="GridCell.Tab.0.bottom/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636822587018" />
     <state width="1899" height="125" key="GridCell.Tab.0.bottom/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1636709815435" />
-    <state width="1899" height="125" key="GridCell.Tab.0.center" timestamp="1636709815435">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1659" height="183" key="GridCell.Tab.0.center" timestamp="1636822587018">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1659" height="232" key="GridCell.Tab.0.center/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636263346755" />
+    <state width="1659" height="183" key="GridCell.Tab.0.center/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636822587018" />
     <state width="1899" height="125" key="GridCell.Tab.0.center/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1636709815435" />
-    <state width="1899" height="125" key="GridCell.Tab.0.left" timestamp="1636709815433">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1659" height="183" key="GridCell.Tab.0.left" timestamp="1636822587018">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1659" height="232" key="GridCell.Tab.0.left/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636263346755" />
+    <state width="1659" height="183" key="GridCell.Tab.0.left/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636822587018" />
     <state width="1899" height="125" key="GridCell.Tab.0.left/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1636709815433" />
-    <state width="1899" height="125" key="GridCell.Tab.0.right" timestamp="1636709815435">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1659" height="183" key="GridCell.Tab.0.right" timestamp="1636822587018">
+      <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1659" height="232" key="GridCell.Tab.0.right/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636263346755" />
+    <state width="1659" height="183" key="GridCell.Tab.0.right/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636822587018" />
     <state width="1899" height="125" key="GridCell.Tab.0.right/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1636709815435" />
     <state x="341" y="150" key="SettingsEditor" timestamp="1636089287428">
       <screen x="0" y="0" width="1680" height="1010" />
@@ -268,14 +261,15 @@
       <screen x="1920" y="30" width="1680" height="1010" />
     </state>
     <state x="1509" y="157" width="1496" height="826" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636201273840" />
-    <state x="1920" y="132" width="1437" height="779" maximized="true" key="dock-window-1" timestamp="1636545197402">
-      <screen x="1920" y="30" width="1680" height="1010" />
+    <state x="1680" y="26" width="1368" height="786" maximized="true" key="dock-window-1" timestamp="1636811212377">
+      <screen x="1680" y="0" width="1600" height="860" />
     </state>
-    <state x="1680" y="0" width="1402" height="849" maximized="true" key="dock-window-1/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636014342980" />
+    <state x="1680" y="26" width="1368" height="786" maximized="true" key="dock-window-1/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636811212377" />
     <state x="1920" y="132" width="1437" height="779" maximized="true" key="dock-window-1/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1636545197402" />
-    <state x="1920" y="134" width="1437" height="779" maximized="true" key="dock-window-2" timestamp="1636545197403">
-      <screen x="1920" y="30" width="1680" height="1010" />
+    <state x="1680" y="20" width="1368" height="786" maximized="true" key="dock-window-2" timestamp="1636812077444">
+      <screen x="1680" y="0" width="1600" height="860" />
     </state>
+    <state x="1680" y="20" width="1368" height="786" maximized="true" key="dock-window-2/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636812077444" />
     <state x="1920" y="134" width="1437" height="779" maximized="true" key="dock-window-2/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1636545197403" />
     <state x="1920" y="51" width="1437" height="779" maximized="true" key="dock-window-3" timestamp="1636545941236">
       <screen x="1920" y="30" width="1680" height="1010" />
