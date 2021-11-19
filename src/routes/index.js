@@ -9,6 +9,7 @@ import Device from "../pages/spr/Device";
 import Counterparty from "../pages/spr/Counterparty";
 import UserReport from "../pages/report/UserReport";
 import Income from "../pages/doc/Income";
+import Registry from "../pages/registry/Registry";
 
 export const routeNames = {
     HOME : '/home',
@@ -21,7 +22,8 @@ export const routeNames = {
     DEVICE: '/device',
     COUNTERPARTY: '/counterparty',
     REPORT_USER: '/report_user',
-    INCOME: '/income'
+    INCOME: '/income',
+    REGISTRY: '/registry'
 }
 
 export const privateRoutes = [
@@ -64,6 +66,12 @@ export const privateRoutes = [
         path: routeNames.INCOME,
         exact: true,
         component: Income
+    }
+    ,
+    {
+        path: routeNames.REGISTRY,
+        exact: true,
+        component: Registry
     }
 ];
 

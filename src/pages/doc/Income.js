@@ -22,6 +22,16 @@ let selectRowData = [];
 
 const columns = [
     {
+        title: 'Тип оборудования',
+        dataIndex: ['model', 'deviceType', 'name'],
+        key: 'name',
+    },
+    {
+        title: 'Производитель',
+        dataIndex: ['model', 'firm', 'name'],
+        key: 'name',
+    },
+    {
         title: 'Модель',
         dataIndex: ['model', 'name'],
         key: 'name',
@@ -47,38 +57,13 @@ const Income = () => {
     const [selectRowIndex, setSelectRowIndex] = useState(null);
     const [visible, setVisible] = useState(false);
 
-    // const selectRowIndexRef = useRef();
-
-    // selectRowIndexRef.current = selectRowIndex;
-
     useEffect(() => {
         loadIncome();
         // eslint-disable-next-line
     }, []);
 
-    // const onKeyDown = useCallback((event) => {
-    //     if (event.key === 'ArrowDown') {
-    //         if (selectRowIndexRef.current <= incomeList.length - 2) {
-    //             selectRowData = incomeList[selectRowIndexRef.current + 1];
-    //             setSelectRowIndex(selectRowIndexRef.current + 1);
-    //         }
-    //     }
-    //     if (event.key === 'ArrowUp') {
-    //         if (selectRowIndexRef.current >= 1) {
-    //             selectRowData = incomeList[selectRowIndexRef.current - 1];
-    //             setSelectRowIndex(selectRowIndexRef.current - 1);
-    //         }
-    //     }
-    // }, [incomeList])
-
-    // const select = (index) => {
-    //     document.addEventListener('keydown', onKeyDown);
-    //     setSelectRowIndex(index);
-    //     selectRowData = incomeList[index];
-    // }
-
     const addRecord = () => {
-        selectRowData = []
+        selectRowData = {docSubs:[]};
         setVisible(true);
     }
 
@@ -87,7 +72,6 @@ const Income = () => {
     }
 
     const refresh = () => {
-        // document.removeEventListener('keydown', onKeyDown);
         setSelectRowIndex(null);
         selectRowData = [];
         loadIncome();
@@ -201,7 +185,8 @@ const Income = () => {
                                                emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}
                                                                  description="Нет данных"/>
                                            }}
-                                           columns={columns} dataSource={item.docSubs} rowKey="id" bordered
+                                           columns={columns} dataSource={item.docSubs}
+                                           rowKey="id" bordered
                                            defaultExpandAllRows={true}
                                            scroll={{y: '100vh', x: 0}}
                                            pagination={false}
@@ -211,59 +196,21 @@ const Income = () => {
                             )
                         })}
                     </Collapse>
-                    {/*<List*/}
-                    {/*    itemLayout="horizontal"*/}
-                    {/*    dataSource={incomeList}*/}
-                    {/*    renderItem={(item, index) => (*/}
-                    {/*        <List.Item className={selectRowIndex === index && 'ant-list-item-select'}*/}
-                    {/*                   onClick={() => select(index)}*/}
-                    {/*                   style={{paddingTop: '0px'}}*/}
-                    {/*        >*/}
-                    {/*            /!*<Row>*!/*/}
-                    {/*            /!*    <Row style={{width: '100%'}}>*!/*/}
-                    {/*            /!*        <Col span={24}>*!/*/}
-                    {/*            /!*            {item.executed && <div style={{*!/*/}
-                    {/*            /!*                borderTopLeftRadius: '8px',*!/*/}
-                    {/*            /!*                borderTopRightRadius: '8px',*!/*/}
-                    {/*            /!*                background: "#77c383",*!/*/}
-                    {/*            /!*                textAlign: 'center'*!/*/}
-                    {/*            /!*            }}>Документ проведен {dateFormat(new Date(item.dataExecuted))}</div>}*!/*/}
-                    {/*            /!*        </Col>*!/*/}
-                    {/*            /!*    </Row>*!/*/}
-                    {/*            /!*    <Row>*!/*/}
-                    {/*            /!*        <Col span={12}>*!/*/}
-                    {/*            /!*            <Form.Item style={{margin: '0'}}*!/*/}
-                    {/*            /!*                       label={"№ документа"}>{item.numberDoc}</Form.Item>*!/*/}
-                    {/*            /!*            <Form.Item style={{margin: '0'}}*!/*/}
-                    {/*            /!*                       label={"Дата документа"}>{dateFormat(new Date(item.dataDoc))}</Form.Item>*!/*/}
-                    {/*            /!*        </Col>*!/*/}
-                    {/*            /!*        <Col span={12}>*!/*/}
-                    {/*            /!*            <Form.Item style={{margin: '0'}}*!/*/}
-                    {/*            /!*                       label={"№ контракта"}>{item.numberCon}</Form.Item>*!/*/}
-                    {/*            /!*            <Form.Item style={{margin: '0'}}*!/*/}
-                    {/*            /!*                       label={"Дата контракта"}>{dateFormat(new Date(item.dataCon))}</Form.Item>*!/*/}
-                    {/*            /!*            <Form.Item style={{margin: '0'}}*!/*/}
-                    {/*            /!*                       label="Сумма контракта">{item.sumCon}</Form.Item>*!/*/}
-                    {/*            /!*        </Col>*!/*/}
-                    {/*            /!*    </Row>*!/*/}
-                    {/*            /!*</Row>*!/*/}
-                    {/*        </List.Item>*/}
-                    {/*    )}*/}
-                    {/*/>*/}
                 </Spin>
             </div>
             <Drawer
                 title="Добавить запись"
-                width={720}
+                width={'100%'}
                 onClose={() => closeDrawer()}
                 visible={visible}
-                bodyStyle={{paddingBottom: 80}}
+                // bodyStyle={{paddingBottom: 80}}
                 destroyOnClose={true}
             >
-                <IncomeDrawer closeModal={closeDrawer} values={selectRowData}/>
+                <IncomeDrawer closeModal={() => closeDrawer()} values={selectRowData}/>
             </Drawer>
         </>
     );
+
 };
 
 export default Income;
