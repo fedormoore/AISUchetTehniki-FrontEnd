@@ -1,40 +1,101 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {useActions} from "../../hooks/useActions";
-import {Button, Drawer, Empty, Layout, Space, Spin, Table, Tooltip} from "antd";
-import {EditOutlined, SyncOutlined} from "@ant-design/icons";
+import {Button, Drawer, Empty, Input, Layout, Space, Spin, Table, Tooltip} from "antd";
+import {EditOutlined, SyncOutlined, SearchOutlined} from "@ant-design/icons";
 import RegistryDrawer from "./drawer/RegistryDrawer";
+
+import get from "lodash.get";
+
+const getColumnSearchProps = dataIndex => ({
+    filterDropdown: ({setSelectedKeys, selectedKeys, confirm, clearFilters}) => {
+        return (
+            <>
+                <Input
+                    autoFocus
+                    value={selectedKeys[0]}
+                    onChange={(e) => {
+                        setSelectedKeys(e.target.value ? [e.target.value] : []);
+                        confirm({closeDropdown: false});
+                    }}
+                    onPressEnter={() => {
+                        confirm();
+                    }}
+                    onBlur={() => {
+                    }}
+                ></Input>
+                <Button
+                    onClick={() => {
+                        confirm();
+                    }}
+                    type="primary"
+                >
+                    Поиск
+                </Button>
+                <Button
+                    onClick={() => {
+                        clearFilters();
+                    }}
+                    type="primary"
+                >
+                    Очистить
+                </Button>
+            </>
+        )
+    },
+    filterIcon: () => {
+        return <SearchOutlined/>
+    },
+    onFilter: (value, record) => {
+        return get(record, dataIndex) ? get(record, dataIndex).toString().toLowerCase().includes(value.toLowerCase()) : '';
+    }
+})
+
+const FilterByNameInput = (
+    (
+        <div>
+            <div>Name</div>
+            <Input/>
+        </div>
+    )
+);
 
 const columns = [
     {
-        title: 'Тип оборудования',
+        title: FilterByNameInput,
         dataIndex: ['model', 'deviceType', 'name'],
-        key: 'name',
+        key: ['model', 'deviceType', 'name'],
+        ...getColumnSearchProps(['model', 'deviceType', 'name'])
     },
     {
         title: 'Производитель',
         dataIndex: ['model', 'firm', 'name'],
-        key: 'name',
+        key: ['model', 'firm', 'name'],
+        ...getColumnSearchProps(['model', 'firm', 'name'])
     },
     {
         title: 'Модель',
         dataIndex: ['model', 'name'],
-        key: 'name',
+        key: ['model', 'name'],
+        ...getColumnSearchProps(['model', 'name'])
     },
     {
         title: 'Инвентарный номер',
         dataIndex: ['invNumber'],
         key: 'invNumber',
+        ...getColumnSearchProps('invNumber')
     },
     {
         title: 'Расположение',
         dataIndex: ['location', 'name'],
-        key: 'name',
+        key: ['location', 'name'],
+        ...getColumnSearchProps(['location', 'name'])
     },
     {
         title: 'Сотрудник',
         dataIndex: ['user', 'lastName'],
         key: 'lastName',
+        ...getColumnSearchProps(['user', 'lastName'])
     },
 ];
 
@@ -53,12 +114,11 @@ const Registry = () => {
     }, []);
 
     const editRecord = () => {
-        // selectRowData = {...selectRowData, parent: selectRowData.parent};
-        setSelectedRowKey([]);
         setDrawerVisible(true);
     }
 
     const closeDrawer = () => {
+        setSelectedRowKey([]);
         setDrawerVisible(false);
     }
 
@@ -96,6 +156,7 @@ const Registry = () => {
                     </Tooltip>
                 </Space>
 
+                <div style={{height: '97%', width: '100%'}} onDoubleClick={() => editRecord()}>
                     <Table key="loading-done"
                            size="small"
                            locale={{
@@ -108,14 +169,13 @@ const Registry = () => {
                                    selectRow(record);
                                },
                            })}
-
-                           scroll={{y: '100vh'}}
+                           scroll={{x: '100vh', y: '100vh'}}
                            pagination={false}
-                           style={{height: '95%'}}
+                           style={{height: '100%', width: '100%'}}
                     />
-
+                </div>
                 <Drawer
-                    title="Добавить запись"
+                    title={selectRowData.length !== 0 ? selectRowData.model.deviceType.name + " " + selectRowData.model.firm.name + " " + selectRowData.model.name : null}
                     width={'100%'}
                     onClose={() => closeDrawer()}
                     visible={drawerVisible}

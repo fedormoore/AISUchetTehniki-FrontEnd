@@ -36,7 +36,8 @@ const LeftMenu = () => {
                         <Menu.Item key="9" onClick={() => router.push(routeNames.REGISTRY)}>Реестр оборудования</Menu.Item>
                         <Menu.SubMenu key="sub3" icon={<NotificationOutlined/>} title="Отчеты">
                             <Menu.Item key="10">Генерация штрих-кодов</Menu.Item>
-                            <Menu.Item key="11" onClick={() => router.push(routeNames.REPORT_USER)}>Сотрудники</Menu.Item>
+                            <Menu.Item key="11" onClick={() => router.push(routeNames.REPORT_LOCATION_REGISTRY)}>Оборудование по кабинетам</Menu.Item>
+                            <Menu.Item key="12" onClick={() => router.push(routeNames.REPORT_USER)}>Сотрудники</Menu.Item>
                         </Menu.SubMenu>
                     </Menu>
                 </Layout.Sider>

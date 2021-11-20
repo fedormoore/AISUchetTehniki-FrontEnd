@@ -10,6 +10,7 @@ import Counterparty from "../pages/spr/Counterparty";
 import UserReport from "../pages/report/UserReport";
 import Income from "../pages/doc/Income";
 import Registry from "../pages/registry/Registry";
+import LocationRegistryReport from "../pages/report/LocationRegistryReport";
 
 export const routeNames = {
     HOME : '/home',
@@ -21,9 +22,10 @@ export const routeNames = {
     DEVICE_TYPE: '/device_type',
     DEVICE: '/device',
     COUNTERPARTY: '/counterparty',
-    REPORT_USER: '/report_user',
     INCOME: '/income',
-    REGISTRY: '/registry'
+    REGISTRY: '/registry',
+    REPORT_LOCATION_REGISTRY: '/report_location_registry',
+    REPORT_USER: '/report_user'
 }
 
 export const privateRoutes = [
@@ -58,21 +60,25 @@ export const privateRoutes = [
         component: Counterparty
     },
     {
+        path: routeNames.INCOME,
+        exact: true,
+        component: Income
+    },
+    {
+        path: routeNames.REGISTRY,
+        exact: true,
+        component: Registry
+    },
+    {
         path: routeNames.REPORT_USER,
         exact: true,
         component: UserReport
     },
     {
-        path: routeNames.INCOME,
+        path: routeNames.REPORT_LOCATION_REGISTRY,
         exact: true,
-        component: Income
-    }
-    ,
-    {
-        path: routeNames.REGISTRY,
-        exact: true,
-        component: Registry
-    }
+        component: LocationRegistryReport
+    },
 ];
 
 export const publicRoutes = [
