@@ -11,6 +11,7 @@ import UserReport from "../pages/report/UserReport";
 import Income from "../pages/doc/Income";
 import Registry from "../pages/registry/Registry";
 import LocationRegistryReport from "../pages/report/LocationRegistryReport";
+import BudgetAccount from "../pages/spr/BudgetAccount";
 
 export const routeNames = {
     HOME : '/home',
@@ -25,7 +26,8 @@ export const routeNames = {
     INCOME: '/income',
     REGISTRY: '/registry',
     REPORT_LOCATION_REGISTRY: '/report_location_registry',
-    REPORT_USER: '/report_user'
+    REPORT_USER: '/report_user',
+    BUDGET_ACCOUNT: '/budget_account'
 }
 
 export const privateRoutes = [
@@ -58,6 +60,11 @@ export const privateRoutes = [
         path: routeNames.COUNTERPARTY,
         exact: true,
         component: Counterparty
+    },
+    {
+        path: routeNames.BUDGET_ACCOUNT,
+        exact: true,
+        component: BudgetAccount
     },
     {
         path: routeNames.INCOME,

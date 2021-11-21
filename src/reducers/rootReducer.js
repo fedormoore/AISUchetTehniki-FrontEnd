@@ -10,6 +10,7 @@ import {deviceReducer} from "./spr/device/deviceReducer";
 import {counterpartyReducer} from "./spr/counterparty/counterpartyReducer";
 import {incomeReducer} from "./doc/income/incomeReducer";
 import {registryReducer} from "./registry/registryReducer";
+import {budgetAccountReducer} from "./spr/budgetAccount/budgetAccountReducer";
 
 export const rootReducer = combineReducers({
     app: appReducer,
@@ -20,7 +21,8 @@ export const rootReducer = combineReducers({
     device: deviceReducer,
     counterparty: counterpartyReducer,
     income: incomeReducer,
-    registry: registryReducer
+    registry: registryReducer,
+    budgetAccount: budgetAccountReducer
 })
 
 export type AppDispatch = typeof store.dispatch;

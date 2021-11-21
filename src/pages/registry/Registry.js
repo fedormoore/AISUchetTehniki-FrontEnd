@@ -97,6 +97,12 @@ const columns = [
         key: 'lastName',
         ...getColumnSearchProps(['user', 'lastName'])
     },
+    {
+        title: 'Бюджетный счет',
+        dataIndex: ['budgetAccount', 'name'],
+        key: 'name',
+        ...getColumnSearchProps(['budgetAccount', 'name'])
+    },
 ];
 
 let selectRowData = [];

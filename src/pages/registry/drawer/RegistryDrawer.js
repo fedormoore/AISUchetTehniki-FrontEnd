@@ -8,8 +8,9 @@ const RegistryDrawer = (props) => {
         const [values, setValues] = useState(props.values);
 
         const {userList} = useSelector(state => state.user)
+        const {budgetAccountList} = useSelector(state => state.budgetAccount)
 
-        const {loadLocation, loadUser, saveRegistry} = useActions()
+        const {loadLocation, loadUser, loadBudgetAccount, saveRegistry} = useActions()
 
         const [locationListTree, setLocationListTree] = useState();
 
@@ -23,6 +24,7 @@ const RegistryDrawer = (props) => {
                 }
             })();
             loadUser();
+            loadBudgetAccount();
             // eslint-disable-next-line
         }, [])
 
@@ -112,6 +114,33 @@ const RegistryDrawer = (props) => {
                                                 value={line.lastName + " " + line.firstName + " " + line.middleNames}
                                                 key={line.id} object={line}>
                                                 {line.lastName + " " + line.firstName + " " + line.middleNames}
+                                            </Select.Option>
+                                        );
+                                    })}
+                                </Select>
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                    <Row gutter={16}>
+                        <Col span={24}>
+                            <Form.Item
+                                label="Бюджетный счет"
+                                initialValue={!values.budgetAccount ? null : values.budgetAccount.name}
+                            >
+                                <Select
+                                    showSearch
+                                    value={!values.budgetAccount ? null : values.budgetAccount.name}
+                                    onChange={(value, objectValues) => setValues({
+                                        ...values,
+                                        budgetAccount: objectValues.object
+                                    })}
+                                >
+                                    {budgetAccountList.map((line) => {
+                                        return (
+                                            <Select.Option
+                                                value={line.code + " " + line.name}
+                                                key={line.id} object={line}>
+                                                {line.code + " " + line.name}
                                             </Select.Option>
                                         );
                                     })}
