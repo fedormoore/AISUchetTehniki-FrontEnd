@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {Layout, Table, Button, Space, Tooltip, Modal, Empty, Spin} from 'antd';
-import {PlusOutlined, EditOutlined, DeleteOutlined, SyncOutlined} from '@ant-design/icons';
+import {Button, Empty, Layout, Modal, Space, Spin, Table, Tooltip} from 'antd';
+import {DeleteOutlined, EditOutlined, PlusOutlined, SyncOutlined} from '@ant-design/icons';
 import {useActions} from "../../hooks/useActions";
 import {useSelector} from "react-redux";
-import UserModal from "./modal/UserModal";
 import BudgetAccountModal from "./modal/BudgetAccountModal";
 
 const columns = [

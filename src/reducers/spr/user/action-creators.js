@@ -1,6 +1,6 @@
 import {TypeUser} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import Request from "../../../utils/network";
+import {Request} from "../../../utils/network";
 
 export const UserActionCreators = {
     setLoadUser: (payload) => ({type: TypeUser.LOAD_USER, payload}),
@@ -20,7 +20,7 @@ export const UserActionCreators = {
                 dispatch(UserActionCreators.setLoadUser(response));
             })
             .catch((error) => {
-                console.log("error")
+                console.log(error)
             })
             .finally(() => {
                 dispatch(UserActionCreators.setIsLoading(false));

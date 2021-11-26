@@ -1,6 +1,6 @@
 import {TypeDevice} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import Request from "../../../utils/network";
+import {Request} from "../../../utils/network";
 
 export const DeviceActionCreators = {
     setLoadFirm: (payload) => ({type: TypeDevice.LOAD_FIRM, payload}),

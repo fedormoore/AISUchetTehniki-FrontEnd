@@ -1,6 +1,6 @@
 import {TypeAuth} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import Request from "../../utils/network";
+import {Request} from "../../utils/network";
 
 export const AuthActionCreators = {
     setIsLoading: (payload) => ({type: TypeAuth.SET_IS_LOADING, payload}),
@@ -9,59 +9,52 @@ export const AuthActionCreators = {
     setUser: (user) => ({type: TypeAuth.SET_USER, payload: user}),
     setIsAuth: (auth) => ({type: TypeAuth.SET_AUTH, payload: auth}),
     login: (body) => (dispatch: AppDispatch) => {
+        dispatch(AuthActionCreators.setError(''));
         dispatch(AuthActionCreators.setIsLoading(true));
 
-        Request({
+        dispatch(Request({
             url: "/auth/signIn",
             method: "POST",
             body: JSON.stringify(body),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                localStorage.setItem("auth", true);
-                localStorage.setItem("token", response.token);
-                dispatch(AuthActionCreators.setUser("mockUser"));
-                dispatch(AuthActionCreators.setIsAuth(true))
-            })
-            .catch((error) => {
-                dispatch(AuthActionCreators.setError(error.message));
+                if (response.isOk) {
+                    localStorage.setItem("auth", true);
+                    localStorage.setItem("accessToken", response.data.accessToken);
+                    localStorage.setItem("refreshToken", response.data.refreshToken);
+                    dispatch(AuthActionCreators.setUser("mockUser"));
+                    dispatch(AuthActionCreators.setIsAuth(true))
+                } else {
+                    dispatch(AuthActionCreators.setError(response.data));
+                }
             })
             .finally(() => {
                 dispatch(AuthActionCreators.setIsLoading(false));
-            });
+            })
     },
     registration: (body) => (dispatch: AppDispatch) => {
         dispatch(AuthActionCreators.setError(''));
         dispatch(AuthActionCreators.setIsLoading(true));
 
-        return Request({
+        return dispatch(Request({
             url: "/auth/signUp",
             method: "POST",
-            body: JSON.stringify(body),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+            body: JSON.stringify(body)
+        }))
             .then((response) => {
-                return {
-                    isOk: true
-                };
-            })
-            .catch((error) => {
-                dispatch(AuthActionCreators.setError(error.message));
-                return {
-                    isOk: false
-                };
+                if (response.isOk) {
+                    return response;
+                } else {
+                    dispatch(AuthActionCreators.setError(response.data));
+                }
             })
             .finally(() => {
                 dispatch(AuthActionCreators.setIsLoading(false));
-            });
+            })
     },
     logout: () => (dispatch: AppDispatch) => {
         localStorage.removeItem('auth')
-        localStorage.removeItem('token')
+        localStorage.removeItem('accessToken')
         dispatch(AuthActionCreators.setUser({}));
         dispatch(AuthActionCreators.setIsAuth(false))
     }

@@ -1,26 +1,20 @@
 import {TypeRegistry} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import Request from "../../utils/network";
+import {Request} from "../../utils/network";
 
 export const RegistryActionCreators = {
     setLoadRegistry: (payload) => ({type: TypeRegistry.LOAD_REGISTRY, payload}),
     setSaveRegistry: (payload) => ({type: TypeRegistry.SAVE_REGISTRY, payload}),
     loadRegistry: () => (dispatch: AppDispatch) => {
         dispatch(RegistryActionCreators.setIsLoading(true));
-        const auth = localStorage.getItem("token");
-        Request({
+        dispatch(Request({
             url: "/app/registry",
             method: "GET",
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(RegistryActionCreators.setLoadRegistry(response));
-            })
-            .catch((error) => {
-                console.log("error")
+                if (response.isOk) {
+                    dispatch(RegistryActionCreators.setLoadRegistry(response.data));
+                }
             })
             .finally(() => {
                 dispatch(RegistryActionCreators.setIsLoading(false));
@@ -28,27 +22,25 @@ export const RegistryActionCreators = {
     },
     saveRegistry: (body) => (dispatch: AppDispatch) => {
         dispatch(RegistryActionCreators.setIsSaving(true));
-        const auth = localStorage.getItem("token");
+
         return Request({
             url: "/app/registry",
             method: "POST",
             body: JSON.stringify(body),
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
+
         })
             .then((response) => {
-                dispatch(RegistryActionCreators.setSaveRegistry(response));
-                return {
-                    isOk: true
-                };
-            })
-            .catch((error) => {
-                return {
-                    isOk: false,
-                    message: error.message
-                };
+                if (response.isOk) {
+                    dispatch(RegistryActionCreators.setSaveRegistry(response.data));
+                    return {
+                        isOk: true
+                    };
+                }else {
+                    return {
+                        isOk: false,
+                        message: response.data
+                    };
+                }
             })
             .finally(() => {
                 dispatch(RegistryActionCreators.setIsSaving(false));

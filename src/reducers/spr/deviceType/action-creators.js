@@ -1,26 +1,21 @@
 import {TypeDeviceType} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import Request from "../../../utils/network";
+import {Request} from "../../../utils/network";
 
 export const DeviceTypeActionCreators = {
     setLoadDeviceType: (payload) => ({type: TypeDeviceType.LOAD_DEVICE_TYPE, payload}),
     setSaveDeviceType: (payload) => ({type: TypeDeviceType.SAVE_DEVICE_TYPE, payload}),
     loadDeviceType: () => (dispatch: AppDispatch) => {
         dispatch(DeviceTypeActionCreators.setIsLoading(true));
-        const auth = localStorage.getItem("token");
-        Request({
+
+        dispatch(Request({
             url: "/app/spr/device_type",
             method: "GET",
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(DeviceTypeActionCreators.setLoadDeviceType(response));
-            })
-            .catch((error) => {
-                console.log("error")
+                if (response.isOk) {
+                    dispatch(DeviceTypeActionCreators.setLoadDeviceType(response.data));
+                }
             })
             .finally(() => {
                 dispatch(DeviceTypeActionCreators.setIsLoading(false));
@@ -28,27 +23,23 @@ export const DeviceTypeActionCreators = {
     },
     saveDeviceType: (body) => (dispatch: AppDispatch) => {
         dispatch(DeviceTypeActionCreators.setIsSaving(true));
-        const auth = localStorage.getItem("token");
-        return Request({
+        return dispatch (Request({
             url: "/app/spr/device_type",
             method: "POST",
             body: JSON.stringify(body),
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(DeviceTypeActionCreators.setSaveDeviceType(response));
-                return {
-                    isOk: true
-                };
-            })
-            .catch((error) => {
-                return {
-                    isOk: false,
-                    message: error.message
-                };
+                if (response.isOk) {
+                    dispatch(DeviceTypeActionCreators.setSaveDeviceType(response.data));
+                    return {
+                        isOk: true
+                    };
+                }else {
+                    return {
+                        isOk: false,
+                        message: response.data
+                    };
+                }
             })
             .finally(() => {
                 dispatch(DeviceTypeActionCreators.setIsSaving(false));

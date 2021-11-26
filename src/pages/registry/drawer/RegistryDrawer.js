@@ -54,8 +54,6 @@ const RegistryDrawer = (props) => {
                 if (result.isOk) {
                     // formMain.resetFields();
                     props.closeDrawer();
-                } else {
-                    // setError(result.message);
                 }
             })();
             //     })

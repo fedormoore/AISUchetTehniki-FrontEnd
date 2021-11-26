@@ -8,7 +8,7 @@ function Login() {
     const {isLoading, error} = useSelector(state => state.auth)
     const {login} = useActions()
 
-    const submit = (values: any) => {
+    const submit = (values) => {
         login(values)
     };
 
@@ -25,7 +25,7 @@ function Login() {
                         }
                         <Form.Item
                             label="E-mail"
-                            name="email"
+                            name="login"
                             rules={[
                                 {
                                     type: 'email',

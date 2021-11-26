@@ -1,26 +1,20 @@
 import {TypeIncome} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import Request from "../../../utils/network";
+import {Request} from "../../../utils/network";
 
 export const IncomeActionCreators = {
     setLoadIncome: (payload) => ({type: TypeIncome.LOAD_INCOME, payload}),
     setSaveIncome: (payload) => ({type: TypeIncome.SAVE_INCOME, payload}),
     loadIncome: () => (dispatch: AppDispatch) => {
         dispatch(IncomeActionCreators.setIsLoading(true));
-        const auth = localStorage.getItem("token");
         Request({
             url: "/app/doc/income_main",
             method: "GET",
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
         })
             .then((response) => {
-                dispatch(IncomeActionCreators.setLoadIncome(response));
-            })
-            .catch((error) => {
-                console.log("error")
+                if (response.isOk) {
+                    dispatch(IncomeActionCreators.setLoadIncome(response));
+                }
             })
             .finally(() => {
                 dispatch(IncomeActionCreators.setIsLoading(false));
@@ -28,27 +22,24 @@ export const IncomeActionCreators = {
     },
     saveIncome: (body) => (dispatch: AppDispatch) => {
         dispatch(IncomeActionCreators.setIsSaving(true));
-        const auth = localStorage.getItem("token");
+
         return Request({
             url: "/app/doc/income_main",
             method: "POST",
             body: JSON.stringify(body),
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
         })
             .then((response) => {
-                dispatch(IncomeActionCreators.setSaveIncome(response));
-                return {
-                    isOk: true
-                };
-            })
-            .catch((error) => {
-                return {
-                    isOk: false,
-                    message: error.message
-                };
+                if (response.isOk) {
+                    dispatch(IncomeActionCreators.setSaveIncome(response.data));
+                    return {
+                        isOk: true
+                    };
+                }else{
+                    return {
+                        isOk: false,
+                        message: response.data
+                    };
+                }
             })
             .finally(() => {
                 dispatch(IncomeActionCreators.setIsSaving(false));

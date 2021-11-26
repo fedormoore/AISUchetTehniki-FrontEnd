@@ -1,6 +1,6 @@
 import {TypeLocation} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import Request from "../../../utils/network";
+import {Request} from "../../../utils/network";
 
 export const LocationActionCreators = {
     setLoadLocation: (payload) => ({type: TypeLocation.LOAD_LOCATION, payload}),
@@ -24,7 +24,9 @@ export const LocationActionCreators = {
                 };
             })
             .catch((error) => {
-                console.log("error")
+                return {
+                    isOk: false
+                };
             })
             .finally(() => {
                 dispatch(LocationActionCreators.setIsLoading(false));

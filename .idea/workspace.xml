@@ -21,24 +21,30 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/release" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/v3" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f86114d2-27b4-4f74-bfe7-07c7a3004de7" name="Default Changelist" comment="20.11.2021">
-      <change afterPath="$PROJECT_DIR$/src/pages/spr/BudgetAccount.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/spr/modal/BudgetAccountModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/budgetAccount/action-creators.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/budgetAccount/budgetAccountReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/spr/budgetAccount/types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LeftMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LeftMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/registry/Registry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/registry/Registry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/auth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/auth/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/doc/drawer/IncomeDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/doc/drawer/IncomeDrawer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/registry/drawer/RegistryDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/registry/drawer/RegistryDrawer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/action-creators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/rootReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/BudgetAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/BudgetAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/BudgetAccountModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/BudgetAccountModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/auth/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/auth/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/auth/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/auth/authReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/doc/income/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/doc/income/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/registry/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/registry/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/budgetAccount/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/budgetAccount/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/counterparty/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/counterparty/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/device/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/device/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/deviceType/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/deviceType/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/location/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/location/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/user/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/user/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/network.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/network.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,14 +118,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\pages\registry" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\reducers\spr\budgetAccount" />
       <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\pages\spr\modal" />
       <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\pages\spr" />
       <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\pages\report" />
+      <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\pages\registry" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\pages\registry" />
     </key>
   </component>
@@ -177,6 +183,8 @@
       <workItem from="1637394944601" duration="1214000" />
       <workItem from="1637474754062" duration="1200000" />
       <workItem from="1637476842974" duration="4661000" />
+      <workItem from="1637839448715" duration="11976000" />
+      <workItem from="1637929804558" duration="874000" />
     </task>
     <task id="LOCAL-00001" summary="add gitignore">
       <created>1635500831567</created>
@@ -253,26 +261,26 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="570" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636108657455" />
-    <state width="1659" height="183" key="GridCell.Tab.0.bottom" timestamp="1637396167199">
-      <screen x="0" y="0" width="1680" height="1010" />
+    <state width="1899" height="172" key="GridCell.Tab.0.bottom" timestamp="1637824143417">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1659" height="183" key="GridCell.Tab.0.bottom/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1637396167199" />
-    <state width="1899" height="348" key="GridCell.Tab.0.bottom/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1637146930927" />
-    <state width="1659" height="183" key="GridCell.Tab.0.center" timestamp="1637396167199">
-      <screen x="0" y="0" width="1680" height="1010" />
+    <state width="1899" height="172" key="GridCell.Tab.0.bottom/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1637824143417" />
+    <state width="1899" height="172" key="GridCell.Tab.0.center" timestamp="1637824143416">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1659" height="183" key="GridCell.Tab.0.center/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1637396167199" />
-    <state width="1899" height="348" key="GridCell.Tab.0.center/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1637146930927" />
-    <state width="1659" height="183" key="GridCell.Tab.0.left" timestamp="1637396167199">
-      <screen x="0" y="0" width="1680" height="1010" />
+    <state width="1899" height="172" key="GridCell.Tab.0.center/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1637824143416" />
+    <state width="1899" height="172" key="GridCell.Tab.0.left" timestamp="1637824143416">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1659" height="183" key="GridCell.Tab.0.left/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1637396167199" />
-    <state width="1899" height="348" key="GridCell.Tab.0.left/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1637146930927" />
-    <state width="1659" height="183" key="GridCell.Tab.0.right" timestamp="1637396167199">
-      <screen x="0" y="0" width="1680" height="1010" />
+    <state width="1899" height="172" key="GridCell.Tab.0.left/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1637824143416" />
+    <state width="1899" height="172" key="GridCell.Tab.0.right" timestamp="1637824143416">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1659" height="183" key="GridCell.Tab.0.right/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1637396167199" />
-    <state width="1899" height="348" key="GridCell.Tab.0.right/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1637146930927" />
+    <state width="1899" height="172" key="GridCell.Tab.0.right/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1637824143416" />
     <state x="341" y="150" key="SettingsEditor" timestamp="1636089287428">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -282,7 +290,7 @@
     </state>
     <state x="483" y="246" key="Vcs.Push.Dialog.v2/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1637396160644" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1635511466440" />
-    <state x="1509" y="157" width="1496" height="826" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1636716556506">
+    <state x="1509" y="157" width="1496" height="826" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1637757371622">
       <screen x="1920" y="30" width="1680" height="1010" />
     </state>
     <state x="1509" y="157" width="1496" height="826" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1636201273840" />

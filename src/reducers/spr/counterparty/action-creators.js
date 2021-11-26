@@ -1,6 +1,6 @@
 import {TypeCounterparty} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import Request from "../../../utils/network";
+import {Request} from "../../../utils/network";
 
 export const CounterpartyActionCreators = {
     setLoadCounterparty: (payload) => ({type: TypeCounterparty.LOAD_COUNTERPARTY, payload}),

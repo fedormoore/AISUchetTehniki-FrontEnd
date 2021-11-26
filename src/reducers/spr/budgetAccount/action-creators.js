@@ -1,6 +1,6 @@
 import {TypeBudgetAccount} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import Request from "../../../utils/network";
+import {Request} from "../../../utils/network";
 
 export const BudgetAccountActionCreators = {
     setLoadBudgetAccount: (payload) => ({type: TypeBudgetAccount.LOAD_BUDGET_ACCOUNT, payload}),
@@ -20,7 +20,7 @@ export const BudgetAccountActionCreators = {
                 dispatch(BudgetAccountActionCreators.setLoadBudgetAccount(response));
             })
             .catch((error) => {
-                console.log("error")
+                console.log(error)
             })
             .finally(() => {
                 dispatch(BudgetAccountActionCreators.setIsLoading(false));

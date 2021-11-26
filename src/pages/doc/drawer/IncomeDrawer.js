@@ -314,8 +314,6 @@ const IncomeDrawer = (props) => {
                         if (result.isOk) {
                             formMain.resetFields();
                             props.closeModal();
-                        } else {
-                            // setError(result.message);
                         }
                     })();
                 })
