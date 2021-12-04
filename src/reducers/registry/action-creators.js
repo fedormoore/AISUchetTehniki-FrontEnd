@@ -1,6 +1,6 @@
 import {TypeRegistry} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import {Request} from "../../utils/network";
+import {Request} from "../../http/network";
 
 export const RegistryActionCreators = {
     setLoadRegistry: (payload) => ({type: TypeRegistry.LOAD_REGISTRY, payload}),
@@ -14,6 +14,10 @@ export const RegistryActionCreators = {
             .then((response) => {
                 if (response.isOk) {
                     dispatch(RegistryActionCreators.setLoadRegistry(response.data));
+                    return {
+                        isOk: true,
+                        data:response.data
+                    };
                 }
             })
             .finally(() => {
@@ -23,12 +27,12 @@ export const RegistryActionCreators = {
     saveRegistry: (body) => (dispatch: AppDispatch) => {
         dispatch(RegistryActionCreators.setIsSaving(true));
 
-        return Request({
+        return dispatch( Request({
             url: "/app/registry",
             method: "POST",
             body: JSON.stringify(body),
 
-        })
+        }))
             .then((response) => {
                 if (response.isOk) {
                     dispatch(RegistryActionCreators.setSaveRegistry(response.data));

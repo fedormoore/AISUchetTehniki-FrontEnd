@@ -1,19 +1,19 @@
 import {TypeIncome} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import {Request} from "../../../utils/network";
+import {Request} from "../../../http/network";
 
 export const IncomeActionCreators = {
     setLoadIncome: (payload) => ({type: TypeIncome.LOAD_INCOME, payload}),
     setSaveIncome: (payload) => ({type: TypeIncome.SAVE_INCOME, payload}),
     loadIncome: () => (dispatch: AppDispatch) => {
         dispatch(IncomeActionCreators.setIsLoading(true));
-        Request({
+        dispatch(Request({
             url: "/app/doc/income_main",
             method: "GET",
-        })
+        }))
             .then((response) => {
                 if (response.isOk) {
-                    dispatch(IncomeActionCreators.setLoadIncome(response));
+                    dispatch(IncomeActionCreators.setLoadIncome(response.data));
                 }
             })
             .finally(() => {
@@ -23,18 +23,18 @@ export const IncomeActionCreators = {
     saveIncome: (body) => (dispatch: AppDispatch) => {
         dispatch(IncomeActionCreators.setIsSaving(true));
 
-        return Request({
+        return dispatch(Request({
             url: "/app/doc/income_main",
             method: "POST",
             body: JSON.stringify(body),
-        })
+        }))
             .then((response) => {
                 if (response.isOk) {
                     dispatch(IncomeActionCreators.setSaveIncome(response.data));
                     return {
                         isOk: true
                     };
-                }else{
+                } else {
                     return {
                         isOk: false,
                         message: response.data

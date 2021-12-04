@@ -8,43 +8,17 @@ const RegistryDrawer = (props) => {
         const [values, setValues] = useState(props.values);
 
         const {userList} = useSelector(state => state.user)
+        const {locationList} = useSelector(state => state.location)
         const {budgetAccountList} = useSelector(state => state.budgetAccount)
 
-        const {loadLocation, loadUser, loadBudgetAccount, saveRegistry} = useActions()
-
-        const [locationListTree, setLocationListTree] = useState();
+        const {loadLocationTree, loadUser, loadBudgetAccount, saveRegistry} = useActions()
 
         useEffect(() => {
-            (async function () {
-                const result = await loadLocation();
-                if (result.isOk) {
-                    renderTreeNode(result.data);
-                } else {
-                    // setError(result.message);
-                }
-            })();
             loadUser();
+            loadLocationTree();
             loadBudgetAccount();
             // eslint-disable-next-line
         }, [])
-
-        const renderTreeNode = (locationList) => {
-            let treeNode = [];
-            locationList.forEach((parent, index) => {
-                treeNode.push({title: parent.name, value: parent.name, obj: parent, children: renderChild(parent)})
-            })
-            setLocationListTree(treeNode)
-        }
-
-        const renderChild = (parent) => {
-            let child = [];
-            if (parent.children) {
-                parent.children.forEach((item, index) => {
-                    child.push({title: item.name, value: item.name, obj: item, children: renderChild(item)});
-                })
-            }
-            return child;
-        }
 
         const save = () => {
             // formMain.validateFields()
@@ -86,7 +60,7 @@ const RegistryDrawer = (props) => {
                                     value={!values.location ? null : values.location.name}
                                     treeDefaultExpandAll
                                     onSelect={(value, node) => setValues({...values, location: node.obj})}
-                                    treeData={locationListTree}
+                                    treeData={locationList}
                                 >
                                 </TreeSelect>
                             </Form.Item>

@@ -2,7 +2,7 @@
 
 /*:hover срабатывает, когда пользователь наводит на элемент мышью, но не обязательно активирует его*/
 
-.h100 {
+.contentH100 {
     height: calc(100vh - 64px);
     width: 100%;
     padding: 10px;
@@ -60,41 +60,41 @@
     flex: none;
 }
 
-.table-row-dark{
-    background: #dedcdc;
-}
+/*.table-row-dark{*/
+/*    background: #dedcdc;*/
+/*}*/
 
-.table-row-light{
-    background: #ffffff;
-}
+/*.table-row-light{*/
+/*    background: #ffffff;*/
+/*}*/
 
-.ant-collapse-item:hover{
-    box-shadow: 0 0 4px #2885f6;
-}
+/*.ant-collapse-item:hover{*/
+/*    box-shadow: 0 0 4px #2885f6;*/
+/*}*/
 
-.item-non-select{
-    border-radius: 10px;
-    border: solid #dedcdc;
-    margin-bottom: 10px;
-}
+/*.item-non-select{*/
+/*    border-radius: 10px;*/
+/*    border: solid #dedcdc;*/
+/*    margin-bottom: 10px;*/
+/*}*/
 
-.item-select{
-    background: #a2c7f5;
-    border-radius: 10px;
-    border: solid #dedcdc;
-    margin-bottom: 10px;
-}
+/*.item-select{*/
+/*    background: #a2c7f5;*/
+/*    border-radius: 10px;*/
+/*    border: solid #dedcdc;*/
+/*    margin-bottom: 10px;*/
+/*}*/
 
-.site-form-in-drawer-wrapper {
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    width: 100%;
-    padding: 10px 16px;
-    text-align: right;
-    background: #fff;
-    border-top: 1px solid #e9e9e9;
-}
+/*.site-form-in-drawer-wrapper {*/
+/*    position: absolute;*/
+/*    right: 0px;*/
+/*    bottom: 0px;*/
+/*    width: 100%;*/
+/*    padding: 10px 16px;*/
+/*    text-align: right;*/
+/*    background: #fff;*/
+/*    border-top: 1px solid #e9e9e9;*/
+/*}*/
 
 /*РЕДАКТИРОВАНИЕ ТАБЛИЦЫ*/
 .editable-row .ant-form-item-explain {

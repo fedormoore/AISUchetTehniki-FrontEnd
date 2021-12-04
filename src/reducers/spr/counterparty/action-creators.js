@@ -1,26 +1,20 @@
 import {TypeCounterparty} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import {Request} from "../../../utils/network";
+import {Request} from "../../../http/network";
 
 export const CounterpartyActionCreators = {
     setLoadCounterparty: (payload) => ({type: TypeCounterparty.LOAD_COUNTERPARTY, payload}),
     setSaveCounterparty: (payload) => ({type: TypeCounterparty.SAVE_COUNTERPARTY, payload}),
     loadCounterparty: () => (dispatch: AppDispatch) => {
         dispatch(CounterpartyActionCreators.setIsLoading(true));
-        const auth = localStorage.getItem("token");
-        Request({
+        dispatch(Request({
             url: "/app/spr/counterparty",
             method: "GET",
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(CounterpartyActionCreators.setLoadCounterparty(response));
-            })
-            .catch((error) => {
-                console.log("error")
+                if (response.isOk) {
+                    dispatch(CounterpartyActionCreators.setLoadCounterparty(response.data));
+                }
             })
             .finally(() => {
                 dispatch(CounterpartyActionCreators.setIsLoading(false));
@@ -28,27 +22,23 @@ export const CounterpartyActionCreators = {
     },
     saveCounterparty: (body) => (dispatch: AppDispatch) => {
         dispatch(CounterpartyActionCreators.setIsSaving(true));
-        const auth = localStorage.getItem("token");
-        return Request({
+        return dispatch(Request({
             url: "/app/spr/counterparty",
             method: "POST",
             body: JSON.stringify(body),
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(CounterpartyActionCreators.setSaveCounterparty(response));
-                return {
-                    isOk: true
-                };
-            })
-            .catch((error) => {
-                return {
-                    isOk: false,
-                    message: error.message
-                };
+                if (response.isOk) {
+                    dispatch(CounterpartyActionCreators.setSaveRegistry(response.data));
+                    return {
+                        isOk: true
+                    };
+                } else {
+                    return {
+                        isOk: false,
+                        message: response.data
+                    };
+                }
             })
             .finally(() => {
                 dispatch(CounterpartyActionCreators.setIsSaving(false));

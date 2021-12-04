@@ -5,16 +5,20 @@ import {Layout} from 'antd';
 import TopMenu from "./components/TopMenu";
 import AppRouter from "./components/AppRouter";
 import LeftMenu from "./components/LeftMenu";
-import {checkAuth} from "./utils/network";
+import {checkAuth} from "./http/network";
+import {useDispatch} from "react-redux";
 
 const {Content} = Layout;
 
 function App() {
 
+    const dispatch = useDispatch();
+
     useEffect(()=>{
         if (localStorage.getItem('token')) {
-            checkAuth();
+            dispatch(checkAuth());
         }
+        // eslint-disable-next-line
     }, [])
 
     return (
@@ -22,7 +26,7 @@ function App() {
             <TopMenu/>
             <Layout>
                 <LeftMenu/>
-                <Content className="h100">
+                <Content className="contentH100">
                     <AppRouter/>
                 </Content>
             </Layout>

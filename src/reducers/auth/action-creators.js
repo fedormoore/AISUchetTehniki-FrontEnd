@@ -1,6 +1,6 @@
 import {TypeAuth} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import {Request} from "../../utils/network";
+import {Request} from "../../http/network";
 
 export const AuthActionCreators = {
     setIsLoading: (payload) => ({type: TypeAuth.SET_IS_LOADING, payload}),

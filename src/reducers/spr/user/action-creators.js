@@ -1,26 +1,20 @@
 import {TypeUser} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import {Request} from "../../../utils/network";
+import {Request} from "../../../http/network";
 
 export const UserActionCreators = {
     setLoadUser: (payload) => ({type: TypeUser.LOAD_USER, payload}),
     setSaveUser: (payload) => ({type: TypeUser.SAVE_USER, payload}),
     loadUser: () => (dispatch: AppDispatch) => {
         dispatch(UserActionCreators.setIsLoading(true));
-        const auth = localStorage.getItem("token");
-        Request({
+        return dispatch(Request({
             url: "/app/spr/user",
             method: "GET",
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(UserActionCreators.setLoadUser(response));
-            })
-            .catch((error) => {
-                console.log(error)
+                if (response.isOk) {
+                    dispatch(UserActionCreators.setLoadUser(response.data));
+                }
             })
             .finally(() => {
                 dispatch(UserActionCreators.setIsLoading(false));
@@ -28,27 +22,23 @@ export const UserActionCreators = {
     },
     saveUser: (body) => (dispatch: AppDispatch) => {
         dispatch(UserActionCreators.setIsSaving(true));
-        const auth = localStorage.getItem("token");
-        return Request({
+        return dispatch(Request({
             url: "/app/spr/user",
             method: "POST",
             body: JSON.stringify(body),
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(UserActionCreators.setSaveUser(response));
-                return {
-                    isOk: true
-                };
-            })
-            .catch((error) => {
-                return {
-                    isOk: false,
-                    message: error.message
-                };
+                if (response.isOk) {
+                    dispatch(UserActionCreators.setSaveUser(response.data));
+                    return {
+                        isOk: true
+                    };
+                } else {
+                    return {
+                        isOk: false,
+                        message: response.data
+                    };
+                }
             })
             .finally(() => {
                 dispatch(UserActionCreators.setIsSaving(false));

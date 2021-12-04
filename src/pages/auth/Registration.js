@@ -35,7 +35,7 @@ const Registration = () => {
 
     return (
         <Layout>
-            <Row justify="center" align="middle" className="h100">
+            <Row justify="center" align="middle" style={{height:"-webkit-fill-available"}}>
                 <Card>
                     <Form
                         onFinish={submit}

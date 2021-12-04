@@ -1,27 +1,21 @@
 import {TypeDevice} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import {Request} from "../../../utils/network";
+import {Request} from "../../../http/network";
 
 export const DeviceActionCreators = {
     setLoadFirm: (payload) => ({type: TypeDevice.LOAD_FIRM, payload}),
     setSaveFirm: (payload) => ({type: TypeDevice.SAVE_FIRM, payload}),
     loadFirm: () => (dispatch: AppDispatch) => {
         dispatch(DeviceActionCreators.setIsLoadingFirm(true));
-        const auth = localStorage.getItem("token");
-        Request({
+        dispatch(Request({
             url: "/app/spr/firm",
             method: "GET",
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(DeviceActionCreators.setLoadFirm(response));
-                dispatch(DeviceActionCreators.setLoadModel([]));
-            })
-            .catch((error) => {
-                console.log("error")
+                if (response.isOk) {
+                    dispatch(DeviceActionCreators.setLoadFirm(response.data));
+                    dispatch(DeviceActionCreators.setLoadModel([]));
+                }
             })
             .finally(() => {
                 dispatch(DeviceActionCreators.setIsLoadingFirm(false));
@@ -29,27 +23,23 @@ export const DeviceActionCreators = {
     },
     saveFirm: (body) => (dispatch: AppDispatch) => {
         dispatch(DeviceActionCreators.setIsSavingFirm(true));
-        const auth = localStorage.getItem("token");
-        return Request({
+        return dispatch(Request({
             url: "/app/spr/firm",
             method: "POST",
             body: JSON.stringify(body),
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(DeviceActionCreators.setSaveFirm(response));
-                return {
-                    isOk: true
-                };
-            })
-            .catch((error) => {
-                return {
-                    isOk: false,
-                    message: error.message
-                };
+                if (response.isOk) {
+                    dispatch(DeviceActionCreators.setSaveRegistry(response.data));
+                    return {
+                        isOk: true
+                    };
+                } else {
+                    return {
+                        isOk: false,
+                        message: response.data
+                    };
+                }
             })
             .finally(() => {
                 dispatch(DeviceActionCreators.setIsSavingFirm(false));
@@ -60,22 +50,16 @@ export const DeviceActionCreators = {
 
     setLoadModel: (payload) => ({type: TypeDevice.LOAD_MODEL, payload}),
     setSaveModel: (payload) => ({type: TypeDevice.SAVE_MODEL, payload}),
-    loadAllModel: (id) => (dispatch: AppDispatch) => {
+    loadAllModel: () => (dispatch: AppDispatch) => {
         dispatch(DeviceActionCreators.setIsLoadingModel(true));
-        const auth = localStorage.getItem("token");
-        Request({
+        dispatch(Request({
             url: "/app/spr/model",
             method: "GET",
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(DeviceActionCreators.setLoadModel(response));
-            })
-            .catch((error) => {
-                console.log("error")
+                if (response.isOk) {
+                    dispatch(DeviceActionCreators.setLoadModel(response.data));
+                }
             })
             .finally(() => {
                 dispatch(DeviceActionCreators.setIsLoadingModel(false));
@@ -83,20 +67,14 @@ export const DeviceActionCreators = {
     },
     loadModel: (id) => (dispatch: AppDispatch) => {
         dispatch(DeviceActionCreators.setIsLoadingModel(true));
-        const auth = localStorage.getItem("token");
-        Request({
-            url: "/app/spr/model/"+id,
+        dispatch(Request({
+            url: "/app/spr/model/" + id,
             method: "GET",
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(DeviceActionCreators.setLoadModel(response));
-            })
-            .catch((error) => {
-                console.log("error")
+                if (response.isOk) {
+                    dispatch(DeviceActionCreators.setLoadModel(response.data));
+                }
             })
             .finally(() => {
                 dispatch(DeviceActionCreators.setIsLoadingModel(false));
@@ -104,27 +82,23 @@ export const DeviceActionCreators = {
     },
     saveModel: (body) => (dispatch: AppDispatch) => {
         dispatch(DeviceActionCreators.setIsSavingModel(true));
-        const auth = localStorage.getItem("token");
-        return Request({
+        return dispatch(Request({
             url: "/app/spr/model",
             method: "POST",
             body: JSON.stringify(body),
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(DeviceActionCreators.setSaveModel(response));
-                return {
-                    isOk: true
-                };
-            })
-            .catch((error) => {
-                return {
-                    isOk: false,
-                    message: error.message
-                };
+                if (response.isOk) {
+                    dispatch(DeviceActionCreators.setSaveRegistry(response.data));
+                    return {
+                        isOk: true
+                    };
+                } else {
+                    return {
+                        isOk: false,
+                        message: response.data
+                    };
+                }
             })
             .finally(() => {
                 dispatch(DeviceActionCreators.setIsSavingModel(false));

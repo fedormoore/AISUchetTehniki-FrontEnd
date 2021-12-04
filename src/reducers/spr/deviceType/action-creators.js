@@ -1,6 +1,6 @@
 import {TypeDeviceType} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import {Request} from "../../../utils/network";
+import {Request} from "../../../http/network";
 
 export const DeviceTypeActionCreators = {
     setLoadDeviceType: (payload) => ({type: TypeDeviceType.LOAD_DEVICE_TYPE, payload}),
@@ -23,18 +23,25 @@ export const DeviceTypeActionCreators = {
     },
     saveDeviceType: (body) => (dispatch: AppDispatch) => {
         dispatch(DeviceTypeActionCreators.setIsSaving(true));
-        return dispatch (Request({
+        return dispatch(Request({
             url: "/app/spr/device_type",
             method: "POST",
             body: JSON.stringify(body),
         }))
             .then((response) => {
                 if (response.isOk) {
-                    dispatch(DeviceTypeActionCreators.setSaveDeviceType(response.data));
-                    return {
-                        isOk: true
-                    };
-                }else {
+                    if (response.isOk) {
+                        dispatch(DeviceTypeActionCreators.setSaveRegistry(response.data));
+                        return {
+                            isOk: true
+                        };
+                    } else {
+                        return {
+                            isOk: false,
+                            message: response.data
+                        };
+                    }
+                } else {
                     return {
                         isOk: false,
                         message: response.data

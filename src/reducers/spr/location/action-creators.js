@@ -1,32 +1,46 @@
 import {TypeLocation} from "./types";
 import type {AppDispatch} from "../rootReducer";
-import {Request} from "../../../utils/network";
+import {Request} from "../../../http/network";
 
 export const LocationActionCreators = {
     setLoadLocation: (payload) => ({type: TypeLocation.LOAD_LOCATION, payload}),
     setSaveLocation: (payload) => ({type: TypeLocation.SAVE_LOCATION, payload}),
     loadLocation: () => (dispatch: AppDispatch) => {
         dispatch(LocationActionCreators.setIsLoading(true));
-        const auth = localStorage.getItem("token");
-        return Request({
+        dispatch(Request({
             url: "/app/spr/location",
             method: "GET",
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(LocationActionCreators.setLoadLocation(response));
-                return {
-                    isOk: true,
-                    data:response
-                };
+                if (response.isOk) {
+                    console.log(response.data)
+                    dispatch(LocationActionCreators.setLoadLocation(response.data));
+                }
             })
-            .catch((error) => {
-                return {
-                    isOk: false
-                };
+            .finally(() => {
+                dispatch(LocationActionCreators.setIsLoading(false));
+            });
+    },
+    loadLocationTree: () => (dispatch: AppDispatch) => {
+        dispatch(LocationActionCreators.setIsLoading(true));
+        dispatch(Request({
+            url: "/app/spr/location",
+            method: "GET",
+        }))
+            .then((response) => {
+                if (response.isOk) {
+                    const newData = response.data;
+                    const listTree = function (data) {
+                        for (let i = 0; i < data.length; i++) {
+                            data[i] = {...data[i], ...{title: data[i].name, value: data[i].name, obj: data[i]}};
+                            if (data[i].hasOwnProperty('children')) {
+                                listTree(data[i].children);
+                            }
+                        }
+                    };
+                    listTree(newData);
+                    dispatch(LocationActionCreators.setLoadLocation(newData));
+                }
             })
             .finally(() => {
                 dispatch(LocationActionCreators.setIsLoading(false));
@@ -34,27 +48,23 @@ export const LocationActionCreators = {
     },
     saveLocation: (body) => (dispatch: AppDispatch) => {
         dispatch(LocationActionCreators.setIsSaving(true));
-        const auth = localStorage.getItem("token");
-        return Request({
+        return dispatch(Request({
             url: "/app/spr/location",
             method: "POST",
             body: JSON.stringify(body),
-            headers:{
-                'Authorization': 'Bearer ' + auth,
-                "Content-Type": "application/json"
-            }
-        })
+        }))
             .then((response) => {
-                dispatch(LocationActionCreators.setSaveLocation(response));
-                return {
-                    isOk: true
-                };
-            })
-            .catch((error) => {
-                return {
-                    isOk: false,
-                    message: error.message
-                };
+                if (response.isOk) {
+                    dispatch(LocationActionCreators.setSaveLocation(response.data));
+                    return {
+                        isOk: true
+                    };
+                } else {
+                    return {
+                        isOk: false,
+                        message: response.data
+                    };
+                }
             })
             .finally(() => {
                 dispatch(LocationActionCreators.setIsSaving(false));

@@ -110,7 +110,7 @@ const Device = () => {
     }
 
     const rowModelSelection = {
-        selectedRowKeys:selectedModelRowKeys,
+        selectedRowKeys: selectedModelRowKeys,
         columnWidth: 0,
         renderCell: () => "",
         hideSelectAll: true
@@ -119,91 +119,94 @@ const Device = () => {
     return (
         <Layout>
             <Layout className="main">
-            <Spin tip="Получение данных..." spinning={isLoadingFirm}>
-                <Space>
-                    <Tooltip title="Добавить">
-                        <Button type="primary" icon={<PlusOutlined/>} onClick={() => addFirmRecord()}/>
-                    </Tooltip>
-                    <Tooltip title="Редактировать">
-                        <Button type="primary" icon={<EditOutlined/>} disabled={!selectedFirmRowKeys.length || disableButtonEditDelete}
-                                onClick={() => editFirmRecord()}/>
-                    </Tooltip>
-                    <Tooltip title="Удалить">
-                        <Button type="primary" icon={<DeleteOutlined/>} disabled={!selectedFirmRowKeys.length || disableButtonEditDelete}/>
-                    </Tooltip>
-                    <Tooltip title="Обновить">
-                        <Button type="primary" icon={<SyncOutlined/>}
-                                onClick={() => refreshFirm()}
-                        />
-                    </Tooltip>
-                </Space>
-                <Table size="small"
-                       columns={columnsFirm} dataSource={firmList} rowKey="id"
-                       locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
-                       rowSelection={rowFirmSelection}
-                       onRow={(record) => ({
-                           onClick: () => {
-                               selectFirmRow(record);
-                           },
-                       })}
-                       scroll={{x:'100vh', y: '100vh'}}
-                       pagination={false}
-                       style={{height:'93%', width:'100%'}}
-                />
-                <Modal
-                    title="Добавить запись"
-                    visible={modalFirmVisible}
-                    footer={null}
-                    closable={false}
-                    destroyOnClose={true}
-                >
-                    <FirmModal closeModal={closeFirmModal} values={selectFirmRowData}/>
-                </Modal>
-            </Spin>
+                <Spin tip="Получение данных..." spinning={isLoadingFirm}>
+                    <Space>
+                        <Tooltip title="Добавить">
+                            <Button type="primary" icon={<PlusOutlined/>} onClick={() => addFirmRecord()}/>
+                        </Tooltip>
+                        <Tooltip title="Редактировать">
+                            <Button type="primary" icon={<EditOutlined/>}
+                                    disabled={!selectedFirmRowKeys.length || disableButtonEditDelete}
+                                    onClick={() => editFirmRecord()}/>
+                        </Tooltip>
+                        <Tooltip title="Удалить">
+                            <Button type="primary" icon={<DeleteOutlined/>}
+                                    disabled={!selectedFirmRowKeys.length || disableButtonEditDelete}/>
+                        </Tooltip>
+                        <Tooltip title="Обновить">
+                            <Button type="primary" icon={<SyncOutlined/>}
+                                    onClick={() => refreshFirm()}
+                            />
+                        </Tooltip>
+                    </Space>
+                    <Table size="small"
+                           columns={columnsFirm} dataSource={firmList} rowKey="id"
+                           locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
+                           rowSelection={rowFirmSelection}
+                           onRow={(record) => ({
+                               onClick: () => {
+                                   selectFirmRow(record);
+                               },
+                           })}
+                           scroll={{x: '100vh', y: '100vh'}}
+                           pagination={false}
+                           style={{height: '93%', width: '100%'}}
+                    />
+                    <Modal
+                        title="Добавить запись"
+                        visible={modalFirmVisible}
+                        footer={null}
+                        closable={false}
+                        destroyOnClose={true}
+                    >
+                        <FirmModal closeModal={closeFirmModal} values={selectFirmRowData}/>
+                    </Modal>
+                </Spin>
             </Layout>
 
             <Layout className="main">
-            <Spin tip="Получение данных..." spinning={isLoadingModel}>
-                <Space>
-                    <Tooltip title="Добавить">
-                        <Button type="primary" icon={<PlusOutlined/>} disabled={!selectedFirmRowKeys.length}
-                                onClick={() => addModelRecord()}
-                        />
-                    </Tooltip>
-                    <Tooltip title="Редактировать">
-                        <Button type="primary" icon={<EditOutlined/>} disabled={!selectedModelRowKeys.length}
-                                onClick={() => editModelRecord()}/>
-                    </Tooltip>
-                    <Tooltip title="Удалить">
-                        <Button type="primary" icon={<DeleteOutlined/>} disabled={!selectedModelRowKeys.length}/>
-                    </Tooltip>
-                    <Tooltip title="Обновить">
-                        <Button type="primary" icon={<SyncOutlined/>} disabled={!selectedFirmRowKeys.length}/>
-                    </Tooltip>
-                </Space>
-                <Table size="small"
-                       columns={columnsModel} dataSource={modelList} rowKey="id"
-                       locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
-                       rowSelection={rowModelSelection}
-                       onRow={(record) => ({
-                           onClick: () => {
-                               selectModelRow(record);
-                           },
-                       })}
-                       scroll={{x:'100vh', y: '100vh'}}
-                       pagination={false}
-                       style={{height:'93%', width:'100%'}}
-                />
-                <Modal
-                    title="Добавить запись"
-                    visible={modalModelVisible}
-                    footer={null}
-                    closable={false}
-                    destroyOnClose={true}
-                >
-                    <ModelModal closeModal={closeModelModal} parentRec={selectFirmRowData} values={selectModelRowData}/>
-                </Modal>
-            </Spin>
+                <Spin tip="Получение данных..." spinning={isLoadingModel}>
+                    <Space>
+                        <Tooltip title="Добавить">
+                            <Button type="primary" icon={<PlusOutlined/>} disabled={!selectedFirmRowKeys.length}
+                                    onClick={() => addModelRecord()}
+                            />
+                        </Tooltip>
+                        <Tooltip title="Редактировать">
+                            <Button type="primary" icon={<EditOutlined/>} disabled={!selectedModelRowKeys.length}
+                                    onClick={() => editModelRecord()}/>
+                        </Tooltip>
+                        <Tooltip title="Удалить">
+                            <Button type="primary" icon={<DeleteOutlined/>} disabled={!selectedModelRowKeys.length}/>
+                        </Tooltip>
+                        <Tooltip title="Обновить">
+                            <Button type="primary" icon={<SyncOutlined/>} disabled={!selectedFirmRowKeys.length}/>
+                        </Tooltip>
+                    </Space>
+                    <Table size="small"
+                           columns={columnsModel} dataSource={modelList} rowKey="id"
+                           locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
+                           rowSelection={rowModelSelection}
+                           onRow={(record) => ({
+                               onClick: () => {
+                                   selectModelRow(record);
+                               },
+                           })}
+                           scroll={{x: '100vh', y: '100vh'}}
+                           pagination={false}
+                           style={{height: '93%', width: '100%'}}
+                    />
+                    <Modal
+                        title="Добавить запись"
+                        visible={modalModelVisible}
+                        footer={null}
+                        closable={false}
+                        destroyOnClose={true}
+                    >
+                        <ModelModal closeModal={closeModelModal} parentRec={selectFirmRowData}
+                                    values={selectModelRowData}/>
+                    </Modal>
+                </Spin>
             </Layout>
         </Layout>
     );
