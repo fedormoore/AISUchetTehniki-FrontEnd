@@ -1,0 +1,132 @@
+@import '~antd/dist/antd.dark.css';
+/*:hover срабатывает, когда пользователь наводит на элемент мышью, но не обязательно активирует его*/
+
+/*.ant-layout-header{*/
+/*    background: #01579B;*/
+/*}*/
+
+/*.ant-menu-overflow{*/
+/*    background: #01579B !important;*/
+/*}*/
+.contentH100 {
+
+}
+
+.main {
+    height: calc(100vh);
+    display: flex;
+    flex-flow: column nowrap;
+    flex-wrap: wrap;
+}
+
+/*стиль таблиц - начало*/
+.ant-table-thead > tr >th{
+    color: white;
+    background: #0091EA !important;
+}
+
+.row-select{
+    background: #BBDEFB;
+}
+
+.row0 {
+    background-color: #E3F2FD;
+}
+
+.row1 {
+    background-color: #FAFAFA;
+}
+
+.ant-table-tbody > tr.ant-table-row:hover > td {
+    background: #BBDEFB;
+}
+/*стиль таблицы - конец*/
+
+.ant-table-wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.ant-spin-nested-loading {
+    height: 100%;
+    width: 100%;
+}
+
+.ant-spin-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.ant-table {
+    flex: auto;
+    overflow: hidden;
+}
+
+.ant-table-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.ant-table-header {
+    flex: none;
+}
+
+.ant-table-body {
+    flex: auto;
+    overflow: scroll;
+}
+
+.ant-table-pagination {
+    flex: none;
+}
+
+/*.ant-collapse-item:hover{*/
+/*    box-shadow: 0 0 4px #2885f6;*/
+/*}*/
+
+/*.item-non-select{*/
+/*    border-radius: 10px;*/
+/*    border: solid #dedcdc;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+
+/*.item-select{*/
+/*    background: #a2c7f5;*/
+/*    border-radius: 10px;*/
+/*    border: solid #dedcdc;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+
+/*.site-form-in-drawer-wrapper {*/
+/*    position: absolute;*/
+/*    right: 0px;*/
+/*    bottom: 0px;*/
+/*    width: 100%;*/
+/*    padding: 10px 16px;*/
+/*    text-align: right;*/
+/*    background: #fff;*/
+/*    border-top: 1px solid #e9e9e9;*/
+/*}*/
+
+/*РЕДАКТИРОВАНИЕ ТАБЛИЦЫ*/
+.editable-row .ant-form-item-explain {
+    position: absolute;
+    top: 100%;
+    font-size: 12px;
+}
+
+/*.ant-list-split .ant-list-item {*/
+/*    border-radius: 10px;*/
+/*    border: solid #dedcdc;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+
+/*.ant-list-split .ant-list-item:last-child{*/
+/*    border-radius: 10px;*/
+/*    border: solid #dedcdc;*/
+/*    margin-bottom: 10px;*/
+/*}*/

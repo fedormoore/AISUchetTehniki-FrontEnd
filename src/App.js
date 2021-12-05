@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
-import './App.css';
-
+import './themes/AppLight2.css'
 import {Layout} from 'antd';
 import TopMenu from "./components/TopMenu";
 import AppRouter from "./components/AppRouter";
@@ -14,7 +13,7 @@ function App() {
 
     const dispatch = useDispatch();
 
-    useEffect(()=>{
+    useEffect(() => {
         if (localStorage.getItem('token')) {
             dispatch(checkAuth());
         }

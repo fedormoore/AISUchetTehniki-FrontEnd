@@ -24,7 +24,7 @@ const TopMenu = () => {
                     justifyContent: "space-between"
                 }}>
                     <Button
-                        type="primary"
+                        type="dashed" ghost
                         icon={<MenuOutlined/>}
                         onClick={() => setIsVisibleLeftMenu(!isVisibleLeftMenu)}
                     />

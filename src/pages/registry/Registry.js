@@ -1,8 +1,8 @@
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {useActions} from "../../hooks/useActions";
 import {Button, Drawer, Empty, Input, Layout, Space, Spin, Table, Tooltip} from "antd";
-import {EditOutlined, SyncOutlined, FilterOutlined} from "@ant-design/icons";
+import {EditOutlined, FilterOutlined, SyncOutlined} from "@ant-design/icons";
 import RegistryDrawer from "./drawer/RegistryDrawer";
 
 import get from "lodash.get";
@@ -12,42 +12,43 @@ const columns = [
         title: 'Тип оборудования',
         dataIndex: ['model', 'deviceType', 'name'],
         key: ['model', 'deviceType', 'name'],
-        width: '160px',
+        width: '190px',
     },
     {
         title: 'Производитель',
         dataIndex: ['model', 'firm', 'name'],
         key: ['model', 'firm', 'name'],
-        // width:'100px'
+        width:'140px'
     },
     {
         title: 'Модель',
         dataIndex: ['model', 'name'],
         key: ['model', 'name'],
-        // width:'100px'
+        width:'250px'
     },
     {
         title: 'Инвентарный номер',
         dataIndex: ['invNumber'],
         key: 'invNumber',
-        // width:'100px'
+        width:'160px'
     },
     {
         title: 'Расположение',
         dataIndex: ['location', 'name'],
         key: ['location', 'name'],
-        // width:'100px'
+        width:'120px'
     },
     {
         title: 'Сотрудник',
         dataIndex: ['user', 'lastName'],
         key: 'lastName',
-        // width:'100px'
+        width:'100px'
     },
     {
         title: 'Бюджетный счет',
         dataIndex: ['budgetAccount', 'name'],
         key: 'name',
+        width:'160px'
         // filteredValue: searchText.hasOwnProperty('budgetAccount') ? [searchText.budgetAccount] : [],
         // onFilter: (value, record) => {
         //     return get(record, ['budgetAccount', 'name']) ? get(record, ['budgetAccount', 'name']).toString().toLowerCase().includes(searchText.budgetAccount.toLowerCase()) : '';
@@ -63,7 +64,7 @@ const Registry = () => {
     const {registryList, isLoading} = useSelector(state => state.registry)
     const {loadRegistry} = useActions()
     const [drawerVisible, setDrawerVisible] = useState(false);
-    const [selectedRowKeys, setSelectedRowKey] = useState([]);
+    const [selectedRowKeys, setSelectedRowKey] = useState(null);
     const [isFilter, setIsFilter] = useState(false);
     const [searchText, setSearchText] = useState({});
 
@@ -77,38 +78,31 @@ const Registry = () => {
     }
 
     const closeDrawer = () => {
-        setSelectedRowKey([]);
+        setSelectedRowKey(null);
         setDrawerVisible(false);
     }
 
     const refresh = () => {
         loadRegistry();
         selectRowData = [];
-        setSelectedRowKey([]);
+        setSelectedRowKey(null);
     }
 
-    const selectRow = (record) => {
+    const selectRow = (record, index) => {
         selectRowData = record;
-        const selectedRowKey = [record.id];
-        setSelectedRowKey(selectedRowKey);
+        setSelectedRowKey(index);
     }
-
-    const rowSelection = {
-        selectedRowKeys,
-        columnWidth: '1px',
-        renderCell: () => "",
-        hideSelectAll: true
-    };
 
     const mergedColumns = columns.map((col) => {
         return (
             <Table.ColumnGroup
                 title={col.title}
                 dataIndex={col.dataIndex}
-                key={col.dataIndex}>
-
+                key={col.dataIndex}
+                width={col.width}>
                 {isFilter &&
                 <Table.Column
+                    width={col.width}
                     title={(
                         <Input onChange={(event) => {
                             setSearchText({...searchText, [col.dataIndex]: event.target.value});
@@ -129,19 +123,22 @@ const Registry = () => {
     return (
         <Layout>
             <Spin tip="Получение данных..." spinning={isLoading}>
-                <Space>
+                <Space style={{background:'#0091EA', padding:'5px', borderTopLeftRadius:'5px', borderTopRightRadius:'5px'}}>
                     <Tooltip title="Редактировать">
-                        <Button type="primary" icon={<EditOutlined/>} disabled={!selectedRowKeys.length}
+                        <Button type="dashed" ghost icon={<EditOutlined/>} disabled={selectedRowKeys===null}
                                 onClick={() => editRecord()}/>
                     </Tooltip>
                     <Tooltip title="Обновить">
-                        <Button type="primary" icon={<SyncOutlined/>}
+                        <Button type="dashed" ghost icon={<SyncOutlined/>}
                                 onClick={() => refresh()}
                         />
                     </Tooltip>
                     <Tooltip title="Фильтр">
-                        <Button type="primary" icon={<FilterOutlined/>}
-                                onClick={() => setIsFilter(!isFilter)}
+                        <Button type="dashed" ghost icon={<FilterOutlined/>}
+                                onClick={() => {
+                                    setIsFilter(!isFilter);
+                                    setSearchText({});
+                                }}
                         />
                     </Tooltip>
                 </Space>
@@ -151,14 +148,13 @@ const Registry = () => {
                         locale={{
                             emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>
                         }}
-                        // columns={columns}
+                        rowClassName={(record, index) => index === selectedRowKeys ? 'row-select':index % 2 ? 'row0':'row1'}
                         dataSource={registryList}
                         rowKey="id"
                         bordered
-                        rowSelection={rowSelection}
-                        onRow={(record) => ({
-                            onClick: () => {
-                                selectRow(record);
+                        onRow={(record, index) => ({
+                            onClick: (e) => {
+                                selectRow(record, index);
                             },
                             onDoubleClick: event => {
                                 editRecord()
@@ -168,7 +164,7 @@ const Registry = () => {
                             },
                         })}
                         scroll={{x: '100vh', y: '100vh'}}
-                        pagination={false}
+                        // pagination={false}
                         style={{height: '100', width: '100%'}}
                     >
                         {mergedColumns}

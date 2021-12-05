@@ -1,7 +1,13 @@
 @import "~antd/dist/antd.css";
-
 /*:hover срабатывает, когда пользователь наводит на элемент мышью, но не обязательно активирует его*/
 
+/*.ant-layout-header{*/
+/*    background: #01579B;*/
+/*}*/
+
+/*.ant-menu-overflow{*/
+/*    background: #01579B !important;*/
+/*}*/
 .contentH100 {
     height: calc(100vh - 64px);
     width: 100%;
@@ -17,6 +23,29 @@
     flex-flow: column nowrap;
     flex-wrap: wrap;
 }
+
+/*стиль таблиц - начало*/
+.ant-table-thead > tr >th{
+    color: white;
+    background: #0091EA !important;
+}
+
+.row-select{
+    background: #BBDEFB;
+}
+
+.row0 {
+    background-color: #E3F2FD;
+}
+
+.row1 {
+    background-color: #FAFAFA;
+}
+
+.ant-table-tbody > tr.ant-table-row:hover > td {
+    background: #BBDEFB;
+}
+/*стиль таблицы - конец*/
 
 .ant-table-wrapper {
     height: 100%;
@@ -59,14 +88,6 @@
 .ant-table-pagination {
     flex: none;
 }
-
-/*.table-row-dark{*/
-/*    background: #dedcdc;*/
-/*}*/
-
-/*.table-row-light{*/
-/*    background: #ffffff;*/
-/*}*/
 
 /*.ant-collapse-item:hover{*/
 /*    box-shadow: 0 0 4px #2885f6;*/
