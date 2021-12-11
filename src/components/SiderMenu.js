@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {routeNames} from "../routes";
 
-const LeftMenu = () => {
+const SiderMenu = () => {
 
     const {isAuth} = useSelector(state => state.auth)
     const {isVisibleLeftMenu} = useSelector(state => state.app)
@@ -47,4 +47,4 @@ const LeftMenu = () => {
     );
 };
 
-export default LeftMenu;
+export default SiderMenu;

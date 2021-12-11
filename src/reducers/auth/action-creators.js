@@ -19,7 +19,7 @@ export const AuthActionCreators = {
         }))
             .then((response) => {
                 if (response.isOk) {
-                    localStorage.setItem("auth", true);
+                    localStorage.setItem("isAuth", true);
                     localStorage.setItem("accessToken", response.data.accessToken);
                     localStorage.setItem("refreshToken", response.data.refreshToken);
                     dispatch(AuthActionCreators.setUser("mockUser"));
@@ -53,8 +53,9 @@ export const AuthActionCreators = {
             })
     },
     logout: () => (dispatch: AppDispatch) => {
-        localStorage.removeItem('auth')
+        localStorage.removeItem('isAuth')
         localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
         dispatch(AuthActionCreators.setUser({}));
         dispatch(AuthActionCreators.setIsAuth(false))
     }

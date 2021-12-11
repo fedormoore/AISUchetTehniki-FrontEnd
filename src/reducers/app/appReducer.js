@@ -1,8 +1,10 @@
 import {TypeApp} from "./types";
 
+const isDark = JSON.parse(localStorage.getItem("isDark"));
+
 const initialState = {
     isVisibleLeftMenu: true,
-    isDark:true
+    isDark: isDark ? (isDark):(false)
 }
 
 export const appReducer = (state = initialState, action) => {

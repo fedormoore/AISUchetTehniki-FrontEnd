@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
-import './themes/AppLight2.css'
 import {Layout} from 'antd';
-import TopMenu from "./components/TopMenu";
+import HeaderMenu from "./components/HeaderMenu";
 import AppRouter from "./components/AppRouter";
-import LeftMenu from "./components/LeftMenu";
+import SiderMenu from "./components/SiderMenu";
 import {checkAuth} from "./http/network";
 import {useDispatch} from "react-redux";
 
@@ -22,9 +21,9 @@ function App() {
 
     return (
         <Layout>
-            <TopMenu/>
+            <HeaderMenu/>
             <Layout>
-                <LeftMenu/>
+                <SiderMenu/>
                 <Content className="contentH100">
                     <AppRouter/>
                 </Content>

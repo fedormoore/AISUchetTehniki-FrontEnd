@@ -7,7 +7,7 @@ export const RegistryActionCreators = {
     setSaveRegistry: (payload) => ({type: TypeRegistry.SAVE_REGISTRY, payload}),
     loadRegistry: () => (dispatch: AppDispatch) => {
         dispatch(RegistryActionCreators.setIsLoading(true));
-        dispatch(Request({
+        return dispatch(Request({
             url: "/app/registry",
             method: "GET",
         }))

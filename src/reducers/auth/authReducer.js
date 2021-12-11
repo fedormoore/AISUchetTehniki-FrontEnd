@@ -1,7 +1,9 @@
 import {TypeAuth} from "./types";
 
+const isAuth = JSON.parse(localStorage.getItem("isAuth"));
+
 const initialState = {
-    isAuth: false,
+    isAuth: isAuth ? (isAuth):(null),
     error: '',
     info: '',
     user: {userName: ''},
