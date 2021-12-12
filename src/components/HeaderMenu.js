@@ -1,8 +1,8 @@
 import React from 'react';
-import {useHistory, Link} from 'react-router-dom';
-import {Layout, Menu, Button, Switch, Image, Row, Col, Typography} from "antd";
+import {useHistory} from 'react-router-dom';
+import {Button, Col, Image, Layout, Menu, Row, Typography} from "antd";
 
-import Icon, {MenuOutlined, PlusOutlined, SettingOutlined} from '@ant-design/icons';
+import {MenuOutlined} from '@ant-design/icons';
 import {routeNames} from "../routes";
 import {useSelector} from "react-redux";
 import {useActions} from "../hooks/useActions";
@@ -55,7 +55,7 @@ const HeaderMenu = () => {
                                                       marginBottom: '0'
                                                   }}
                                 >
-                                    <a>АИС "Учет техники"</a>
+                                    АИС "Учет техники"
                                 </Typography.Title>
                             </Row>
                         </Col>

@@ -1,17 +1,34 @@
-import Login from "../pages/auth/Login";
-import Registration from "../pages/auth/Registration";
-import Home from "../pages/Home";
-import Main from "../pages/Main";
-import User from "../pages/spr/User";
-import DeviceType from "../pages/spr/DeviceType";
-import Location from "../pages/spr/Location";
-import Device from "../pages/spr/Device";
-import Counterparty from "../pages/spr/Counterparty";
-import UserReport from "../pages/report/UserReport";
-import Income from "../pages/doc/Income";
-import Registry from "../pages/registry/Registry";
-import LocationRegistryReport from "../pages/report/LocationRegistryReport";
-import BudgetAccount from "../pages/spr/BudgetAccount";
+// import Login from "../pages/auth/Login";
+// import Registration from "../pages/auth/Registration";
+// import Home from "../pages/Home";
+// import Main from "../pages/Main";
+// import User from "../pages/spr/User";
+// import DeviceType from "../pages/spr/DeviceType";
+// import Location from "../pages/spr/Location";
+// import Device from "../pages/spr/Device";
+// import Counterparty from "../pages/spr/Counterparty";
+// import UserReport from "../pages/report/UserReport";
+// import Income from "../pages/doc/Income";
+// import Registry from "../pages/registry/Registry";
+// import LocationRegistryReport from "../pages/report/LocationRegistryReport";
+// import BudgetAccount from "../pages/spr/BudgetAccount";
+import React from "react";
+
+const Login = React.lazy(() => import("../pages/auth/Login"));
+const Registration = React.lazy(() => import("../pages/auth/Registration"));
+const Home = React.lazy(() => import("../pages/Home"));
+
+const Main = React.lazy(() => import("../pages/Main"));
+const User = React.lazy(() => import("../pages/spr/User"));
+const Location = React.lazy(() => import("../pages/spr/Location"));
+const DeviceType = React.lazy(() => import("../pages/spr/DeviceType"));
+const Device = React.lazy(() => import("../pages/spr/Device"));
+const Counterparty = React.lazy(() => import("../pages/spr/Counterparty"));
+const BudgetAccount = React.lazy(() => import("../pages/spr/BudgetAccount"));
+const Income = React.lazy(() => import("../pages/doc/Income"));
+const Registry = React.lazy(() => import("../pages/registry/Registry"));
+const UserReport = React.lazy(() => import("../pages/report/UserReport"));
+const LocationRegistryReport = React.lazy(() => import("../pages/report/LocationRegistryReport"));
 
 export const routeNames = {
     HOME : '/home',

@@ -18,6 +18,12 @@ export const RegistryActionCreators = {
                         isOk: true,
                         data:response.data
                     };
+                }else{
+                    console.log('11111111111')
+                    return {
+                        isOk: false,
+                        data:[]
+                    };
                 }
             })
             .finally(() => {

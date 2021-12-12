@@ -33,7 +33,7 @@ export function Request(options) {
                 data: json
             };
         } catch (e) {
-            if (e.status === 401) {
+            if (e.status === 401 || e.status === 403) {
                 return dispatch(checkAuth(options))
                     .then(response => {
                         return {
@@ -60,6 +60,12 @@ export function checkAuth (options) {
                 headers: {"Content-Type": "application/json"}
             });
             let json = await response.json();
+            console.log(json)
+            if (!response.ok) {
+                console.log('55555555555555')
+                throw (json);
+            }
+
             localStorage.setItem("accessToken", json.accessToken);
 
             dispatch(AuthActionCreators.setIsAuth(true))
@@ -73,7 +79,19 @@ export function checkAuth (options) {
                 return await response.json();
             }
         } catch (e) {
-            console.log(e)
+            console.log('55555555555555')
+            if (e.status === 401 || e.status === 403) {
+                console.log('55555555555555')
+                localStorage.removeItem('isAuth')
+                localStorage.removeItem('accessToken')
+                localStorage.removeItem('refreshToken')
+                dispatch(AuthActionCreators.setUser({}));
+                dispatch(AuthActionCreators.setIsAuth(false))
+                return {
+                    isOk: false,
+                    data: {}
+                };
+            }
         }
     }
 }

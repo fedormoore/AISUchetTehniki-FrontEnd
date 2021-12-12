@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Layout, Table, Button, Space, Tooltip, Modal, Empty, Spin} from 'antd';
+import {Layout, Table, Button, Space, Tooltip, Modal, Empty, Spin, Row, Col} from 'antd';
 import {PlusOutlined, SisternodeOutlined, EditOutlined, DeleteOutlined, SyncOutlined} from '@ant-design/icons';
 import {useActions} from "../../hooks/useActions";
 import {useSelector} from "react-redux";
@@ -26,11 +26,13 @@ const Location = () => {
     const {locationList, isLoading} = useSelector(state => state.location)
     const {loadLocation} = useActions()
     const [modalVisible, setModalVisible] = useState(false);
-    const [selectedRowKeys, setSelectedRowKey] = useState([]);
+    const [selectedRowKeys, setSelectedRowKey] = useState(null);
     const [disableAddTree, setDisableAddTree] = useState(false)
 
     useEffect(() => {
-        loadLocation();
+        if (locationList.length===0) {
+            loadLocation()
+        }
         // eslint-disable-next-line
     }, []);
 
@@ -80,10 +82,9 @@ const Location = () => {
         setSelectedRowKey([]);
     }
 
-    const selectRow = (record) => {
+    const selectRow = (record, index) => {
         selectRowData = record;
-        const selectedRowKey = [record.id];
-        setSelectedRowKey(selectedRowKey);
+        setSelectedRowKey(record.id);
 
         if (selectRowData.type === 'cabinet') {
             setDisableAddTree(true);
@@ -92,78 +93,81 @@ const Location = () => {
         }
     }
 
-    const rowSelection = {
-        selectedRowKeys,
-        columnWidth: '1px',
-        renderCell: () => "",
-        hideSelectAll: true
-    };
-
     return (
-        <Layout id="main">
-            <Spin tip="Получение данных..." spinning={isLoading}>
-                <Space>
-                    <Tooltip title="Добавить">
-                        <Button type="primary" icon={<PlusOutlined/>}
-                                onClick={() => addRecord()}/>
-                    </Tooltip>
-                    <Tooltip title="Добавить в состав">
-                        <Button type="primary" icon={<SisternodeOutlined/>}
-                                disabled={!selectedRowKeys.length || disableAddTree}
-                                onClick={() => addTreeRecord()}/>
-                    </Tooltip>
-                    <Tooltip title="Редактировать">
-                        <Button type="primary" icon={<EditOutlined/>} disabled={!selectedRowKeys.length}
-                                onClick={() => editRecord()}/>
-                    </Tooltip>
-                    <Tooltip title="Удалить">
-                        <Button type="primary" icon={<DeleteOutlined/>} disabled={!selectedRowKeys.length}/>
-                    </Tooltip>
-                    <Tooltip title="Обновить">
-                        <Button type="primary" icon={<SyncOutlined/>}
-                                onClick={() => refresh()}
-                        />
-                    </Tooltip>
-                </Space>
-                {isLoading ?
-                    <Table key="loading-not-done"
-                           size="small"
-                           locale={{
-                               emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>
-                           }}
-                    />
-                    :
-                    <Table key="loading-done"
-                           size="small"
-                           locale={{
-                               emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>
-                           }}
-                           columns={columns} dataSource={locationList} rowKey="id" bordered
-                           childrenColumnName={"children"}
-                           rowSelection={rowSelection}
-                           onRow={(record) => ({
-                               onClick: () => {
-                                   selectRow(record);
-                               },
-                           })}
-                           defaultExpandAllRows={true}
-                           scroll={{y: '100vh'}}
-                           pagination={false}
-                           style={{height: '95%'}}
-                    />
-                }
-                <Modal
-                    title={titleModal}
-                    visible={modalVisible}
-                    footer={null}
-                    closable={false}
-                    destroyOnClose={true}
-                >
-                    <LocationModal closeModal={closeModal} values={selectRowData}/>
-                </Modal>
-
-            </Spin>
-        </Layout>
+        <Spin tip="Получение данных..." spinning={isLoading}>
+            <div className='panelButtonTable'>
+                <Row>
+                    <Col span={12}>
+                        <Space>
+                            <Tooltip title="Добавить">
+                                <Button type="dashed" ghost icon={<PlusOutlined/>}
+                                        onClick={() => addRecord()}/>
+                            </Tooltip>
+                            <Tooltip title="Добавить в состав">
+                                <Button type="dashed" ghost icon={<SisternodeOutlined/>}
+                                        disabled={selectedRowKeys === null || disableAddTree}
+                                        onClick={() => addTreeRecord()}/>
+                            </Tooltip>
+                            <Tooltip title="Редактировать">
+                                <Button type="dashed" ghost icon={<EditOutlined/>} disabled={selectedRowKeys === null}
+                                        onClick={() => editRecord()}/>
+                            </Tooltip>
+                            <Tooltip title="Удалить">
+                                <Button type="dashed" ghost icon={<DeleteOutlined/>}
+                                        disabled={selectedRowKeys === null}/>
+                            </Tooltip>
+                            <Tooltip title="Обновить">
+                                <Button type="dashed" ghost icon={<SyncOutlined/>}
+                                        onClick={() => refresh()}
+                                />
+                            </Tooltip>
+                        </Space>
+                    </Col>
+                    <Col span={12}>
+                        {/*{pagin()}*/}
+                    </Col>
+                </Row>
+            </div>
+            {isLoading ?
+                <Table key="loading-not-done"
+                       size="small"
+                       locale={{
+                           emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>
+                       }}
+                />
+                :
+                <Table key="loading-done"
+                       size="small"
+                       locale={{
+                           emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>
+                       }}
+                       rowClassName={(record, index) => record.id === selectedRowKeys ? 'row-select' : index % 2 ? 'row0' : 'row1'}
+                       columns={columns} dataSource={locationList} rowKey="id" bordered
+                       childrenColumnName={"children"}
+                       onRow={(record, index) => ({
+                           onClick: () => {
+                               selectRow(record, index);
+                           },
+                           onDoubleClick: event => {
+                               editRecord()
+                           },
+                       })}
+                       defaultExpandAllRows={true}
+                       scroll={{y: '100vh'}}
+                       pagination={false}
+                       style={{height: '95%'}}
+                />
+            }
+            <Modal
+                title={titleModal}
+                visible={modalVisible}
+                footer={null}
+                closable={false}
+                destroyOnClose={true}
+            >
+                <LocationModal closeModal={closeModal} values={selectRowData}/>
+            </Modal>
+        </Spin>
     );
 };
 

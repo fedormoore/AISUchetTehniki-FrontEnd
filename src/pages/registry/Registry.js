@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {useActions} from "../../hooks/useActions";
-import {Button, Col, Drawer, Empty, Input, Pagination, Row, Space, Spin, Table, Tooltip} from "antd";
+import {Button, Col, Drawer, Empty, Input, Row, Space, Spin, Table, Tooltip} from "antd";
 import {EditOutlined, FilterOutlined, SyncOutlined} from "@ant-design/icons";
 import RegistryDrawer from "./drawer/RegistryDrawer";
 
@@ -61,25 +61,18 @@ const columns = [
 
 let selectRowData = [];
 
-const Registry = () => {
+const Registry = React.memo(() => {
 
     const [height, setHeight] = useState(window.innerHeight - 118);
 
     const {registryList, isLoading} = useSelector(state => state.registry)
     const {loadRegistry} = useActions()
+
     const [drawerVisible, setDrawerVisible] = useState(false);
     const [selectedRowKeys, setSelectedRowKey] = useState(null);
+
     const [isFilter, setIsFilter] = useState(false);
     const [searchText, setSearchText] = useState({});
-    const [pagin, setPagin] = useState({
-        offset: 0,
-        currentPageElements: [],
-        elementsPerPage: 20,
-        pagesCount: 1,
-        allElements: [],
-        totalElementsCount: 0
-    });
-    const [allElements, setAllElements] = useState({});
 
     useEffect(() => {
         let a = () => setHeight(window.innerHeight - 118);
@@ -90,17 +83,9 @@ const Registry = () => {
     }, [height]);
 
     useEffect(() => {
-        (async function () {
-            const result = await loadRegistry();
-            if (result.isOk) {
-                const allElements = result.data;
-                const totalElementsCount = result.data.length;
-                const pagesCount= Math.ceil(totalElementsCount / pagin.elementsPerPage)
-                const currentPageElements = allElements.slice(pagin.offset, pagin.offset + pagin.elementsPerPage);
-                setPagin({...pagin, currentPageElements: currentPageElements})
-            }
-        })();
-        // loadRegistry();
+        if (registryList.length===0) {
+            loadRegistry()
+        }
         // eslint-disable-next-line
     }, []);
 
@@ -171,7 +156,7 @@ const Registry = () => {
         <Spin tip="Получение данных..." spinning={isLoading}>
             <div className='panelButtonTable'>
                 <Row>
-                    <Col span={16}>
+                    <Col span={12}>
                         <Space>
                             <Tooltip title="Редактировать">
                                 <Button type="dashed" ghost icon={<EditOutlined/>}
@@ -193,29 +178,21 @@ const Registry = () => {
                             </Tooltip>
                         </Space>
                     </Col>
-                    <Col span={8}>
-                        <Pagination
-                            style={{
-                                float: 'right',
-                            }}
-                            defaultCurrent={1} defaultPageSize={20} showSizeChanger={false} total={registryList.length}
-                            onChange={(page, pageSize) => {
-                                console.log(page)
-                                setPagin(page);
-                            }}/>
+                    <Col span={12}>
+                        {/*{pagin()}*/}
                     </Col>
                 </Row>
             </div>
             <Table
                 size="small"
+                rowKey="id"
+                bordered
                 locale={{
                     emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}
                                       description="Нет данных"/>
                 }}
                 rowClassName={(record, index) => index === selectedRowKeys ? 'row-select' : index % 2 ? 'row0' : 'row1'}
-                dataSource={registryList.slice(0, 0 + 20)}
-                rowKey="id"
-                bordered
+                dataSource={registryList}
                 onRow={(record, index) => ({
                     onClick: (e) => {
                         selectRow(record, index);
@@ -228,8 +205,7 @@ const Registry = () => {
                     },
                 })}
                 scroll={{x: 'max-content', y: 'max-content'}}
-                // pagination={{defaultCurrent: 2, defaultPageSize: 20, showSizeChanger: false}}
-                pagination={false}
+                pagination={{defaultCurrent: 1, defaultPageSize: 20, showSizeChanger: false}}
                 style={{maxHeight: `${height}px`}}
             >
                 {mergedColumns}
@@ -246,6 +222,6 @@ const Registry = () => {
             </Drawer>
         </Spin>
     );
-};
+});
 
 export default Registry;
