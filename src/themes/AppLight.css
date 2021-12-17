@@ -104,6 +104,11 @@
 }
 /*скролл таблицы - конец*/
 
+/* высота ячейки */
+.ant-table-tbody > tr > td {
+    height: 0px;
+}
+
 /*.ant-collapse-item:hover{*/
 /*    box-shadow: 0 0 4px #2885f6;*/
 /*}*/

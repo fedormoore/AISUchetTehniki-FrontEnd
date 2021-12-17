@@ -46,7 +46,7 @@ const FirmModal = (props) => {
 
     return (
         <Spin tip="Сохранение данных..." spinning={isSavingFirm}>
-            <Form form={form} autoComplete="off">
+            <Form form={form} layout={'vertical'} autoComplete="off">
                 {error &&
                 <Alert message={error} type="error"/>
                 }

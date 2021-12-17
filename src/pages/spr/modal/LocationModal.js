@@ -45,7 +45,7 @@ const LocationModal = (props) => {
 
     return (
         <Spin tip="Сохранение данных..." spinning={isSaving}>
-            <Form form={form} autoComplete="off">
+            <Form form={form} layout={'vertical'} autoComplete="off">
                 {error &&
                 <Alert message={error} type="error"/>
                 }
@@ -64,10 +64,8 @@ const LocationModal = (props) => {
                         ref={input => {
                             nameInput = input;
                         }}
-
                         onChange={e => setValues({...values, name: e.target.value})}
                         value={values.name}
-
                     />
                 </Form.Item>
                 <Row justify="end">

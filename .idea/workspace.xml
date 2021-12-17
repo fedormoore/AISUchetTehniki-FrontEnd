@@ -21,23 +21,40 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/release" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/v3" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f86114d2-27b4-4f74-bfe7-07c7a3004de7" name="Default Changelist" comment="03.12.2021">
+    <list default="true" id="f86114d2-27b4-4f74-bfe7-07c7a3004de7" name="Default Changelist" comment="20.11.2021">
+      <change afterPath="$PROJECT_DIR$/src/components/table/TableComp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/method.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HeaderMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HeaderMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/http/network.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/network.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/doc/Income.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/doc/Income.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/doc/drawer/IncomeDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/doc/drawer/IncomeDrawer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/registry/Registry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/registry/Registry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/registry/drawer/RegistryDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/registry/drawer/RegistryDrawer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/spr/BudgetAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/BudgetAccount.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/spr/Counterparty.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/Counterparty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/Device.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/Device.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/spr/DeviceType.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/DeviceType.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/spr/Location.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/Location.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/spr/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/registry/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/registry/action-creators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/BudgetAccountModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/BudgetAccountModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/CounterpartyModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/CounterpartyModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/DeviceTypeModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/DeviceTypeModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/FirmModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/FirmModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/LocationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/LocationModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/ModelModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/ModelModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/spr/modal/UserModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/spr/modal/UserModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/auth/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/auth/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/device/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/device/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/deviceType/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/deviceType/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/location/action-creators.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/location/action-creators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/spr/user/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/spr/user/userReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/themes/AppDark.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/themes/AppDark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/themes/AppLight.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/themes/AppLight.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +64,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -122,6 +139,7 @@
       <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\pages\report" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Федор\Desktop\ais-uchet-tehniki-frontend\src\reducers" />
       <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\themes" />
       <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src" />
       <recent name="C:\Users\moore\Desktop\ais-uchet-tehniki-frontend\src\theme" />
@@ -304,29 +322,29 @@
     </state>
     <state x="620" y="260" key="FileChooserDialogImpl/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1639290659267" />
     <state x="709" y="268" key="FileChooserDialogImpl/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1638784218308" />
-    <state width="1659" height="170" key="GridCell.Tab.0.bottom" timestamp="1639292210813">
-      <screen x="0" y="0" width="1680" height="1010" />
+    <state width="1877" height="161" key="GridCell.Tab.0.bottom" timestamp="1639394475771">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1659" height="170" key="GridCell.Tab.0.bottom/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1639292210813" />
-    <state width="1877" height="292" key="GridCell.Tab.0.bottom/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1638784958486" />
+    <state width="1877" height="161" key="GridCell.Tab.0.bottom/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1639394475771" />
     <state width="1637" height="157" key="GridCell.Tab.0.bottom/1920.30.1680.1010/0.0.1920.1040@1920.30.1680.1010" timestamp="1638770196915" />
-    <state width="1659" height="170" key="GridCell.Tab.0.center" timestamp="1639292210813">
-      <screen x="0" y="0" width="1680" height="1010" />
+    <state width="1877" height="161" key="GridCell.Tab.0.center" timestamp="1639394475771">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1659" height="170" key="GridCell.Tab.0.center/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1639292210813" />
-    <state width="1877" height="292" key="GridCell.Tab.0.center/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1638784958486" />
+    <state width="1877" height="161" key="GridCell.Tab.0.center/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1639394475771" />
     <state width="1637" height="157" key="GridCell.Tab.0.center/1920.30.1680.1010/0.0.1920.1040@1920.30.1680.1010" timestamp="1638770196915" />
-    <state width="1659" height="170" key="GridCell.Tab.0.left" timestamp="1639292210812">
-      <screen x="0" y="0" width="1680" height="1010" />
+    <state width="1877" height="161" key="GridCell.Tab.0.left" timestamp="1639394475770">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1659" height="170" key="GridCell.Tab.0.left/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1639292210812" />
-    <state width="1877" height="292" key="GridCell.Tab.0.left/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1638784958485" />
+    <state width="1877" height="161" key="GridCell.Tab.0.left/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1639394475770" />
     <state width="1637" height="157" key="GridCell.Tab.0.left/1920.30.1680.1010/0.0.1920.1040@1920.30.1680.1010" timestamp="1638770196914" />
-    <state width="1659" height="170" key="GridCell.Tab.0.right" timestamp="1639292210813">
-      <screen x="0" y="0" width="1680" height="1010" />
+    <state width="1877" height="161" key="GridCell.Tab.0.right" timestamp="1639394475771">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1659" height="170" key="GridCell.Tab.0.right/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1639292210813" />
-    <state width="1877" height="292" key="GridCell.Tab.0.right/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1638784958486" />
+    <state width="1877" height="161" key="GridCell.Tab.0.right/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1639394475771" />
     <state width="1637" height="157" key="GridCell.Tab.0.right/1920.30.1680.1010/0.0.1920.1040@1920.30.1680.1010" timestamp="1638770196915" />
     <state x="341" y="150" key="SettingsEditor" timestamp="1636089287428">
       <screen x="0" y="0" width="1680" height="1010" />
@@ -347,31 +365,31 @@
     </state>
     <state x="1680" y="0" width="1308" height="799" maximized="true" key="dock-window-1/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1639290961585" />
     <state x="1920" y="30" width="1560" height="855" key="dock-window-1/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1638788945172" />
-    <state x="1823" y="0" width="1328" height="786" maximized="true" key="dock-window-2" timestamp="1637995293452">
-      <screen x="1680" y="0" width="1600" height="860" />
+    <state x="1920" y="54" width="1560" height="838" maximized="true" key="dock-window-2" timestamp="1639396595894">
+      <screen x="1920" y="30" width="1680" height="1010" />
     </state>
     <state x="1823" y="0" width="1328" height="786" maximized="true" key="dock-window-2/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1637995293452" />
-    <state x="1920" y="134" width="1437" height="779" maximized="true" key="dock-window-2/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1636545197403" />
-    <state x="1680" y="0" width="1328" height="786" maximized="true" key="dock-window-3" timestamp="1637997765792">
-      <screen x="1680" y="0" width="1600" height="860" />
+    <state x="1920" y="54" width="1560" height="838" maximized="true" key="dock-window-2/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1639396595894" />
+    <state x="1920" y="138" width="1560" height="838" maximized="true" key="dock-window-3" timestamp="1639396916300">
+      <screen x="1920" y="30" width="1680" height="1010" />
     </state>
     <state x="1680" y="0" width="1328" height="786" maximized="true" key="dock-window-3/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1637997765792" />
-    <state x="1920" y="51" width="1437" height="779" maximized="true" key="dock-window-3/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1636545941236" />
-    <state x="1680" y="0" width="1328" height="947" maximized="true" key="dock-window-4" timestamp="1637999657995">
-      <screen x="1680" y="0" width="1600" height="860" />
+    <state x="1920" y="138" width="1560" height="838" maximized="true" key="dock-window-3/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1639396916300" />
+    <state x="1912" y="22" width="1560" height="838" maximized="true" key="dock-window-4" timestamp="1639453927461">
+      <screen x="1920" y="30" width="1680" height="1010" />
     </state>
     <state x="1680" y="0" width="1328" height="947" maximized="true" key="dock-window-4/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1637999657995" />
-    <state x="1920" y="52" width="1437" height="779" maximized="true" key="dock-window-4/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1636552060093" />
-    <state x="1680" y="0" width="1328" height="947" maximized="true" key="dock-window-5" timestamp="1637999657995">
-      <screen x="1680" y="0" width="1600" height="860" />
+    <state x="1912" y="22" width="1560" height="838" maximized="true" key="dock-window-4/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1639453927461" />
+    <state x="1920" y="31" width="1560" height="838" maximized="true" key="dock-window-5" timestamp="1639464666198">
+      <screen x="1920" y="30" width="1680" height="1010" />
     </state>
     <state x="1680" y="0" width="1328" height="947" maximized="true" key="dock-window-5/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1637999657995" />
-    <state x="1920" y="76" width="1437" height="779" maximized="true" key="dock-window-5/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1636605363869" />
-    <state x="1698" y="161" width="1328" height="786" maximized="true" key="dock-window-6" timestamp="1638036564872">
-      <screen x="1680" y="0" width="1600" height="860" />
+    <state x="1920" y="31" width="1560" height="838" maximized="true" key="dock-window-5/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1639464666198" />
+    <state x="1920" y="120" width="1560" height="838" maximized="true" key="dock-window-6" timestamp="1639485348734">
+      <screen x="1920" y="30" width="1680" height="1010" />
     </state>
     <state x="1698" y="161" width="1328" height="786" maximized="true" key="dock-window-6/1680.0.1600.860/0.0.1680.1010@0.0.1680.1010" timestamp="1638036564872" />
-    <state x="1920" y="30" width="1437" height="1027" maximized="true" key="dock-window-6/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1636695914107" />
+    <state x="1920" y="120" width="1560" height="838" maximized="true" key="dock-window-6/1920.30.1680.1010/0.0.1920.1040@0.0.1920.1040" timestamp="1639485348734" />
     <state x="1680" y="0" width="1328" height="786" maximized="true" key="dock-window-7" timestamp="1638041434138">
       <screen x="1680" y="0" width="1600" height="860" />
     </state>

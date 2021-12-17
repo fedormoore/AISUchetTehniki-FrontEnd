@@ -46,7 +46,7 @@ const BudgetAccountModal = (props) => {
 
     return (
         <Spin tip="Сохранение данных..." spinning={isSaving}>
-            <Form form={form} autoComplete="off">
+            <Form form={form} layout={'vertical'} autoComplete="off">
                 {error &&
                 <Alert message={error} type="error"/>
                 }

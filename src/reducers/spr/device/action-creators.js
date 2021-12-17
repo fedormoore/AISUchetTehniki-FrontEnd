@@ -30,7 +30,7 @@ export const DeviceActionCreators = {
         }))
             .then((response) => {
                 if (response.isOk) {
-                    dispatch(DeviceActionCreators.setSaveRegistry(response.data));
+                    dispatch(DeviceActionCreators.setSaveFirm(response.data));
                     return {
                         isOk: true
                     };
@@ -89,7 +89,7 @@ export const DeviceActionCreators = {
         }))
             .then((response) => {
                 if (response.isOk) {
-                    dispatch(DeviceActionCreators.setSaveRegistry(response.data));
+                    dispatch(DeviceActionCreators.setSaveModel(response.data));
                     return {
                         isOk: true
                     };

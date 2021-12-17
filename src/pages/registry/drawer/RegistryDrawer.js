@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Col, Form, Input, Row, Select, Space, TreeSelect} from "antd";
+import {Button, Col, Form, Input, Row, Select, Space, Spin, TreeSelect} from "antd";
 import {useSelector} from "react-redux";
 import {useActions} from "../../../hooks/useActions";
 
 const RegistryDrawer = (props) => {
+
+    const {isSaving} = useSelector(state => state.registry)
 
         const [values, setValues] = useState(props.values);
 
@@ -34,7 +36,7 @@ const RegistryDrawer = (props) => {
         }
 
         return (
-            <div>
+            <Spin tip="Сохранение данных..." spinning={isSaving}>
                 <Form layout="vertical">
                     <Row gutter={16}>
                         <Col span={24}>
@@ -56,10 +58,11 @@ const RegistryDrawer = (props) => {
                                 label="Расположение"
                             >
                                 <TreeSelect
+                                    allowClear
                                     showSearch
                                     value={!values.location ? null : values.location.name}
                                     treeDefaultExpandAll
-                                    onSelect={(value, node) => setValues({...values, location: node.obj})}
+                                    onChange={(value, node) => setValues({...values, location: node.obj})}
                                     treeData={locationList}
                                 >
                                 </TreeSelect>
@@ -128,7 +131,7 @@ const RegistryDrawer = (props) => {
                         <Button onClick={() => props.closeDrawer()}>Cancel</Button>
                     </Space>
                 </Form>
-            </div>
+            </Spin>
         );
     }
 ;

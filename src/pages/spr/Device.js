@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Layout, Table, Button, Space, Tooltip, Modal, Empty, Spin} from 'antd';
-import {PlusOutlined, EditOutlined, DeleteOutlined, SyncOutlined} from '@ant-design/icons';
+import {Layout, Modal, notification, Spin} from 'antd';
 import {useActions} from "../../hooks/useActions";
 import {useSelector} from "react-redux";
 import FirmModal from "./modal/FirmModal";
+import TableComp from "../../components/table/TableComp";
 import ModelModal from "./modal/ModelModal";
 
 const columnsFirm = [
@@ -38,12 +38,10 @@ let selectModelRowData = {};
 const Device = () => {
 
     const {firmList, isLoadingFirm, modelList, isLoadingModel} = useSelector(state => state.device)
-    const {loadFirm, loadModel} = useActions()
+    const {loadFirm, loadModel, saveFirm, saveModel} = useActions()
+
     const [modalFirmVisible, setModalFirmVisible] = useState(false);
     const [modalModelVisible, setModalModelVisible] = useState(false);
-    const [selectedFirmRowKeys, setSelectedFirmRowKey] = useState([]);
-    const [selectedModelRowKeys, setSelectedModelRowKey] = useState([]);
-    const [disableButtonEditDelete, setDisableButtonEditDelete] = useState(false);
 
     useEffect(() => {
         loadFirm();
@@ -52,162 +50,130 @@ const Device = () => {
 
     const addFirmRecord = () => {
         selectFirmRowData = {};
-        setSelectedFirmRowKey([]);
         setModalFirmVisible(true);
+    }
+
+    const selectFirmRecord = (values) => {
+        selectFirmRowData = values;
+        selectModelRowData = {};
+        loadModel(values.id);
     }
 
     const editFirmRecord = () => {
         setModalFirmVisible(true);
     }
 
+    const deletedFirmRecord = () => {
+        Modal.confirm({
+            title: 'Вы точно хотите удалить запись?',
+            cancelText: 'Нет',
+            okText: 'Да',
+            okType: 'danger',
+            onOk: () => {
+                (async function () {
+                    selectFirmRowData = {...selectFirmRowData, deleted: true}
+                    const result = await saveFirm(selectFirmRowData);
+                    if (!result.isOk) {
+                        notification['error']({
+                            message: 'Ошибка',
+                            description: result.message,
+                            className: 'custom-class',
+                            style: {
+                                width: 300,
+                            },
+                        });
+                    }
+                })();
+            }
+        })
+    }
+
     const refreshFirm = () => {
         loadFirm();
         selectFirmRowData = {};
-        setSelectedFirmRowKey([]);
     }
 
     const closeFirmModal = () => {
         setModalFirmVisible(false);
     }
 
-    const selectFirmRow = (record) => {
-        selectFirmRowData = record;
-        const selectedRowKey = [record.id];
-        setSelectedFirmRowKey(selectedRowKey);
-        if (record.level === 'Global') {
-            setDisableButtonEditDelete(true);
-        } else {
-            setDisableButtonEditDelete(false);
-        }
-        loadModel(record.id);
-    }
-
-    const rowFirmSelection = {
-        selectedRowKeys: selectedFirmRowKeys,
-        columnWidth: 0,
-        renderCell: () => "",
-        hideSelectAll: true
-    };
-
     const addModelRecord = () => {
         selectModelRowData = {};
-        setSelectedModelRowKey([]);
         setModalModelVisible(true);
+    }
+
+    const selectModelRecord = (values) => {
+        selectModelRowData = values;
     }
 
     const editModelRecord = () => {
         setModalModelVisible(true);
     }
 
+    const deletedModelRecord = () => {
+        Modal.confirm({
+            title: 'Вы точно хотите удалить запись?',
+            cancelText: 'Нет',
+            okText: 'Да',
+            okType: 'danger',
+            onOk: () => {
+                (async function () {
+                    selectModelRowData = {...selectModelRowData, deleted: true}
+                    const result = await saveModel(selectModelRowData);
+                    if (!result.isOk) {
+                        notification['error']({
+                            message: 'Ошибка',
+                            description: result.message,
+                            className: 'custom-class',
+                            style: {
+                                width: 300,
+                            },
+                        });
+                    }
+                })();
+            }
+        })
+    }
+
+    const refreshModel = () => {
+        loadModel(selectFirmRowData.id);
+        selectModelRowData = {};
+    }
+
     const closeModelModal = () => {
         setModalModelVisible(false);
     }
 
-    const selectModelRow = (record) => {
-        selectModelRowData = record;
-        const selectedRowKey = [record.id];
-        setSelectedModelRowKey(selectedRowKey);
-    }
-
-    const rowModelSelection = {
-        selectedRowKeys: selectedModelRowKeys,
-        columnWidth: 0,
-        renderCell: () => "",
-        hideSelectAll: true
-    };
-
     return (
         <Layout>
-            <Layout className="main">
-                <Spin tip="Получение данных..." spinning={isLoadingFirm}>
-                    <Space>
-                        <Tooltip title="Добавить">
-                            <Button type="primary" icon={<PlusOutlined/>} onClick={() => addFirmRecord()}/>
-                        </Tooltip>
-                        <Tooltip title="Редактировать">
-                            <Button type="primary" icon={<EditOutlined/>}
-                                    disabled={!selectedFirmRowKeys.length || disableButtonEditDelete}
-                                    onClick={() => editFirmRecord()}/>
-                        </Tooltip>
-                        <Tooltip title="Удалить">
-                            <Button type="primary" icon={<DeleteOutlined/>}
-                                    disabled={!selectedFirmRowKeys.length || disableButtonEditDelete}/>
-                        </Tooltip>
-                        <Tooltip title="Обновить">
-                            <Button type="primary" icon={<SyncOutlined/>}
-                                    onClick={() => refreshFirm()}
-                            />
-                        </Tooltip>
-                    </Space>
-                    <Table size="small"
-                           columns={columnsFirm} dataSource={firmList} rowKey="id"
-                           locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
-                           rowSelection={rowFirmSelection}
-                           onRow={(record) => ({
-                               onClick: () => {
-                                   selectFirmRow(record);
-                               },
-                           })}
-                           scroll={{x: '100vh', y: '100vh'}}
-                           pagination={false}
-                           style={{height: '93%', width: '100%'}}
-                    />
-                    <Modal
-                        title="Добавить запись"
-                        visible={modalFirmVisible}
-                        footer={null}
-                        closable={false}
-                        destroyOnClose={true}
-                    >
-                        <FirmModal closeModal={closeFirmModal} values={selectFirmRowData}/>
-                    </Modal>
-                </Spin>
-            </Layout>
+            <Spin tip="Получение данных..." spinning={isLoadingFirm}>
+                <TableComp columns={columnsFirm} dataSource={firmList.filter(sub => sub.deleted !== true)} addRecord={addFirmRecord}
+                           selectRecord={selectFirmRecord} editRecord={editFirmRecord} deletedRecord={deletedFirmRecord} refreshRecords={refreshFirm} height={2}/>
+                <Modal
+                    title="Добавить запись"
+                    visible={modalFirmVisible}
+                    footer={null}
+                    closable={false}
+                    destroyOnClose={true}
+                >
+                    <FirmModal closeModal={closeFirmModal} values={selectFirmRowData}/>
+                </Modal>
+            </Spin>
 
-            <Layout className="main">
-                <Spin tip="Получение данных..." spinning={isLoadingModel}>
-                    <Space>
-                        <Tooltip title="Добавить">
-                            <Button type="primary" icon={<PlusOutlined/>} disabled={!selectedFirmRowKeys.length}
-                                    onClick={() => addModelRecord()}
-                            />
-                        </Tooltip>
-                        <Tooltip title="Редактировать">
-                            <Button type="primary" icon={<EditOutlined/>} disabled={!selectedModelRowKeys.length}
-                                    onClick={() => editModelRecord()}/>
-                        </Tooltip>
-                        <Tooltip title="Удалить">
-                            <Button type="primary" icon={<DeleteOutlined/>} disabled={!selectedModelRowKeys.length}/>
-                        </Tooltip>
-                        <Tooltip title="Обновить">
-                            <Button type="primary" icon={<SyncOutlined/>} disabled={!selectedFirmRowKeys.length}/>
-                        </Tooltip>
-                    </Space>
-                    <Table size="small"
-                           columns={columnsModel} dataSource={modelList} rowKey="id"
-                           locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
-                           rowSelection={rowModelSelection}
-                           onRow={(record) => ({
-                               onClick: () => {
-                                   selectModelRow(record);
-                               },
-                           })}
-                           scroll={{x: '100vh', y: '100vh'}}
-                           pagination={false}
-                           style={{height: '93%', width: '100%'}}
-                    />
-                    <Modal
-                        title="Добавить запись"
-                        visible={modalModelVisible}
-                        footer={null}
-                        closable={false}
-                        destroyOnClose={true}
-                    >
-                        <ModelModal closeModal={closeModelModal} parentRec={selectFirmRowData}
-                                    values={selectModelRowData}/>
-                    </Modal>
-                </Spin>
-            </Layout>
+            <Spin tip="Получение данных..." spinning={isLoadingModel}>
+                <TableComp columns={columnsModel} dataSource={modelList.filter(sub => sub.deleted !== true)} addRecord={addModelRecord}
+                           selectRecord={selectModelRecord} editRecord={editModelRecord} deletedRecord={deletedModelRecord} refreshRecords={refreshModel} height={2}/>
+                <Modal
+                    title="Добавить запись"
+                    visible={modalModelVisible}
+                    footer={null}
+                    closable={false}
+                    destroyOnClose={true}
+                >
+                    <ModelModal closeModal={closeModelModal} parentRec={selectFirmRowData}
+                                values={selectModelRowData}/>
+                </Modal>
+            </Spin>
         </Layout>
     );
 };

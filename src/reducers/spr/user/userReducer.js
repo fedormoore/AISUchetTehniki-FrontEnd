@@ -12,7 +12,7 @@ export const userReducer = (state = initialState, action) => {
             if (state.userList.some(el => el.id === action.payload.id)) {
                 return {
                     ...state, userList:
-                        state.userList.map((content) => {
+                        state.userList.map((content, index) => {
                             if (content.id === action.payload.id) {
                                 return action.payload
                             }

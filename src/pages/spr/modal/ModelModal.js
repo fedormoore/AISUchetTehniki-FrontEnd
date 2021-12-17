@@ -12,7 +12,7 @@ const ModelModal = (props) => {
     const [values, setValues] = useState(props.values);
     const {parentRec} = props;
     const {isSavingModel} = useSelector(state => state.device)
-    const {deviceTypeList} = useSelector(state => state.deviceType)
+    const {deviceTypeList, isLoading} = useSelector(state => state.deviceType)
     const {saveModel, loadDeviceType} = useActions();
     const [error, setError] = useState();
 
@@ -54,7 +54,7 @@ const ModelModal = (props) => {
 
     return (
         <Spin tip="Сохранение данных..." spinning={isSavingModel}>
-            <Form form={form} autoComplete="off">
+            <Form form={form} layout={'vertical'} autoComplete="off">
                 {error &&
                 <Alert message={error} type="error"/>
                 }
@@ -77,6 +77,7 @@ const ModelModal = (props) => {
                         ref={select => {
                             typeDeviceSelect = select;
                         }}
+                        loading={isLoading}
                     >
                         {deviceTypeList.map((line) => {
                             return (

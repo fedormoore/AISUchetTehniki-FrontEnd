@@ -11,21 +11,13 @@ const UserModal = (props) => {
 
     const [values, setValues] = useState(props.values);
     const {isSaving} = useSelector(state => state.user)
-    // const {locationList} = useSelector(state => state.location)
-    const {saveUser, loadLocation} = useActions();
+    const {locationList} = useSelector(state => state.location)
+    const {saveUser, loadLocationTree} = useActions();
     const [error, setError] = useState();
-    const [locationListTree, setLocationListTree] = useState();
 
     useEffect(() => {
         locationInput.focus();
-        (async function () {
-            const result = await loadLocation();
-            if (result.isOk) {
-                renderTreeNode(result.data);
-            } else {
-                setError(result.message);
-            }
-        })();
+        loadLocationTree();
         // eslint-disable-next-line
     }, [])
 
@@ -54,31 +46,9 @@ const UserModal = (props) => {
         props.closeModal();
     }
 
-    const renderTreeNode = (locationList) => {
-        let treeNode = [];
-        locationList.forEach((parent, index) => {
-            treeNode.push({title:parent.name, value:parent.name, obj:parent, children:renderChild(parent)})
-        })
-        setLocationListTree(treeNode)
-    }
-
-    const renderChild = (parent) => {
-        let child = [];
-        if (parent.children) {
-            parent.children.forEach((item, index) => {
-                child.push({title:item.name, value:item.name,  obj:item, children:renderChild(item)});
-            })
-        }
-        return child;
-    }
-
-    function onSelect(value, node) {
-        setValues({...values, location:node.obj})
-    }
-
     return (
         <Spin tip="Сохранение данных..." spinning={isSaving}>
-            <Form form={form} autoComplete="off">
+            <Form form={form} layout={'vertical'} autoComplete="off">
                 {error &&
                 <Alert message={error} type="error"/>
                 }
@@ -88,8 +58,8 @@ const UserModal = (props) => {
                         value={!values.location ? null : values.location.name}
                         dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
                         treeDefaultExpandAll
-                        onSelect={onSelect}
-                        treeData={locationListTree}
+                        onSelect={(value, node) => setValues({...values, location: node.obj})}
+                        treeData={locationList}
                         ref={treeSelect => {
                             locationInput = treeSelect;
                         }}

@@ -31,7 +31,7 @@ export const DeviceTypeActionCreators = {
             .then((response) => {
                 if (response.isOk) {
                     if (response.isOk) {
-                        dispatch(DeviceTypeActionCreators.setSaveRegistry(response.data));
+                        dispatch(DeviceTypeActionCreators.setSaveDeviceType(response.data));
                         return {
                             isOk: true
                         };

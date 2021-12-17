@@ -12,11 +12,11 @@ export const AuthActionCreators = {
         dispatch(AuthActionCreators.setError(''));
         dispatch(AuthActionCreators.setIsLoading(true));
 
-        dispatch(Request({
+        Request({
             url: "/auth/signIn",
             method: "POST",
             body: JSON.stringify(body),
-        }))
+        })
             .then((response) => {
                 if (response.isOk) {
                     localStorage.setItem("isAuth", true);

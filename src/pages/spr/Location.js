@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {Layout, Table, Button, Space, Tooltip, Modal, Empty, Spin, Row, Col} from 'antd';
-import {PlusOutlined, SisternodeOutlined, EditOutlined, DeleteOutlined, SyncOutlined} from '@ant-design/icons';
+import {Button, Col, Empty, Modal, Row, Space, Spin, Table, Tooltip, notification} from 'antd';
+import {DeleteOutlined, EditOutlined, PlusOutlined, SisternodeOutlined, SyncOutlined} from '@ant-design/icons';
 import {useActions} from "../../hooks/useActions";
 import {useSelector} from "react-redux";
 import LocationModal from "./modal/LocationModal";
@@ -24,13 +24,13 @@ let titleModal = 'Добавить страну';
 const Location = () => {
 
     const {locationList, isLoading} = useSelector(state => state.location)
-    const {loadLocation} = useActions()
+    const {loadLocation, deleteLocation} = useActions()
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedRowKeys, setSelectedRowKey] = useState(null);
     const [disableAddTree, setDisableAddTree] = useState(false)
 
     useEffect(() => {
-        if (locationList.length===0) {
+        if (locationList.length === 0) {
             loadLocation()
         }
         // eslint-disable-next-line
@@ -72,6 +72,32 @@ const Location = () => {
         setModalVisible(true);
     }
 
+    const deletedRecord = () => {
+        Modal.confirm({
+            title: 'Вы точно хотите удалить запись?',
+            okText: 'Да',
+            okType: 'danger',
+            cancelText: 'Нет',
+            onOk: () => {
+                (async function () {
+                    const result = await deleteLocation(selectRowData);
+                    if (!result.isOk) {
+                        notification['error']({
+                            message: 'Ошибка',
+                            description: result.message,
+                            className: 'custom-class',
+                            style: {
+                                width: 300,
+                            },
+                        });
+                    }else{
+                        refresh();
+                    }
+                })();
+            }
+        })
+    }
+
     const closeModal = () => {
         setModalVisible(false);
     }
@@ -82,7 +108,7 @@ const Location = () => {
         setSelectedRowKey([]);
     }
 
-    const selectRow = (record, index) => {
+    const selectRow = (record) => {
         selectRowData = record;
         setSelectedRowKey(record.id);
 
@@ -114,7 +140,9 @@ const Location = () => {
                             </Tooltip>
                             <Tooltip title="Удалить">
                                 <Button type="dashed" ghost icon={<DeleteOutlined/>}
-                                        disabled={selectedRowKeys === null}/>
+                                        disabled={selectedRowKeys === null}
+                                        onClick={() => deletedRecord()}
+                                />
                             </Tooltip>
                             <Tooltip title="Обновить">
                                 <Button type="dashed" ghost icon={<SyncOutlined/>}
@@ -146,9 +174,9 @@ const Location = () => {
                        childrenColumnName={"children"}
                        onRow={(record, index) => ({
                            onClick: () => {
-                               selectRow(record, index);
+                               selectRow(record);
                            },
-                           onDoubleClick: event => {
+                           onDoubleClick: () => {
                                editRecord()
                            },
                        })}

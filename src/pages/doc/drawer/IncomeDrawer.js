@@ -13,6 +13,8 @@ const IncomeDrawer = (props) => {
 
         const [formSub] = Form.useForm();
 
+        const {isSaving} = useSelector(state => state.income)
+
         const [editingKey, setEditingKey] = useState('');
         const isEditing = (record) => record.recordIndex === editingKey;
 
@@ -335,190 +337,194 @@ const IncomeDrawer = (props) => {
 
         return (
             <div>
-                <Form form={formMain} layout="vertical">
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <Form.Item
-                                label="Статус документа"
-                                initialValue={values.executed ? 'Ввод завершен' : 'Черновик'}
-                            >
-                                <Select
-                                    value={values.executed ? 'Ввод завершен' : 'Черновик'}
-                                    onChange={value => {
-                                        setValues({
+                <Spin tip="Сохранение данных..." spinning={isSaving}>
+                    <Form form={formMain} layout="vertical">
+                        <Row gutter={16}>
+                            <Col span={12}>
+                                <Form.Item
+                                    label="Статус документа"
+                                    initialValue={values.executed ? 'Ввод завершен' : 'Черновик'}
+                                >
+                                    <Select
+                                        value={values.executed ? 'Ввод завершен' : 'Черновик'}
+                                        onChange={value => {
+                                            setValues({
+                                                ...values,
+                                                executed: value === 'Ввод завершен' ? true : false
+                                            })
+                                        }
+                                        }
+                                    >
+                                        <Select.Option value={'Черновик'} key={'0'}>
+                                            {'Черновик'}
+                                        </Select.Option>
+                                        <Select.Option value={'Ввод завершен'} key={'1'}>
+                                            {'Ввод завершен'}
+                                        </Select.Option>
+                                    </Select>
+                                </Form.Item>
+                            </Col>
+                            <Col span={12}>
+                                <Form.Item
+                                    label="Дата проведения"
+                                    name="dataExecuted"
+                                    initialValue={moment(moment(values.dataExecuted), localDateFormat)}
+                                    // rules={[{required: true, message: 'Пожалуйста укажите дату документа'}]}
+                                >
+                                    <DatePicker
+                                        format={localDateFormat}
+                                        style={{width: '100%'}}
+                                        onChange={(date) => setValues({
                                             ...values,
-                                            executed: value === 'Ввод завершен' ? true : false
-                                        })
-                                    }
-                                    }
+                                            dataExecuted: date
+                                        })}
+                                    />
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                        <Row gutter={16}>
+                            <Col span={12}>
+                                <Form.Item
+                                    label="Номер документа"
+                                    name="numberDoc"
+                                    initialValue={values.numberDoc}
+                                    rules={[{required: true, message: 'Пожалуйста укажите номер документа'}]}
                                 >
-                                    <Select.Option value={'Черновик'} key={'0'}>
-                                        {'Черновик'}
-                                    </Select.Option>
-                                    <Select.Option value={'Ввод завершен'} key={'1'}>
-                                        {'Ввод завершен'}
-                                    </Select.Option>
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                label="Дата проведения"
-                                name="dataExecuted"
-                                initialValue={moment(moment(values.dataExecuted), localDateFormat)}
-                                // rules={[{required: true, message: 'Пожалуйста укажите дату документа'}]}
-                            >
-                                <DatePicker
-                                    format={localDateFormat}
-                                    style={{width: '100%'}}
-                                    onChange={(date) => setValues({
-                                        ...values,
-                                        dataExecuted: date
-                                    })}
-                                />
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <Form.Item
-                                label="Номер документа"
-                                name="numberDoc"
-                                initialValue={values.numberDoc}
-                                rules={[{required: true, message: 'Пожалуйста укажите номер документа'}]}
-                            >
-                                <Input
-                                    onChange={e => setValues({...values, numberDoc: e.target.value})}
-                                />
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item
-                                label="Дата документа"
-                                name="dataDoc"
-                                initialValue={moment(moment(values.dataDoc), localDateFormat)}
-                                rules={[{required: true, message: 'Пожалуйста укажите дату документа'}]}
-                            >
-                                <DatePicker
-                                    format={localDateFormat}
-                                    style={{width: '100%'}}
-                                    onChange={(date) => setValues({
-                                        ...values,
-                                        dataDoc: date
-                                    })}
-                                />
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                    <Row gutter={16}>
-                        <Col span={5}>
-                            <Form.Item
-                                label="Номер контракта"
-                                name="numberCon"
-                                initialValue={values.numberCon}
-                                rules={[{required: true, message: 'Пожалуйста укажите номер контракта'}]}
-                            >
-                                <Input
-                                    onChange={e => setValues({...values, numberCon: e.target.value})}
-                                    value={values.numberCon}
-                                />
-                            </Form.Item>
-                        </Col>
-                        <Col span={5}>
-                            <Form.Item
-                                label="Дата контракта"
-                                name="dataCon"
-                                initialValue={moment(moment(values.dataCon), localDateFormat)}
-                                rules={[{required: true, message: 'Пожалуйста укажите дату контракта'}]}
-                            >
-                                <DatePicker
-                                    format={localDateFormat}
-                                    style={{width: '100%'}}
-                                    onChange={(date) => setValues({
-                                        ...values,
-                                        dataCon: date
-                                    })}
-                                />
-                            </Form.Item>
-                        </Col>
-                        <Col span={5}>
-                            <Form.Item
-                                label="Сумма контракта"
-                                name="sumCon"
-                                initialValue={values.sumCon}
-                                rules={[{required: true, message: 'Пожалуйста укажите сумму контракта'}]}
-                            >
-                                <Input
-                                    onChange={e => setValues({...values, sumCon: e.target.value.replace(',', '.')})}
-                                    value={values.sumCon}
-                                />
-                            </Form.Item>
-                        </Col>
-                        <Col span={9}>
-                            <Form.Item
-                                label="Поставщик"
-                                name="counterparty"
-                                initialValue={!values.counterparty ? null : values.counterparty.name}
-                                rules={[{required: true, message: 'Пожалуйста укажите поставщика'}]}
-                            >
-                                <Select
-                                    showSearch
-                                    value={!values.counterparty ? null : values.counterparty.name}
-                                    onChange={(value, objectValues) => setValues({
-                                        ...values,
-                                        counterparty: objectValues.object
-                                    })}
+                                    <Input
+                                        onChange={e => setValues({...values, numberDoc: e.target.value})}
+                                    />
+                                </Form.Item>
+                            </Col>
+                            <Col span={12}>
+                                <Form.Item
+                                    label="Дата документа"
+                                    name="dataDoc"
+                                    initialValue={moment(moment(values.dataDoc), localDateFormat)}
+                                    rules={[{required: true, message: 'Пожалуйста укажите дату документа'}]}
                                 >
-                                    {counterpartyList.map((line) => {
-                                        return (
-                                            <Select.Option value={line.name} key={line.id} object={line}>
-                                                {line.name}
-                                            </Select.Option>
-                                        );
-                                    })}
-                                </Select>
-                            </Form.Item>
-                        </Col>
-                    </Row>
+                                    <DatePicker
+                                        format={localDateFormat}
+                                        style={{width: '100%'}}
+                                        onChange={(date) => setValues({
+                                            ...values,
+                                            dataDoc: date
+                                        })}
+                                    />
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                        <Row gutter={16}>
+                            <Col span={5}>
+                                <Form.Item
+                                    label="Номер контракта"
+                                    name="numberCon"
+                                    initialValue={values.numberCon}
+                                    rules={[{required: true, message: 'Пожалуйста укажите номер контракта'}]}
+                                >
+                                    <Input
+                                        onChange={e => setValues({...values, numberCon: e.target.value})}
+                                        value={values.numberCon}
+                                    />
+                                </Form.Item>
+                            </Col>
+                            <Col span={5}>
+                                <Form.Item
+                                    label="Дата контракта"
+                                    name="dataCon"
+                                    initialValue={moment(moment(values.dataCon), localDateFormat)}
+                                    rules={[{required: true, message: 'Пожалуйста укажите дату контракта'}]}
+                                >
+                                    <DatePicker
+                                        format={localDateFormat}
+                                        style={{width: '100%'}}
+                                        onChange={(date) => setValues({
+                                            ...values,
+                                            dataCon: date
+                                        })}
+                                    />
+                                </Form.Item>
+                            </Col>
+                            <Col span={5}>
+                                <Form.Item
+                                    label="Сумма контракта"
+                                    name="sumCon"
+                                    initialValue={values.sumCon}
+                                    rules={[{required: true, message: 'Пожалуйста укажите сумму контракта'}]}
+                                >
+                                    <Input
+                                        onChange={e => setValues({...values, sumCon: e.target.value.replace(',', '.')})}
+                                        value={values.sumCon}
+                                    />
+                                </Form.Item>
+                            </Col>
+                            <Col span={9}>
+                                <Form.Item
+                                    label="Поставщик"
+                                    name="counterparty"
+                                    initialValue={!values.counterparty ? null : values.counterparty.name}
+                                    rules={[{required: true, message: 'Пожалуйста укажите поставщика'}]}
+                                >
+                                    <Select
+                                        showSearch
+                                        value={!values.counterparty ? null : values.counterparty.name}
+                                        onChange={(value, objectValues) => setValues({
+                                            ...values,
+                                            counterparty: objectValues.object
+                                        })}
+                                    >
+                                        {counterpartyList.map((line) => {
+                                            return (
+                                                <Select.Option value={line.name} key={line.id} object={line}>
+                                                    {line.name}
+                                                </Select.Option>
+                                            );
+                                        })}
+                                    </Select>
+                                </Form.Item>
+                            </Col>
+                        </Row>
 
-                    <Spin tip="Получение данных..." spinning={isLoading}>
-                        <Button disabled={editingKey !== ''} onClick={() => addSub()}>Добавить</Button>
+                        <Spin tip="Получение данных..." spinning={isLoading}>
+                            <Button disabled={editingKey !== ''} onClick={() => addSub()}>Добавить</Button>
 
-                        {isLoading ?
-                            <Table key="loading-not-done"
-                                   size="small"
-                                   rowKey='recordIndex'
-                                   locale={{
-                                       emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>
-                                   }}
-                            />
-                            :
-                            <Table
-                                key="loading-done"
-                                size="small"
-                                rowKey='recordIndex'
-                                columns={mergedColumns} dataSource={values.docSubs} bordered
-                                locale={{emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>}}
-                                components={{
-                                    body: {
-                                        cell: EditableCell,
-                                    },
-                                }}
-                                rowClassName="editable-row"
-                                defaultExpandAllRows={true}
-                                scroll={{y: '100vh', x: 0}}
-                                pagination={false}
-                                style={{height: '480px'}}
-                            />
-                        }
-                    </Spin>
-                    <Space>
-                        <Button onClick={() => save()} type="primary">
-                            Сохранить
-                        </Button>
-                        <Button onClick={() => props.closeModal()}>Cancel</Button>
-                    </Space>
-                </Form>
+                            {isLoading ?
+                                <Table key="loading-not-done"
+                                       size="small"
+                                       rowKey='recordIndex'
+                                       locale={{
+                                           emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>
+                                       }}
+                                />
+                                :
+                                <Table
+                                    key="loading-done"
+                                    size="small"
+                                    rowKey='recordIndex'
+                                    columns={mergedColumns} dataSource={values.docSubs} bordered
+                                    locale={{
+                                        emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>
+                                    }}
+                                    components={{
+                                        body: {
+                                            cell: EditableCell,
+                                        },
+                                    }}
+                                    rowClassName="editable-row"
+                                    defaultExpandAllRows={true}
+                                    scroll={{y: '100vh', x: 0}}
+                                    pagination={false}
+                                    style={{height: '400px'}}
+                                />
+                            }
+                        </Spin>
+                        <Space>
+                            <Button onClick={() => save()} type="primary">
+                                Сохранить
+                            </Button>
+                            <Button onClick={() => props.closeModal()}>Cancel</Button>
+                        </Space>
+                    </Form>
+                </Spin>
             </div>
         );
     }

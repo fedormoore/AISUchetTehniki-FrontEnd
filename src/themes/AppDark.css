@@ -90,3 +90,8 @@
     background-color: rgb(114, 114, 114);
 }
 /*скролл таблицы - конец*/
+
+/* высота ячейки */
+.ant-table-tbody > tr > td {
+    height: 0px;
+}

@@ -12,9 +12,9 @@ const getToken = () => {
     }
 }
 
-export function Request(options) {
+export async function Request(options) {
 
-    return async (dispatch) => {
+    // return async (dispatch) => {
         try {
             const response = await fetch(SERVER + VER + options.url, {
                 body: options.body,
@@ -33,21 +33,21 @@ export function Request(options) {
                 data: json
             };
         } catch (e) {
-            if (e.status === 401 || e.status === 403) {
-                return dispatch(checkAuth(options))
-                    .then(response => {
-                        return {
-                            isOk: true,
-                            data: response
-                        };
-                    })
-            }
+            // if (e.status === 401 || e.status === 403) {
+            //     return dispatch(checkAuth(options))
+            //         .then(response => {
+            //             return {
+            //                 isOk: true,
+            //                 data: response
+            //             };
+            //         })
+            // }
             return {
                 isOk: false,
                 data: e.message
             };
         }
-    }
+    // }
 }
 
 export function checkAuth (options) {
@@ -60,9 +60,8 @@ export function checkAuth (options) {
                 headers: {"Content-Type": "application/json"}
             });
             let json = await response.json();
-            console.log(json)
+
             if (!response.ok) {
-                console.log('55555555555555')
                 throw (json);
             }
 
@@ -79,9 +78,7 @@ export function checkAuth (options) {
                 return await response.json();
             }
         } catch (e) {
-            console.log('55555555555555')
-            if (e.status === 401 || e.status === 403) {
-                console.log('55555555555555')
+            if (e.status === 401 || e.status === 403 || e.status === 'UNAUTHORIZED') {
                 localStorage.removeItem('isAuth')
                 localStorage.removeItem('accessToken')
                 localStorage.removeItem('refreshToken')
